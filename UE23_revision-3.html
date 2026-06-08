@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UE23 – Approches contemporaines de la psychopathologie du développement</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap');
+
+  :root {
+    --rose:    #f7d6df;
+    --rose2:   #f0b8c8;
+    --lavande: #ddd5f0;
+    --lavande2:#c5b9e6;
+    --mint:    #c8eae0;
+    --mint2:   #9dd4c5;
+    --pêche:   #fde8d0;
+    --pêche2:  #f9c99a;
+    --bleu:    #c6dff5;
+    --jaune:   #fdf4c1;
+    --jaune2:  #f8e27a;
+    --blanc:   #fdfbf8;
+    --texte:   #3a3248;
+    --gris:    #6b6480;
+    --ombre:   rgba(90,75,120,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #f5f0fa;
+    color: var(--texte);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #e8d5f0 0%, #d5e8f5 50%, #d5f0e8 100%);
+    padding: 2rem 2rem 1.2rem;
+    text-align: center;
+    border-bottom: 3px solid var(--lavande2);
+    box-shadow: 0 4px 18px var(--ombre);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    color: var(--texte);
+    letter-spacing: .03em;
+    line-height: 1.25;
+  }
+  header p { font-size: .88rem; color: var(--gris); margin-top: .4rem; }
+
+  /* ── TABS ── */
+  .tabs-bar {
+    display: flex;
+    gap: .6rem;
+    padding: 1rem 1.8rem .3rem;
+    background: linear-gradient(90deg, #e8e0f5 0%, #d8efe8 33%, #f5dde5 66%, #fde8d0 100%);
+    flex-wrap: wrap;
+    position: sticky;
+    top: 5.5rem;
+    z-index: 90;
+  }
+
+  .tab-btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: .92rem;
+    padding: .55rem 1.4rem;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all .25s ease;
+    letter-spacing: .03em;
+  }
+
+  .tab-btn[data-tab="zabalia"] {
+    background: var(--lavande); color: #4a3b7c;
+    border-color: var(--lavande2);
+  }
+  .tab-btn[data-tab="zabalia"]:hover,
+  .tab-btn[data-tab="zabalia"].active {
+    background: var(--lavande2); box-shadow: 0 3px 12px rgba(150,130,220,.3);
+  }
+
+  .tab-btn[data-tab="roche"] {
+    background: var(--mint); color: #2b6657;
+    border-color: var(--mint2);
+  }
+  .tab-btn[data-tab="roche"]:hover,
+  .tab-btn[data-tab="roche"].active {
+    background: var(--mint2); box-shadow: 0 3px 12px rgba(100,190,160,.3);
+  }
+
+  .tab-btn[data-tab="delaunay"] {
+    background: var(--rose); color: #7c3048;
+    border-color: var(--rose2);
+  }
+  .tab-btn[data-tab="delaunay"]:hover,
+  .tab-btn[data-tab="delaunay"].active {
+    background: var(--rose2); box-shadow: 0 3px 12px rgba(220,130,155,.3);
+  }
+
+  .tab-btn[data-tab="dumont"] {
+    background: var(--pêche); color: #8b4a00;
+    border-color: var(--pêche2);
+  }
+  .tab-btn[data-tab="dumont"]:hover,
+  .tab-btn[data-tab="dumont"].active {
+    background: var(--pêche2); box-shadow: 0 3px 12px rgba(240,160,60,.3);
+  }
+
+  /* ── PANELS ── */
+  .tab-panel { display: none; padding: 1.5rem 1.8rem 3rem; animation: fadeIn .3s ease; }
+  .tab-panel.active { display: block; }
+
+  /* Per-panel background tints */
+  #panel-zabalia  { background: linear-gradient(160deg, #f3f0fc 0%, #fdfbff 60%); }
+  #panel-roche    { background: linear-gradient(160deg, #edf8f4 0%, #fbfffe 60%); }
+  #panel-delaunay { background: linear-gradient(160deg, #fdf0f4 0%, #fffbfc 60%); }
+  #panel-dumont   { background: linear-gradient(160deg, #fff4ea 0%, #fffdf9 60%); }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── SECTION & CARDS ── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid currentColor;
+    letter-spacing: .02em;
+  }
+
+  .card {
+    background: var(--blanc);
+    border-radius: 18px;
+    padding: 1.3rem 1.6rem;
+    margin-bottom: 1.1rem;
+    box-shadow: 0 3px 14px var(--ombre);
+    border-left: 5px solid transparent;
+    line-height: 1.75;
+    font-size: .95rem;
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: .6rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  .card p { margin-bottom: .55rem; }
+  .card p:last-child { margin-bottom: 0; }
+
+  .card ul { padding-left: 1.2rem; margin-top: .3rem; }
+  .card ul li { margin-bottom: .35rem; }
+
+  .badge {
+    display: inline-block;
+    padding: .15rem .65rem;
+    border-radius: 50px;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    vertical-align: middle;
+  }
+
+  .emphasis {
+    background: var(--jaune);
+    border-left: 4px solid var(--jaune2);
+    padding: .7rem 1rem;
+    border-radius: 0 12px 12px 0;
+    margin: .6rem 0;
+    font-size: .92rem;
+  }
+
+  .warn {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: .7rem 1rem;
+    border-radius: 0 12px 12px 0;
+    margin: .6rem 0;
+    font-size: .92rem;
+  }
+
+  .schema-box {
+    background: linear-gradient(135deg, #f8f5ff 0%, #f0faf8 100%);
+    border: 1.5px dashed #b5a8d8;
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    margin: .7rem 0;
+    font-size: .9rem;
+  }
+
+  .schema-box .schema-title {
+    font-weight: 700;
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: .5rem;
+    color: var(--gris);
+  }
+
+  .author-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .3rem .9rem;
+    border-radius: 50px;
+    font-size: .82rem;
+    font-weight: 700;
+    margin: .2rem .2rem .2rem 0;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+  }
+
+  @media (max-width: 680px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .tab-intro {
+    background: linear-gradient(135deg, var(--blanc) 0%, #f0ecff 100%);
+    border-radius: 18px;
+    padding: 1.2rem 1.6rem;
+    margin-bottom: 1.5rem;
+    font-size: .93rem;
+    box-shadow: 0 2px 10px var(--ombre);
+    line-height: 1.7;
+  }
+
+  /* ZABALIA colors */
+  #panel-zabalia .section-title { color: #5c4099; }
+  #panel-zabalia .card { border-left-color: var(--lavande2); }
+  #panel-zabalia .badge { background: var(--lavande); color: #4a3b7c; }
+  #panel-zabalia .author-chip { background: var(--lavande); color: #4a3b7c; }
+
+  /* ROCHE colors */
+  #panel-roche .section-title { color: #2b6657; }
+  #panel-roche .card { border-left-color: var(--mint2); }
+  #panel-roche .badge { background: var(--mint); color: #2b6657; }
+  #panel-roche .author-chip { background: var(--mint); color: #2b6657; }
+
+  /* DELAUNAY colors */
+  #panel-delaunay .section-title { color: #7c3048; }
+  #panel-delaunay .card { border-left-color: var(--rose2); }
+  #panel-delaunay .badge { background: var(--rose); color: #7c3048; }
+  #panel-delaunay .author-chip { background: var(--rose); color: #7c3048; }
+
+  .divider { height: 2px; background: linear-gradient(90deg, transparent, var(--lavande2), transparent); margin: 1.5rem 0; border-radius: 2px; }
+
+  details > summary {
+    cursor: pointer;
+    font-weight: 700;
+    padding: .4rem 0;
+    list-style: none;
+    user-select: none;
+  }
+  details > summary::before { content: '▶ '; font-size: .8rem; }
+  details[open] > summary::before { content: '▼ '; }
+
+  .timeline {
+    position: relative;
+    padding-left: 1.5rem;
+    margin: .5rem 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--lavande2), var(--mint2));
+    border-radius: 3px;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: .9rem;
+    padding-left: .8rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.3rem;
+    top: .5rem;
+    width: 10px; height: 10px;
+    background: var(--blanc);
+    border: 2.5px solid currentColor;
+    border-radius: 50%;
+  }
+
+  .pill-grid { display: flex; flex-wrap: wrap; gap: .5rem; margin: .5rem 0; }
+  .pill {
+    padding: .3rem .9rem;
+    border-radius: 50px;
+    font-size: .84rem;
+    font-weight: 600;
+  }
+
+  table.mini {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .88rem;
+    margin-top: .5rem;
+  }
+  table.mini th {
+    background: var(--lavande);
+    padding: .5rem .8rem;
+    text-align: left;
+    font-weight: 700;
+  }
+  table.mini td {
+    padding: .45rem .8rem;
+    border-bottom: 1px solid #ece8f5;
+    vertical-align: top;
+  }
+  table.mini tr:last-child td { border-bottom: none; }
+
+  #panel-roche table.mini th { background: var(--mint); }
+  #panel-delaunay table.mini th { background: var(--rose); }
+
+
+  /* ── SUB-TABS ── */
+  .subtabs-bar {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: .8rem;
+  }
+  .subtab-btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: .88rem;
+    padding: .45rem 1.3rem;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    cursor: pointer;
+    background: var(--blanc);
+    color: var(--gris);
+    transition: all .22s ease;
+  }
+  .subtab-panel { display: none; }
+  .subtab-panel.active { display: block; animation: fadeIn .3s ease; }
+
+  /* Per-panel subtab colors */
+  /* Zabalia : lavande */
+  #panel-zabalia .subtabs-bar { border-bottom-color: var(--lavande2); }
+  #panel-zabalia .subtab-btn { border-color: var(--lavande2); color: #5c4099; }
+  #panel-zabalia .subtab-btn.active,
+  #panel-zabalia .subtab-btn:hover { background: var(--lavande2); color: #3a2870; box-shadow: 0 2px 8px rgba(150,130,220,.25); }
+
+  /* Roche : mint */
+  #panel-roche .subtabs-bar { border-bottom-color: var(--mint2); }
+  #panel-roche .subtab-btn { border-color: var(--mint2); color: #2b6657; }
+  #panel-roche .subtab-btn.active,
+  #panel-roche .subtab-btn:hover { background: var(--mint2); color: #1a3d33; box-shadow: 0 2px 8px rgba(100,190,160,.25); }
+
+  /* Delaunay : rose */
+  #panel-delaunay .subtabs-bar { border-bottom-color: var(--rose2); }
+  #panel-delaunay .subtab-btn { border-color: var(--rose2); color: #7c3048; }
+  #panel-delaunay .subtab-btn.active,
+  #panel-delaunay .subtab-btn:hover { background: var(--rose2); color: #4a1a2a; box-shadow: 0 2px 8px rgba(220,130,155,.25); }
+
+  /* Dumont : pêche/orange */
+  #panel-dumont .subtabs-bar { border-bottom-color: #f9c99a; }
+  #panel-dumont .subtab-btn { border-color: #f9c99a; color: #8b4a00; }
+  #panel-dumont .subtab-btn.active,
+  #panel-dumont .subtab-btn:hover { background: #f9c99a; color: #6b3600; box-shadow: 0 2px 8px rgba(240,160,60,.25); }
+
+
+  /* DUMONT colors */
+  #panel-dumont .section-title { color: #8b4a00; }
+  #panel-dumont .card { border-left-color: #f9c99a; }
+  #panel-dumont .badge { background: #fde8d0; color: #8b4a00; }
+  #panel-dumont .author-chip { background: #fde8d0; color: #8b4a00; }
+  #panel-dumont table.mini th { background: #fde8d0; }
+
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>UE23 – Approches contemporaines<br>de la psychopathologie du développement</h1>
+  <p>Licence de Psychologie · Université de Caen Normandie · Révisions</p>
+</header>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" data-tab="zabalia">🟣 Zabalia – Psychopathologie développementale</button>
+  <button class="tab-btn" data-tab="roche">🟢 Roche-Labarbe – Neuroconstructivisme</button>
+  <button class="tab-btn" data-tab="delaunay">🌸 Delaunay – Développement alimentaire</button>
+  <button class="tab-btn" data-tab="dumont">🟠 Dumont – Périnatalité &amp; petite enfance</button>
+</div>
+
+<!-- ============================
+     ONGLET 1 : ZABALIA
+     ============================ -->
+<div id="panel-zabalia" class="tab-panel active">
+  <!-- Sub-navigation CM / TD -->
+  <div class="subtabs-bar">
+    <button class="subtab-btn active" data-subtab="zabalia-cm">📖 CM – Cours magistraux</button>
+    <button class="subtab-btn" data-subtab="zabalia-td">🔬 TD – Travaux dirigés</button>
+  </div>
+
+  <!-- SUB-PANEL CM : tout le contenu existant -->
+  <div id="subtab-zabalia-cm" class="subtab-panel active">
+
+
+  <div class="tab-intro">
+    <strong>Fil conducteur :</strong> Pourquoi les modèles classiques de la psychologie ne suffisent plus ? Ce cours propose une <em>démarche intégrative</em> : le sujet est bio-psycho-social, inscrit dans un écosystème complexe. Les trajectoires de développement sont multiples, non prédictibles à l'avance, et toujours le résultat d'interactions entre l'individu et ses contextes.
+  </div>
+
+  <!-- CM1 : Contexte historique & approche intégrative -->
+  <div class="section-title">CM1 · Contexte historique & approche intégrative</div>
+
+  <div class="card">
+    <h3>🏛️ Pourquoi une approche contemporaine ?</h3>
+    <p>La psychologie classique est née dans un <strong>contexte historique précis</strong> (après la 2ᵉ Guerre Mondiale). Elle était influencée par les représentations culturelles du moment : famille nucléaire standardisée, rôle de la mère central, pathologies sociales (alcoolisme, handicap) non prises en compte.</p>
+    <p>La <strong>santé mentale</strong> n'était pas la priorité avant-guerre : on traitait les problèmes de santé publique (poliomyélite, carences en fer). L'ADN n'est découvert qu'en 1953. Les structures familiales atypiques (divorce, familles recomposées) n'étaient pas théorisées.</p>
+    <div class="emphasis">💡 L'approche contemporaine <em>complète</em> les théories classiques, elle ne les remplace pas. Elle les approfondit en tenant compte des enjeux actuels.</div>
+  </div>
+
+  <div class="card">
+    <h3>🌍 Les deux grands enjeux actuels</h3>
+    <ul>
+      <li>Le sujet est un <strong>sujet bio-psycho-social</strong> : ses dimensions biologiques, psychologiques et sociales sont indissociables et interdépendantes.</li>
+      <li>Tout sujet évolue dans un <strong>écosystème complexe</strong> en mouvement permanent : contexte familial, social, culturel, biologique.</li>
+    </ul>
+    <p>Les théories classiques centraient l'attention sur les comportements (béhaviorisme) ou sur la psyché (psychanalyse) mais peu sur l'environnement complet du sujet.</p>
+  </div>
+
+  <div class="card">
+    <h3>🗺️ Les 5 contextes du développement</h3>
+    <p>Le cadre général du développement s'inscrit dans 5 contextes qui évoluent tout au long de la vie :</p>
+    <div class="timeline" style="color:#7c5faa">
+      <div class="timeline-item"><strong>Contexte biologique</strong> – Corps agissant, chromosomes, neurochimie. « C'est parce que je suis que je pense. » Le fonctionnement psychologique influence le biologique et vice-versa.</div>
+      <div class="timeline-item"><strong>Contexte individuel</strong> – Fonctionnement psychologique du sujet (le plus documenté ; risque d'y accorder trop de place).</div>
+      <div class="timeline-item"><strong>Contexte familial</strong> – Structure variable d'adultes exerçant des fonctions éducatives. L'enfant influence ses parents autant qu'il est influencé par eux. Le père longtemps négligé.</div>
+      <div class="timeline-item"><strong>Contexte social</strong> – Périmètre s'agrandissant au fil de la vie. École dès 3 ans, clubs, pairs. Lieu de socialisation et de discrimination possible.</div>
+      <div class="timeline-item"><strong>Contexte culturel</strong> – Valeurs, représentations culturelles, lois, médias. Influence les pratiques éducatives et les attentes envers l'enfant (ex. école obligatoire à 3 ans).</div>
+    </div>
+    <div class="warn">⚠️ Ces contextes sont en constante évolution. Aucune théorie prise isolément ne peut répondre à la totalité de la psychopathologie d'un individu.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Les modèles classiques -->
+  <div class="section-title">CM1 · Les modèles classiques de la psychopathologie</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>⚕️ Modèle médical</h3>
+      <p><span class="author-chip">Emil Kraepelin</span> – Première nosographie psychiatrique.</p>
+      <p>Tous les troubles ont des origines <strong>organiques</strong>. Classification selon les symptômes (DSM). Démarche scientifique avec hypothèse diagnostique.</p>
+      <p>Limite : réducteur (un seul facteur biologique n'explique pas un trouble). Le corps et la psyché sont aujourd'hui indissociables.</p>
+      <div class="emphasis">✅ Ce qu'on retient : le fonctionnement biologique a sa part à jouer.</div>
+    </div>
+
+    <div class="card">
+      <h3>🔄 Modèle béhavioriste</h3>
+      <p>Le sujet apprend par :</p>
+      <ul>
+        <li><strong>Conditionnement classique</strong> (Pavlov) – associations stimulus/réponse</li>
+        <li><strong>Conditionnement opérant</strong> – renforcements positifs/négatifs</li>
+        <li><strong>Imitation / modelage</strong> – apprentissage par observation</li>
+      </ul>
+      <p>Pathologie = <em>inadaptation</em> en termes de fréquence et d'intensité d'un comportement par rapport aux attentes du contexte.</p>
+      <div class="emphasis">✅ Ce qu'on retient : il n'existe pas de comportement psychopathologique dans l'absolu — tout dépend du contexte et de l'âge.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🛋️ Modèles psychodynamiques – 3 grands groupes</h3>
+    <details>
+      <summary>1. Psychanalyse classique (Freud)</summary>
+      <div style="padding: .5rem 0">
+        <p><strong>Modèle structural (2ème topique) :</strong> Ça (pulsions inconscientes) / Moi (régulation) / Surmoi (normes intériorisées). Espace fermé → équilibre homéostatique. Conflit → tension → symptôme.</p>
+        <p><strong>Modèle en stades psychosexuels :</strong> Oral (0-1 an) → Anal (1-3 ans) → Phallique (3-6 ans, complexe d'Œdipe) → Latence (6-11 ans) → Génital (adolescence).</p>
+        <p>Psychopathologie = <strong>fixation</strong> (arrêt à un stade) ou <strong>régression</strong> (retour à un stade antérieur). Pathologique seulement si massif et global.</p>
+      </div>
+    </details>
+    <details>
+      <summary>2. Ego-psychologie et développement en étapes (Anna Freud, Erikson, Spitz)</summary>
+      <div style="padding: .5rem 0">
+        <p><strong>Anna Freud :</strong> concept de <em>dysharmonie d'évolution</em> (lignes de développement) – tout ne va pas à la même vitesse. Le Moi a sa propre maturation indépendante du Ça.</p>
+        <p><strong>Erikson :</strong> modèle psycho-social en défis développementaux. La trajectoire dépend de la résolution des défis (ex. confiance vs méfiance de 0 à 18 mois). Non déterministe.</p>
+        <p><strong>René Spitz :</strong> <em>Embryogenèse du Moi</em> – 3 organisateurs psychiques :</p>
+        <div class="schema-box">
+          <div class="schema-title">Les 3 organisateurs de Spitz</div>
+          <table class="mini">
+            <tr><th>Organisateur</th><th>Âge</th><th>Signification</th></tr>
+            <tr><td><strong>Sourire social réponse</strong></td><td>2-3 mois</td><td>Fin de la confusion Moi/Autrui. Début du lien relationnel.</td></tr>
+            <tr><td><strong>Angoisse de l'étranger</strong></td><td>8-9 mois</td><td>Reconnaissance de la figure d'attachement. Prise de conscience de la perte possible.</td></tr>
+            <tr><td><strong>Le « Non »</strong></td><td>15-18 mois</td><td>Affirmation d'un Moi autonome. Première symbolisation de l'opposition.</td></tr>
+          </table>
+        </div>
+        <p>Chaque organisateur ouvre/ferme des trajectoires. Si perturbé → dev fragile ou dévié.</p>
+        <p><strong>René Zazzo :</strong> hétérochronie de développement (avec des personnes atteintes de DI).</p>
+      </div>
+    </details>
+    <details>
+      <summary>3. Théories de la relation d'objet (Bowlby, Winnicott, Klein, Mahler)</summary>
+      <div style="padding: .5rem 0">
+        <p>Contexte : enfants survivants de la guerre dépérissent malgré les soins hygiéniques → <strong>hospitalisme / dépression anaclitique</strong> → ce qui compte, c'est la <em>relation</em>, pas la satisfaction alimentaire.</p>
+        <p><strong>Bowlby :</strong> Théorie de l'attachement. Ensemble de comportements innés (pleurs, agrippement, sourire…) pour créer et maintenir le lien. Le besoin de relation prime sur les besoins primaires (cf. singes de Harlow).</p>
+        <p><strong>Mahler :</strong> Processus de séparation/individuation. L'autonomie motrice → autonomie psychique. Phase symbiotique → différenciation Moi/Autrui.</p>
+        <p><strong>Klein :</strong> Intégration progressive d'un « bon objet » (réponse stable et cohérente de la mère).</p>
+        <p><strong>Winnicott :</strong> Préoccupation maternelle primaire ; la mère « suffisamment bonne » s'adapte aux besoins sans être parfaite.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="card">
+    <h3>🔗 Modèle systémique (Salvador Minuchin)</h3>
+    <p>Théorie générale des systèmes : pour comprendre un phénomène, tenir compte des <em>interactions</em> entre ses éléments. La famille = un système organisé en <strong>sous-systèmes</strong> avec des frontières.</p>
+    <div class="grid-2">
+      <div>
+        <p><strong>Sous-systèmes familiaux :</strong></p>
+        <ul>
+          <li>Conjugal (projet de couple)</li>
+          <li>Parental (fonction éducative)</li>
+          <li>Fraternel (entre enfants)</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Nature des frontières :</strong></p>
+        <ul>
+          <li><em>Perméables</em> – échanges fluides ✅</li>
+          <li><em>Rigides</em> – autosuffisance, peu d'échanges ⚠️</li>
+          <li><em>Floues</em> – confusion des rôles, parentification ❌</li>
+        </ul>
+      </div>
+    </div>
+    <p><strong>3 configurations problématiques :</strong></p>
+    <ul>
+      <li><strong>Triangulation</strong> : l'enfant mis à contribution dans le conflit parental (enfant-intermédiaire).</li>
+      <li><strong>Coalition</strong> : mère + enfant contre le père (ou inversement). Souvent dans les conduites addictives.</li>
+      <li><strong>Déviation</strong> : l'enfant désigné comme source du déséquilibre familial (enfant-symptôme).</li>
+    </ul>
+    <div class="emphasis">💡 Le trouble n'est pas <em>dans</em> l'enfant mais <em>dans</em> le système.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CM2 : Modèles du développement -->
+  <div class="section-title">CM2 · Les modèles du développement</div>
+
+  <div class="card">
+    <h3>🌀 Wallon – Modèle socio-constructiviste</h3>
+    <p>Neurologue, clinicien, philosophe marxiste. S'intéresse au développement de la <em>personne entière</em> (pas seulement l'intelligence comme Piaget).</p>
+    <p>Deux grandes dimensions en <strong>spirale</strong> tout au long de la vie :</p>
+    <div class="pill-grid">
+      <span class="pill" style="background: var(--lavande);">Caractère (psychoaffectif)</span>
+      <span class="pill" style="background: var(--mint);">Intelligence (cognitif)</span>
+    </div>
+    <p>Les deux s'alternent. L'un prend le dessus puis cède la place à l'autre. Modèle dynamique, circulaire, très moderne. Il fait de l'<strong>émotion le facteur principal du développement</strong>.</p>
+  </div>
+
+  <div class="card">
+    <h3>📊 Modèles micro-développementaux – 3 grandes catégories</h3>
+
+    <details>
+      <summary>1. Modèles cumulatifs</summary>
+      <div style="padding:.5rem 0">
+        <p><strong>a. Modèles en trait</strong> (ex. : théorie de l'attachement de Bowlby)<br>
+        Un trait acquis pendant une période sensible reste stable toute la vie, indépendamment de l'environnement.<br>
+        Limite : ne décrit pas bien la réalité psychologique (fonctionne mieux pour les traits biologiques comme la T21).</p>
+        <p><strong>b. Modèles environnementaux</strong> (ex. : Bronfenbrenner)<br>
+        L'état de l'enfant est uniquement fonction de l'état de l'environnement.</p>
+        <div class="schema-box">
+          <div class="schema-title">Cercles de Bronfenbrenner</div>
+          <p><strong>Microsystème</strong> : biologie, génétique du sujet lui-même<br>
+          <strong>Mésosystème</strong> : adultes avec fonctions parentales (mère, père, nourrices...)<br>
+          <strong>Exosystème</strong> : famille étendue, communauté, lieu de travail des parents<br>
+          <strong>Macrosystème</strong> : valeurs culturelles, lois, représentations sociales</p>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>2. Modèles interactionnistes (transformationnels)</summary>
+      <div style="padding:.5rem 0">
+        <p>L'enfant et l'environnement s'influencent mutuellement et se transforment au contact l'un de l'autre (influence bi-directionnelle).</p>
+        <p>Un enfant avec troubles sévères peut mettre en difficulté même un environnement positif → spirale transactionnelle péjorative.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>3. Modèles transactionnels (Sameroff) ✅ Le plus complet</summary>
+      <div style="padding:.5rem 0">
+        <p>Approfondissement des modèles transformationnels : les influences sont <em>continues dans le temps</em>, pas seulement bi-directionnelles à un instant T.</p>
+        <div class="schema-box">
+          <div class="schema-title">Modèle de Sameroff 2009</div>
+          <p><strong>Génotype</strong> (micro-écosystème) ↔ <strong>Phénotype</strong> (caractéristiques observables) ↔ <strong>Environtype</strong> (macro-écosystème : famille, communauté, culture, lois)</p>
+          <p>Les 3 s'influencent mutuellement et se transforment en permanence. L'expression génétique peut être influencée par l'environnement (ex. : exposition chimique maternelle).</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CM2 suite : Démarche psychopatho développementale -->
+  <div class="section-title">CM2 · La démarche en psychopathologie développementale</div>
+
+  <div class="card">
+    <h3>🛤️ Trajectoires de développement</h3>
+    <p>Plutôt que de chercher <em>la cause</em> d'un trouble, la psychopathologie développementale reconstitue l'<strong>histoire</strong> du sujet. La trajectoire est le chemin parcouru en réponse aux contraintes et opportunités de l'environnement.</p>
+    <ul>
+      <li>Au départ, trajectoires typiques proches pour tous (tenir sa tête, marcher…)</li>
+      <li>Progressivement : divergences en trajectoires adaptées ou inadaptées</li>
+      <li>Impossible de prédire à l'avance → uniquement constatable <em>a posteriori</em></li>
+    </ul>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">Équifinalité</div>
+        <p>Deux trajectoires différentes aboutissent au même résultat développemental.</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">Multifinalité</div>
+        <p>Des trajectoires similaires (ex. : frères et sœurs) aboutissent à des issues différentes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🔁 La spirale transactionnelle</h3>
+    <p>Une <strong>transaction</strong> = une série d'interactions dynamiques et réciproques qui <em>transforment</em> les deux partenaires de la relation dans le temps.</p>
+    <p>Ex. : famille avec un prématuré → état de sidération → accueil difficile → spirale défavorable.</p>
+    <p>Les transactions s'entretiennent, se nourrissent des représentations fantasmatiques. On ne reproduit pas seulement ce qu'on a vécu, mais on peut aussi transformer les schémas (ex. : via la thérapie).</p>
+    <div class="emphasis">💡 Les <strong>modèles internes opérants</strong> (Bowlby) : schémas cognitifs construits à partir des expériences relationnelles. Risque de reproduire les mauvais schémas, mais possibilité de transformation.</div>
+  </div>
+
+  <div class="card">
+    <h3>🛡️ Facteurs de risque, vulnérabilité, résilience</h3>
+    <div class="grid-2">
+      <div>
+        <p><strong>Facteur de risque</strong> : probabilité accrue d'une trajectoire inadaptée. Jamais déterministe seul. Un risque élevé peut l'emporter sur plusieurs facteurs de protection.</p>
+        <p>Risque = risque <em>uniquement</em> s'il rencontre une vulnérabilité.</p>
+      </div>
+      <div>
+        <p><strong>Vulnérabilité</strong> : propension à subir négativement un risque. Variable selon l'âge et le contexte (nouveau-né très vulnérable).</p>
+        <p><strong>Résilience</strong> : processus (pas un trait individuel !) permettant de faire face, construit en étayage avec des ressources propres ET extérieures.</p>
+      </div>
+    </div>
+    <p><strong>Tuteur de résilience</strong> : personne de l'environnement qui aide à la résilience (facteur de protection).</p>
+    <div class="warn">⚠️ Un seul risque très élevé peut tout fragiliser. Et : les conséquences développementales ne sont jamais uniquement liées à l'individu NI uniquement à son contexte.</div>
+  </div>
+
+  <div class="card">
+    <h3>📌 Synthèse : les grands principes</h3>
+    <div class="schema-box">
+      <p>Le développement est le résultat des <strong>transactions continuelles et réciproques</strong> entre l'organisme et son environnement (vu comme écosystème incluant les humains et leurs représentations).</p>
+      <p>L'adaptation = équilibre entre les potentiels et vulnérabilités de l'individu, ET les risques et opportunités offerts par l'environnement.</p>
+      <p>Le développement devient <em>compromis</em> quand les facteurs de risque excèdent les facteurs de protection, en fréquence, intensité ou chronicité, dans les différents niveaux systémiques.</p>
+    </div>
+    <ul>
+      <li>Les expériences interpersonnelles occupent une place centrale.</li>
+      <li>L'individu est le produit de <em>toutes</em> ses expériences, pas seulement des précoces.</li>
+      <li>Développement typique et troublé s'éclairent mutuellement.</li>
+    </ul>
+  </div>
+
+
+  </div><!-- /subtab-zabalia-cm -->
+
+  <!-- SUB-PANEL TD -->
+  <div id="subtab-zabalia-td" class="subtab-panel">
+
+    <div class="tab-intro" style="background: linear-gradient(135deg, var(--blanc) 0%, #ede8ff 100%);">
+      <strong>3 TD abordés :</strong>
+      <span class="badge">TD3 – Handicap &amp; spirale transactionnelle</span>
+      <span class="badge" style="margin-left:.4rem">TD2 – Sommeil de l'enfant</span>
+      <span class="badge" style="margin-left:.4rem">TD2 – Douleur de l'enfant</span>
+    </div>
+
+    <!-- TD3 : HANDICAP -->
+    <div class="section-title">TD3 · Naissance d'un enfant porteur de handicap : une spirale transactionnelle</div>
+
+    <div class="card">
+      <h3>👶 La gestation psychique du nouveau-né</h3>
+      <p>Avant même la naissance, les parents construisent une représentation de l'enfant attendu — processus à la fois conscient et inconscient. Cette représentation s'appelle le <strong>bébé imaginaire (ou fantasmatique)</strong>.</p>
+      <p>Il est porteur de :</p>
+      <ul>
+        <li>L'histoire transgénérationnelle des parents et grands-parents</li>
+        <li>Des désirs inconscients des deux partenaires</li>
+        <li>Des valeurs et de l'ancrage culturel familial</li>
+        <li>Un <strong>bébé narcissique</strong> (ou idéal) : celui qui porte les espoirs parentaux, dont on est fier d'être le parent</li>
+      </ul>
+      <p><strong>Mandat transgénérationnel :</strong> certains parents attendent que le bébé remplisse une mission (réparer le couple, réussir là où le parent n'a pas pu…).</p>
+      <p>Les étapes rituelles de la gestation (échographies, annonce de grossesse, choix du prénom, préparatifs) alimentent progressivement les représentations. L'image du bébé est aussi influencée par les médias (bébé compétent depuis les années 60).</p>
+      <div class="warn">⚠️ Quand un enfant naît porteur de handicap : <strong>interruption psychique de grossesse</strong>. Toutes les projections s'arrêtent → choc et sidération.</div>
+    </div>
+
+    <div class="card">
+      <h3>🌀 Le doute et les mécanismes de défense</h3>
+      <p>La prématurité est aujourd'hui la principale circonstance de handicap. Plus de la moitié des parents d'enfants prématurés présentent des symptômes de PTSD. L'environnement hautement technique (NICU) crée une <strong>période de doute sur la survie</strong>, délétère car le système psychique ne supporte pas d'être figé.</p>
+      <div class="schema-box">
+        <div class="schema-title">Mécanismes de défense parentaux</div>
+        <p><strong>Déni</strong> : le système psychique n'intègre pas la réalité (n'a pas entendu ce qu'on lui a dit).<br>
+        <strong>Dénégation</strong> : on entend mais on refuse d'accepter → <em>shopping médical</em> (chercher un soignant qui contredit le diagnostic). Vulnérabilité aux charlatans.<br>
+        <strong>Deuil anticipé</strong> : se comporter comme si l'enfant était perdu alors qu'il est encore là.</p>
+      </div>
+      <p><strong>Rôle du psychologue :</strong> parler au bébé en présence du parent, créer le lien en nommant les comportements (rythme cardiaque plus stable quand il entend la voix du parent…). Parler du passé, pas de l'avenir. Ne pas lutter contre les défenses des parents qui ont besoin de ça pour ne pas s'effondrer.</p>
+      <div class="schema-box">
+        <div class="schema-title">Stratégies défensives des soignants (à éviter)</div>
+        <p>Banalisation · Annonce esquissée · Fausses réassurances · Rationalisation/jargon · Évitement</p>
+        <p>→ <strong>Pratique ajustée :</strong> l'annonce est faite par la personne experte, en dosant, en restant disponible physiquement et psychiquement.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📊 Les étapes après l'annonce du handicap</h3>
+      <p>Élaboré initialement pour le cancer. Processus non linéaire — les partenaires peuvent ne pas être au même stade.</p>
+      <div class="timeline" style="color:#5c4099">
+        <div class="timeline-item"><strong>1. Le choc</strong> – Système figé, cristallisé. Souffrance intense. PTSD fréquent. Pensées magiques.</div>
+        <div class="timeline-item"><strong>2. Le déni / refus</strong> – On entend mais on ne peut pas admettre. Shopping médical, grande vulnérabilité aux charlatans.</div>
+        <div class="timeline-item"><strong>3. La colère</strong> – Légitime, normale. Peut être expression de culpabilité. Dirigée contre l'équipe médicale, le partenaire («fallait arrêter de fumer»). Plus de la moitié des couples divorcent dans les mois suivant l'annonce.</div>
+        <div class="timeline-item"><strong>4. Le marchandage</strong> – «On fait tout ce que vous proposez en échange vous guérissez notre enfant.» Illusion → désillusion → nouvelle colère. La moitié des prescriptions abandonnées (danger si médicaments).</div>
+        <div class="timeline-item"><strong>5. L'ajustement</strong> – Les parents se projettent avec l'enfant porteur de sa particularité. Phase fragile avec retours en arrière. <em>Période lune de miel</em> : on apprécie l'enfant tel qu'il est, «en cachette du handicap» (Joël Roy). Mis en péril quand l'enfant se différencie des pairs.</div>
+      </div>
+      <div class="warn">⚠️ Certains parents n'atteignent jamais la phase d'ajustement. Ne pas forcer la temporalité.</div>
+    </div>
+
+    <div class="card">
+      <h3>💔 La violence du handicap – 3 dimensions</h3>
+      <ul>
+        <li><strong>Atteinte du bébé idéal :</strong> le bébé réel est vécu comme un «usurpateur» qui prend la place du bébé imaginaire («elle est née pour nous pourrir la vie»).</li>
+        <li><strong>La réalité progressive :</strong> les limites se révèlent au fil des étapes («ne se tient pas assis alors que le cousin oui»). Chaque jalonnement peut raviver la colère.</li>
+        <li><strong>L'enfant baigné dans la souffrance parentale :</strong> naît dans un environnement de déception et de douleur → spirale transactionnelle défavorable. Enfant tonique + parents dépassés = désinvestissement.</li>
+      </ul>
+      <div class="emphasis">💡 L'ambivalence parentale est normale : aimer son enfant ET avoir envie de tout arrêter. Il faut pouvoir l'exprimer sans culpabilité. L'enfant n'est pas responsable d'être né comme ça — ce doit être dit explicitement dans les familles.</div>
+      <p><strong>Stratégies de défense parentales :</strong> réparation (réduire les déficiences) · surprotection · projection de la faute sur l'autre · déni · autopunition · sublimation (associations…).</p>
+    </div>
+
+    <div class="card">
+      <h3>👁️ Ce qui est spontané à la naissance typique… et ne l'est pas ici</h3>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">Humanisation</div>
+          <p>Normalement automatique. Ici : enfant relié à des machines, images de difformités envahissent les parents → effort conscient requis pour identifier le bébé comme un être humain.</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Individualisation</div>
+          <p>«C'est mon bébé, il a le menton de sa sœur.» Effort requis malgré les câbles. La période lune de miel peut aider : Thomas n'est pas tous les enfants atteints de paralysie cérébrale.</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Intégration sociale (délégation)</div>
+          <p>Difficile après des années d'expertise parentale intensive. Préparation recommandée 1 an avant le changement de structure (établissement, centre). Travail d'orientation progressif.</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Ajustement social</div>
+          <p>Annonce à l'entourage, inscription en crèche. Le regard des autres peut déclencher des retours en arrière dans le processus de deuil. Esthétique : rejet précoce des enfants «peu attirants» documenté dans les crèches.</p>
+        </div>
+      </div>
+      <div class="emphasis">📚 À lire absolument : ressources e-campus indiquées par le professeur.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TD2 : SOMMEIL -->
+    <div class="section-title">TD2 · Sommeil : fonction physiologique et développementale</div>
+
+    <div class="card">
+      <h3>💤 Pourquoi s'intéresser au sommeil de l'enfant ?</h3>
+      <ul>
+        <li><strong>Fonction vitale</strong> et indicateur de l'équilibre du petit enfant.</li>
+        <li><strong>2ème motif de consultation</strong> pédopsychologique (après l'alimentation).</li>
+        <li><strong>Retentissement familial :</strong> fatigue parentale chronique, résultats scolaires de la fratrie qui se dégradent.</li>
+        <li>Mode de vie urbain incompatible avec le rythme biologique de l'enfant.</li>
+      </ul>
+      <p>Autres indicateurs d'équilibre : appétit, comportement social, motricité/tonus, qualité du jeu, référencement social (8-10 mois).</p>
+    </div>
+
+    <div class="card">
+      <h3>🧬 Ontogenèse du sommeil</h3>
+      <ul>
+        <li>S'organise dès la <strong>période fœtale</strong> (cycles physiologiques soumis aux rythmes maternels).</li>
+        <li>À la naissance : <strong>sommeil polyphasique</strong> (léger → profond → paradoxal). Micro-réveils fréquents, souvent interprétés à tort comme des plaintes.</li>
+        <li>Sommeil paradoxal → vers <strong>9 mois</strong>.</li>
+        <li>Capable de faire ses nuits vers <strong>3 mois</strong> physiologiquement, mais souvent entre 6 mois et 2-3 ans.</li>
+        <li>Rythme <strong>circadien</strong> possible à partir de 3 mois. Jusqu'à 6-13 ans : 9 à 11h nécessaires.</li>
+      </ul>
+      <div class="schema-box">
+        <div class="schema-title">Rythme ultradien – 6 états de vigilance</div>
+        <p>1. Sommeil profond &nbsp;·&nbsp; 2. Sommeil calme &nbsp;·&nbsp; 3. Somnolence<br>
+        4. Veille calme &nbsp;·&nbsp; 5. <strong>Veille active</strong> (moment d'interaction privilégié : jeu de nourrice) &nbsp;·&nbsp; 6. Pleurs / détresse</p>
+        <p><strong>Parentage intuitif :</strong> les adultes reconnaissent spontanément les états de vigilance et s'y ajustent (Daniel Stern : accordage affectif).</p>
+      </div>
+      <div class="warn">⚠️ On ne parle pas de trouble du sommeil avant 3 mois, voire 6 mois (rythme en cours de mise en place). Réduire les siestes ne favorise pas le sommeil nocturne : on casse le rythme.</div>
+    </div>
+
+    <div class="card">
+      <h3>📋 Critères diagnostiques (DSM-5, CIM-10, CFTMEA, C 0-3)</h3>
+      <table class="mini">
+        <tr><th>Critère</th><th>Contenu</th></tr>
+        <tr><td><strong>Troubles d'endormissement</strong></td><td>Besoin de présence parentale, appels. ≥ 4 semaines, 5-7 épisodes/semaine, enfant &gt; 12 mois.</td></tr>
+        <tr><td><strong>Troubles de la durée</strong></td><td>Réveils nocturnes nécessitant intervention parentale ou déplacement dans le lit des parents. Mêmes critères.</td></tr>
+      </table>
+      <div class="emphasis">💡 Si les parents s'accommodent sans détresse : pas de trouble du sommeil. Le diagnostic dépend de l'impact sur la famille.</div>
+    </div>
+
+    <div class="card">
+      <h3>🌙 Formes cliniques</h3>
+      <details>
+        <summary>Insomnies communes</summary>
+        <div style="padding:.5rem 0">
+          <ul>
+            <li><strong>Puériculture défavorable :</strong> température &gt; 19°C (→ déshydratation, convulsions), lumière, bruit, alimentation inadaptée.</li>
+            <li><strong>Difficultés d'ajustement parents/enfant :</strong> ne pas respecter les états de vigilance, vérifications anxieuses intempestives.</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>Insomnies précoces sévères</summary>
+        <div style="padding:.5rem 0">
+          <div class="grid-2">
+            <div><p><strong>Tapageuses ✅</strong> — se manifeste, appelle, bouge les barreaux. Perçoit le sommeil comme une perte de temps. Trajectoire plus favorable. Si très sévères : signe de lutte contre des mouvements dépressifs.</p></div>
+            <div><p><strong>Silencieuses ❌</strong> — enfant réveillé qui ne sollicite pas les parents. Plus grave en termes d'évolution. Trajectoire développementale négative.</p></div>
+          </div>
+          <p><strong>Joyeuses :</strong> se réveillent de bonne humeur — forme moins préoccupante.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Insomnies des 2ème et 3ème années (à interpréter avec recul)</summary>
+        <div style="padding:.5rem 0">
+          <p>Liées aux phases typiques du développement (18-24 mois). <strong>Apparition de la fonction symbolique</strong> (signifiant ↔ signifié) → donne une autre forme aux rêves.</p>
+          <ul>
+            <li><strong>Retour de l'angoisse de séparation :</strong> dormir = couper avec l'environnement, angoisses primitives (le noir n'est pas cool).</li>
+            <li><strong>Cauchemars, terreurs nocturnes :</strong> angoisses de morcellement, d'abandon. La vie onirique est réelle et bizarre pour l'enfant.</li>
+          </ul>
+          <p><strong>Rituels du coucher</strong> (Winnicott : aires transitionnelles) : gèrent l'angoisse de séparation. Les contes et légendes mettent en scène les angoisses primitives (mort, peur) — différents des contes moraux. Peter Pan : les enfants perdus sont des enfants morts.</p>
+          <p><strong>Objet transitionnel (doudou) :</strong> pas un substitut maternel. Fonction symbolique. Odeurs familières et rassurantes.</p>
+          <div class="emphasis">💡 Intervenir quand le bébé pleure = construction d'un répertoire de communication plus riche. Sans intervention : communication uniquement par le cri, de plus en plus fort.</div>
+        </div>
+      </details>
+    </div>
+
+    <div class="card">
+      <h3>🔍 Étiologie, diagnostic différentiel et prise en charge</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>Caractéristiques de l'enfant :</strong></p>
+          <ul>
+            <li>Tempérament difficile (dur à comprendre, calmer)</li>
+            <li>Opposition ou repli (peu réactif)</li>
+            <li>Agitation (souvent signe de dépression – avant 7 ans, la dépression = enfant très actif)</li>
+            <li>Troubles du tonus (opisthotonos)</li>
+            <li>Désordres psychosomatiques (eczéma, constipation, asthme)</li>
+            <li>Tableaux sévères : autisme, psychose</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Étiopathogénie :</strong></p>
+          <ul>
+            <li>Symptômes psychosomatiques</li>
+            <li>Angoisse de séparation (enfant ET parents)</li>
+            <li>Excès d'excitation (rôle de pare-excitation du parent)</li>
+            <li>Projections parentales sur le coucher (parfois l'existence de l'enfant sécurise le parent)</li>
+            <li>Qualité de l'attachement</li>
+          </ul>
+        </div>
+      </div>
+      <p><strong>Diagnostic différentiel :</strong> chercher perturbation organique si éveils longs, hyperactivité diurne, RGO, retard staturo-pondéral, développement psychomoteur anormal. Syndromes génétiques associés : Angelman, Smith-Magenis, Prader-Wili, Rett.</p>
+      <p><strong>Prises en charge :</strong> guidance parentale · psychothérapies brèves parents/enfant · thérapies comportementales · thérapies familiales. Toujours ajuster aux ressources de la famille.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TD2 : DOULEUR -->
+    <div class="section-title">TD2 · Évaluation et accompagnement de la douleur de l'enfant</div>
+
+    <div class="card">
+      <h3>🧩 La douleur est multi-dimensionnelle</h3>
+      <p>Jusqu'aux années 60 : douleur pensée comme purement nociceptive. Depuis les années 70 : modèle à 4 composantes, validé par l'ensemble des sciences de la douleur.</p>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">4 composantes de la douleur</div>
+          <p><strong>Sensori-discriminative :</strong> nociception (le récepteur reçoit le signal).</p>
+          <p><strong>Émotionnelle :</strong> peur, colère — fait partie du processus douloureux, pas une réponse à lui.</p>
+          <p><strong>Comportementale :</strong> cri, pleurs, frotter, réduire l'activité.</p>
+          <p><strong>Cognitive :</strong> comprendre pourquoi on a mal diminue l'intensité ressentie (influence réelle le nocicepteur, pas seulement l'anxiété).</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Facteurs supplémentaires</div>
+          <p><strong>Socio-culturels :</strong> genre (serrer les dents vs exprimer), culture.</p>
+          <p><strong>Expériences relationnelles :</strong> qualité de l'attachement. Un enfant anxieux vivra plus mal la douleur. Un enfant qui doit gérer seul aura plus mal.</p>
+          <p><strong>Histoire médicale :</strong> mémoire NMDA. Bonne prise en charge → cercle vertueux. Mauvaise → cercle vicieux. Phénomène de la blouse blanche.</p>
+          <p><strong>Caractéristiques individuelles :</strong> estime de soi, anxiété, dépression.</p>
+        </div>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">Définition IASP (révisée 2000)</div>
+        <p>«Une expérience sensorielle et émotionnelle désagréable associée ou ressemblant à celle associée à une lésion tissulaire réelle ou potentielle.»</p>
+        <p>→ Pas de lésion visible mais plainte : on traite comme douleur réelle. Incapacité à communiquer n'exclut pas la douleur. La douleur se construit avec l'expérience et les contacts sociaux.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🗣️ Le développement de l'expression de la douleur</h3>
+      <p>Gaffney et Dunne (1986) : enfants <em>non douloureux</em> décrivent la douleur selon les stades piagétiens (concret → métaphorique → abstrait). Mais ce n'est pas le cas en contexte réel de douleur !</p>
+      <table class="mini">
+        <tr><th>Contexte</th><th>Type de réponse observé</th></tr>
+        <tr><td>Enfants non douloureux (salle d'attente)</td><td>Progression par âge, conformément à Piaget</td></tr>
+        <tr><td>Contexte douloureux / stressant (pré/post-op)</td><td>Tous les registres à tous les âges → émotionnel, pas cognitif</td></tr>
+      </table>
+      <div class="emphasis">💡 Connaître les mots spontanés des enfants (aïe, ouille…) plutôt que les termes adultes. Le psychologue aide à construire le ressenti et le vocabulaire de la douleur.</div>
+      <p><strong>Modèle de Craig (2009) :</strong> communication sociale de la douleur. La personne en douleur ET le donneur de soin ont chacun leurs mécanismes influençant l'expérience douloureuse.</p>
+    </div>
+
+    <div class="card">
+      <h3>🧠 Mémoire et douleur chez l'enfant</h3>
+      <ul>
+        <li><strong>Taddio (1997) :</strong> garçons circoncis sans anesthésie → réaction plus forte au vaccin à 3 mois. Nouveau-nés conditionnés dès les gestes précurseurs d'un prélèvement.</li>
+        <li><strong>Gunnar (1991) :</strong> hormones du stress plus élevées au 2ème prélèvement.</li>
+        <li>Dès la période néonatale : conséquences comportementales et hormonales (cortisol) 6 mois après l'événement.</li>
+        <li>Ancien prématuré : somatisation plus fréquente à 3-4 ans.</li>
+      </ul>
+      <div class="schema-box">
+        <div class="schema-title">Conséquences à long terme</div>
+        <p><strong>Sensibilisation (hyperalgésie) :</strong> abaissement du seuil de tolérance. Phénomène adaptatif mais pathologique si chronique.</p>
+        <p><strong>Mémoire du stress :</strong> enfants douloureux plus vigilants aux stimuli douloureux. Niveaux élevés de douleur → mémoire négative → moins bonnes capacités futures de coping.</p>
+        <p><strong>Accoutumance :</strong> très rare (athlètes, acrobates).</p>
+      </div>
+      <div class="warn">⚠️ Ne jamais dire «ça ne fait pas mal» : dissonance cognitive. Les enfants retiennent mieux les stratégies de coping que la douleur elle-même. Aider à trouver des stratégies (bulles de respiration, etc.).</div>
+    </div>
+
+    <div class="card">
+      <h3>♿ Douleur et déficience intellectuelle (Zabalia &amp; Duchaux, 2007)</h3>
+      <p>Les personnes avec DI subissent les mêmes douleurs mais elles sont <strong>moins bien détectées</strong>. Le préjugé «ils ne sont pas capables» → on ne leur parle pas de la douleur → ils ne savent pas l'exprimer (surhandicap).</p>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">Outils d'évaluation</div>
+          <p><strong>Hétéroévaluation :</strong> GED-DI — items comportementaux avec scores seuils (légère / moyenne / sévère). Cotation = objectivité.</p>
+          <p><strong>Auto-évaluation (DI légère à modérée) :</strong> échelle des visages (sans sourire ni larmes), outils Sparadraps. ⚠️ Utiliser uniquement des outils validés.</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Stratégies de coping</div>
+          <p><strong>Recherche de support social +++</strong> (la plus utilisée, très adaptée au manque d'autonomie).</p>
+          <p>Distraction : un peu. Auto-instruction cognitive : peu accessible. Gestion autonome : peu accessible.</p>
+        </div>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">Prises en charge psychologiques adaptées</div>
+        <p><strong>Imagerie guidée / hypnoanalgésie :</strong> plus de suggestibilité chez les enfants DI.</p>
+        <p><strong>Relaxation comportementale :</strong> consignes présentées comme une comptine → utilisable en autonomie.</p>
+        <p><strong>Biofeedback :</strong> reconnecter à l'interoception, identifier les sensations internes.</p>
+        <p><strong>Respiration abdominale :</strong> souffler des bulles, etc. Suppose des équipes formées.</p>
+      </div>
+    </div>
+
+  </div><!-- /subtab-zabalia-td -->
+</div><!-- /panel-zabalia -->
+
+
+<!-- ============================
+     ONGLET 2 : ROCHE-LABARBE
+     ============================ -->
+<div id="panel-roche" class="tab-panel">
+  <div class="subtabs-bar">
+    <button class="subtab-btn active" data-subtab="roche-cm">📖 CM – Cours magistraux</button>
+    <button class="subtab-btn" data-subtab="roche-td">🔬 TD – (aucun fichier fourni pour l'instant)</button>
+  </div>
+  <div id="subtab-roche-cm" class="subtab-panel active">
+
+
+  <div class="tab-intro" style="background: linear-gradient(135deg, var(--blanc) 0%, #e8f8f3 100%);">
+    <strong>Fil conducteur :</strong> Comment le cerveau se spécialise-t-il grâce à l'expérience ? Le <em>neuroconstructivisme</em> montre que les compétences cognitives ne sont ni entièrement innées ni entièrement apprises : elles émergent de l'interaction continue entre la structure cérébrale et l'environnement sensoriel, selon des périodes sensibles dépendant de l'activité.
+  </div>
+
+  <!-- CM1 : Neuroconstructivisme -->
+  <div class="section-title">CM1 · Le neuroconstructivisme</div>
+
+  <div class="card">
+    <h3>📈 Point de départ : les inégalités scolaires</h3>
+    <p>Étude longitudinale (6-12 ans, du CP au collège) : les performances scolaires se répartissent selon le <strong>niveau socio-économique</strong> des parents — et particulièrement selon le <strong>niveau d'éducation de la mère</strong> (facteur le plus déterminant pour le fonctionnement exécutif).</p>
+    <p>Les groupes ne convergent pas : les inégalités s'aggravent. L'école ne réduit pas les inégalités d'origine socio-économique.</p>
+    <div class="emphasis">💰 Économistes (Heckman) : le retour sur investissement des programmes d'intervention est maximal avant le CP. Plus on intervient tard, moins c'est efficace.</div>
+    <p>Conclusion : il faut intervenir <strong>le plus tôt possible</strong>, quand le cerveau est plus plastique.</p>
+  </div>
+
+  <div class="card">
+    <h3>🧱 Courants scientifiques fondateurs</h3>
+    <div class="grid-2">
+      <div>
+        <span class="author-chip">Jean Piaget</span>
+        <p>Constructivisme classique. L'enfant construit ses connaissances par son interaction <em>motrice</em> avec l'environnement. Développement moteur et cognitif étroitement imbriqués. Ne s'intéressait pas à la naissance (peu d'action motrice).</p>
+      </div>
+      <div>
+        <span class="author-chip">Eleanor Gibson</span>
+        <p>Sensorialité et référencement social. Expérience de la falaise visuelle. Face à l'incertitude sensorielle, le bébé regarde les indices sociaux du visage maternel.</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <span class="author-chip">Elizabeth Spelke</span>
+        <p>Psycholinguistique. Psychologie du bébé influencée par le langage (capacité la plus singulièrement humaine). Mais : même si un bébé sait faire quelque chose à 6 mois, ce n'est pas nécessairement inné — il a pu l'apprendre en 6 mois.</p>
+      </div>
+      <div>
+        <span class="author-chip">Renée Baillargeon</span>
+        <p>Permanence de l'objet (tâche A non-B) par les temps de regard. L'enfant tend à persister dans sa réponse motrice. Réfute l'innéisme radical.</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div>
+        <span class="author-chip">Annette Karmiloff-Smith</span>
+        <p>Syndrome de Williams : compétences préservées et déficitaires coexistent. La modularité est un processus émergent, pas inné. D'autres régions peuvent suppléer si le cerveau est structuré différemment.</p>
+      </div>
+      <div>
+        <span class="author-chip">Adèle Diamond & Marc Johnson</span>
+        <p>Pont entre primatologie et psychologie du bébé (tâche A non-B). Neurosciences cognitives développementales. IRM, EEG : outils qui révèlent le cerveau en développement.</p>
+      </div>
+    </div>
+    <p style="margin-top:.5rem">L'IRM fonctionnelle et l'EEG permettent de montrer que <strong>l'essentiel de la structuration des réseaux neuronaux</strong> se fait pendant le 3ème trimestre de grossesse et juste après la naissance.</p>
+  </div>
+
+  <div class="card">
+    <h3>🥪 La métaphore du sandwich (Johnson)</h3>
+    <div class="schema-box">
+      <div class="schema-title">Niveaux d'observation contraignants</div>
+      <p>🍪 <strong>Cookie du dessus</strong> = comportement observable</p>
+      <p>🍦 <strong>Crème</strong> = cognition (non observable directement, mesurée par la performance)</p>
+      <p>🍪 <strong>Cookie du dessous</strong> = substrat biologique (connexions cérébrales, muscles, organes sensoriels)</p>
+    </div>
+    <p>Pour formuler des hypothèses plausibles, il faut les contraindre entre ces deux couches observables. Éviter les approches « désincarnées » (hypothèses cognitives sans substrat cérébral).</p>
+  </div>
+
+  <div class="card">
+    <h3>🔬 La psychologie incarnée</h3>
+    <p>On ne peut pas comprendre un processus cognitif sans observer comment fonctionne le corps. <strong>Bio-psycho-social = Gènes + Corps + Environnement + Cerveau.</strong></p>
+    <p>Des représentations naissent de l'activité neuronale : ce que ça <em>nous fait</em> d'avoir des neurones activés (idée, image mentale, sentiment abstrait). Elles se construisent par accumulation d'expériences sensorielles et sont uniques à chaque cerveau → d'où la nécessité du mot comme symbole partagé.</p>
+    <div class="warn">Les représentations sont <strong>partielles et combinatoires</strong> : pas une par objet/personne, mais fragmentées et recombinables. Ce qui permet d'apprendre à l'infini.</div>
+    <p style="margin-top:.5rem"><strong>Principes du neuroconstructivisme :</strong></p>
+    <div class="pill-grid">
+      <span class="pill" style="background:var(--mint)">Mécanismes : compétition, cooptation, chronotopie</span>
+      <span class="pill" style="background:var(--bleu)">Processus : proactivité, spécialisation progressive</span>
+      <span class="pill" style="background:var(--lavande)">Phénomène essentiel : représentations partielles</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🧩 Les représentations partielles</h3>
+    <p>Une représentation partielle correspond à l'activité d'une <strong>population de neurones</strong> associée à un ressenti sensoriel précis. Ces représentations sont <strong>combinables</strong> entre elles pour former des représentations complexes.</p>
+    <div class="schema-box">
+      <div class="schema-title">Exemple : le bébé soulevé par son parent</div>
+      <p>🔵 <strong>Représentation visuelle partielle</strong> : le visage du parent</p>
+      <p>🟢 <strong>Représentation somesthésique partielle</strong> : la sensation d'être tenu serré sous les aisselles</p>
+      <p>Quand ces deux événements se produisent ensemble, de manière répétée → le cerveau apprend à les combiner. Une représentation complexe émerge : <em>« être pris dans les bras par mon parent »</em>, activant simultanément les deux réseaux.</p>
+    </div>
+    <div class="emphasis">💡 Ces réseaux cérébraux sont plus ou moins autonomes et correspondent à une représentation cognitive. Ils sont combinables entre eux pour former des représentations toujours plus complexes.</div>
+    <div class="warn">Nos représentations ne sont pas fixes : elles sont fragmentées et combinatoires. Nous pouvons à tout moment induire un changement dans nos représentations — ce qui prouve que l'on peut apprendre à l'infini. Les éléments instables (ex : couleur d'un vêtement) disparaissent ; les éléments stables se consolident.</div>
+    <p style="margin-top:.5rem">Ces hypothèses s'appliquent à <strong>tous les domaines de développement</strong>, typiques et atypiques, et permettent d'expliquer les trajectoires développementales sous contraintes.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CM2 : Mécanismes et périodes sensibles -->
+  <div class="section-title">CM2 · Mécanismes cérébraux & théorie de la spécialisation interactive</div>
+
+  <div class="card">
+    <h3>⚙️ Les 3 mécanismes du neuroconstructivisme</h3>
+    <div class="schema-box">
+      <div class="schema-title">Compétition</div>
+      <p>Au début, les neurones sont omnipotents (non spécialisés). Les entrées sensorielles créent une compétition inégale : certaines zones, prédisposées par la génétique, remportent la compétition et dominent le traitement de tel type de stimulus. Mise en place de <strong>représentations minimales</strong>.</p>
+    </div>
+    <div class="schema-box">
+      <div class="schema-title">Coopération</div>
+      <p>Les entrées sensorielles sont rarement unimodales. Les zones coopèrent pour construire des représentations complexes et multimodales. Des boucles de feedback inhibent les zones moins efficaces → <strong>élagage synaptique</strong>. Début de spécialisation. Redondance initiale = résistance aux lésions (d'où meilleur pronostic du bébé).</p>
+    </div>
+    <div class="schema-box">
+      <div class="schema-title">Chronotopie</div>
+      <p>Dimension temporelle : les mécanismes de compétition et coopération se font sur la durée. L'expression des gènes varie selon le moment de la vie. Le même événement n'a pas le même effet selon le moment où il survient dans le développement.</p>
+    </div>
+    <p style="margin-top:.6rem">Ces 3 mécanismes produisent 2 processus :</p>
+    <div class="pill-grid">
+      <span class="pill" style="background:var(--mint)">Proactivité : l'enfant est actif dans son environnement dès la naissance (perçoit, trie, apprend)</span>
+      <span class="pill" style="background:var(--bleu)">Spécialisation progressive → modularité du cerveau adulte</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🔬 Théorie de la spécialisation interactive (Mark H. Johnson)</h3>
+    <p>Le développement est <strong>émergent et bi-directionnel</strong> :</p>
+    <ul>
+      <li>Le développement des structures du cerveau influence le comportement</li>
+      <li>Le développement du comportement influence les structures cérébrales</li>
+    </ul>
+    <p><strong>4 lois :</strong></p>
+    <ul>
+      <li><strong>Causalité circulaire</strong> (épigenèse probabiliste) : les gènes s'expriment plus ou moins probablement selon les influences sensorielles. Cercle d'influence biologie ↔ psychologie.</li>
+      <li><strong>Interactivité et réseaux</strong> : le cerveau est un réseau qui descend dans tout le corps (peau + système nerveux = même feuillet embryonnaire).</li>
+      <li><strong>Auto-organisation et activité-dépendance</strong> : le cerveau s'auto-organise par sa propre activité (omnipotent → modulaire).</li>
+      <li><strong>Topologie dynamique</strong> : la localisation des zones spécialisées change selon le temps et le moment de la vie.</li>
+    </ul>
+    <div class="schema-box">
+      <div class="schema-title">Hypothèses prédictives (spécialisation)</div>
+      <p>S1 : Sélectivité (rétrécissement / narrowing) – les zones actives deviennent plus petites</p>
+      <p>S2 : Réduction de l'activation cérébrale (mêmes perfs, moins d'effort)</p>
+      <p>S3 : Corrélation entre S1 et S2</p>
+      <p>S4 : Plasticité inversement corrélée à la sélectivité (plus spécialisé = moins plastique)</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>👁️ Développement de l'attention (MASEK, 2021) – Fil conducteur du cours</h3>
+    <div class="timeline" style="color:#2b6657">
+      <div class="timeline-item"><strong>0-3 mois – Attention exogène totale</strong> : le bébé dirige son attention uniquement vers les stimuli environnementaux (bruit, lumière). Aucun contrôle. Épuisant → endormissement fréquent.</div>
+      <div class="timeline-item"><strong>4-6 mois – Attention sociale</strong> : les parents attirent l'attention vers des stimuli développementalement pertinents (visages, voix). Réactivité parentale.</div>
+      <div class="timeline-item"><strong>6-12 mois – Attention exogène guidée vers les objets physiques</strong> : hochet, animal. Divergence avec l'animal. L'objet culturellement pertinent est choisi par le parent.</div>
+      <div class="timeline-item"><strong>12-18 mois – Attention conjointe & endogène</strong> : l'enfant contrôle son attention par sa motricité (accompagnée d'abord). Transition vers l'attention endogène (contrôlée).</div>
+      <div class="timeline-item"><strong>18-24 mois – Attention exécutive</strong> : capacité à focaliser sur un élément non saillant ET à inhiber les distracteurs. C'est ce qui fait la capacité de l'enfant à devenir élève.</div>
+    </div>
+    <div class="emphasis">💡 <strong>Inné :</strong> la préférence pour les visages permet de déclencher les interactions sociales dès la naissance. C'est le point de départ de toute la séquence attentionnelle.</div>
+  </div>
+
+  <div class="card">
+    <h3>🌀 L'entonnoir bidirectionnel – Étayage parental et développement de l'enfant</h3>
+    <p>Le développement attentionnel ne dépend pas seulement de l'enfant : il exige une <strong>synchronisation du parent</strong>. Lorsqu'une compétence émerge chez l'enfant, les compétences parentales correspondantes doivent aussi émerger — d'où la métaphore de l'entonnoir bidirectionnel.</p>
+    <div class="schema-box">
+      <div class="schema-title">Fonctionnement de l'étayage</div>
+      <p>Si le parent est sensible et réactif (<em>parental responsiveness</em>), il produit les bons stimuli au bon moment pour permettre l'apprentissage. Par exemple :</p>
+      <ul style="margin-top:.3rem">
+        <li>0-3 mois : le parent place le bébé à bonne distance de son visage, parle, fait des mimiques « bébé » → entraîne le cerveau à traiter les informations sociales.</li>
+        <li>6-12 mois : le parent dirige l'attention de l'enfant vers des objets physiques (hochet, animal), choisissant les objets <strong>culturellement pertinents</strong>. Ces choix créent des divergences entre les enfants.</li>
+      </ul>
+    </div>
+    <div class="warn">⚠️ Parmi tous les objets rencontrés, le bébé consolide les réseaux neuronaux correspondants et <strong>élague</strong> ceux des stimuli jugés non pertinents ou absents de l'environnement. Ce qui explique les différences inter-individuelles et inter-culturelles.</div>
+    <p style="margin-top:.5rem">À l'adolescence, l'influence parentale diminue et ce sont les <strong>groupes de pairs</strong> qui définissent vers quoi l'individu dirige son attention.</p>
+    <div class="emphasis">🔍 Intérêt clinique : détecter les premiers indices d'un développement atypique = surveiller si la trajectoire dévie sur l'un des jalons. La psychologie du développement vise la <strong>prévention précoce</strong> des pathologies.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CM2-CM3 : Périodes sensibles -->
+  <div class="section-title">CM2-CM3 · Périodes sensibles & exemples appliqués</div>
+
+  <div class="card">
+    <h3>🔓 Période sensible ≠ période critique</h3>
+    <p><strong>Période critique</strong> (Lorenz) : empreinte, fenêtre temporelle fermée génétiquement. Chez l'humain, on n'a pas montré de période critique. On parle de <strong>périodes sensibles</strong>.</p>
+    <div class="schema-box">
+      <div class="schema-title">Principe fondamental</div>
+      <p>La période sensible <strong>ne se referme pas sur la base d'un processus génétique</strong> ou de maturation, mais sur la base des <strong>entrées sensorielles</strong>.</p>
+      <p>Plus un stimulus sensoriel est fréquent dans l'environnement → plus grand est le nombre de neurones qui s'y spécialisent.</p>
+      <p>On peut maintenir la plasticité sous réserve qu'il n'y ait pas d'entrée sensorielle. Dès qu'il y en a une (même pauvre) → moins de plasticité.</p>
+    </div>
+    <div class="warn">⚠️ Attention au terme « période critique » qui a un côté rédhibitoire, en opposition avec l'approche développementale.</div>
+  </div>
+
+  <div class="card">
+    <h3>🐀 Expériences sur les rongeurs (Chang & Merzenich, 2003) – Cortex auditif</h3>
+    <p>Le cortex auditif des bébés humains se développe en prénatal (3ème trimestre). Chez les rats, ce développement est postnatal → expérimentation possible.</p>
+    <p>Organisation de la cochlée adulte : <strong>tonotopique</strong> (chaque son correspond à un lieu). L'aire auditive primaire est structurée par fréquences (graves antérieur, aigus postérieur).</p>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">Étape 1 – Bruit blanc</div>
+        <p>Ratons élevés dans du bruit blanc (environnement pauvre) → à P50 : <strong>pas de spécialisation</strong> (neurones non spécialisés, strilles présentes).</p>
+        <p>→ La spécialisation du cerveau est <strong>activité-dépendante</strong>.</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">Étape 2 – Son à 7 kHz</div>
+        <p>Exposition à un son pulsé 7 kHz pendant 15j → début de spécialisation, surreprésentation de neurones pour cette fréquence.</p>
+        <p>Même résultat chez des rats âgés (90 jours) → la période sensible reste ouverte.</p>
+      </div>
+    </div>
+    <div class="schema-box">
+      <div class="schema-title">Étape 3 – Retour à un environnement normal</div>
+      <p>Après exposition à 7 kHz, retour à sons normaux → la proportion de neurones spécialisés pour 7 kHz reste très importante. La plasticité a diminué.</p>
+    </div>
+    <div class="emphasis">✅ La période sensible ne se referme pas avec l'âge mais avec l'expérience. On peut provoquer expérimentalement la spécialisation d'une population de neurones.</div>
+  </div>
+
+  <div class="card">
+    <h3>👂 L'implant cochléaire – Application clinique</h3>
+    <p><strong>Anatomie :</strong> Oreille externe (pavillon → tympan) → Oreille moyenne (osselets) → Oreille interne (cochlée → nerf auditif → lobe temporal, cortex auditif primaire).</p>
+    <p><strong>Aires du langage :</strong> Aire de Wernicke (compréhension), Aire de Broca (production motrice de mimiques puis de parole), Gyrus.</p>
+    <p>L'implant cochléaire convertit les signaux acoustiques en signaux électriques. Possible dès 1 an. Mais : détruit les cils de la cochlée, dégrade l'équilibre (l'oreille interne sert aussi à la proprioception).</p>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">Enjeux de la décision</div>
+        <p>Plus on implante tard → plus les déficits de fonctionnement sont importants (cascade d'effets cognitifs).</p>
+        <p>L'enfant sourd non implanté récupère le cortex langagier pour le langage visuel (lobe occipital au lieu du temporal). La période sensible du cortex d'association ne reste pas ouverte.</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">Aspects éthiques</div>
+        <p>Choix cornélien. Chirurgies multiples (taille adaptée à l'enfant). Communauté sourde : langue des signes = langue et culture à part entière.</p>
+        <p>Implant bilatéral précoce → risque de troubles du comportement (autisme léger). Aujourd'hui : implant unilatéral de préférence.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>💊 Effets de l'exposition prénatale au citalopram (IRS)</h3>
+    <p>Le citalopram est un antidépresseur ISRS très prescrit (inhibe la recapture de la sérotonine). La sérotonine joue un rôle précoce dans la prolifération et la différenciation neuronale.</p>
+    <div class="schema-box">
+      <div class="schema-title">Étude animale (Simpson et al., PNAS 2011)</div>
+      <p>Rats exposés aux IRS en prénatal → moins bonne spécialisation du cortex auditif, moins d'exploration des jouets nouveaux, moins de jeu social. Effets plus marqués chez les mâles (parallèle avec la sur-représentation masculine dans les TSA).</p>
+      <p>→ L'exposition prénatale aux IRS a un effet délétère sur le traitement sensoriel à long terme.</p>
+    </div>
+    <div class="schema-box">
+      <div class="schema-title">Étude humaine (3 groupes de bébés)</div>
+      <table class="mini">
+        <tr><th>Groupe</th><th>Résultat à 6 mois</th><th>Résultat à 10 mois</th></tr>
+        <tr><td>1 – Mères non dépressives (contrôle)</td><td>Discrimination étrangère ✅</td><td>Pas de discrimination ✅ (spécialisation normale)</td></tr>
+        <tr><td>3 – Mères dépressives non traitées</td><td>Pas de discrimination</td><td>Discrimination ✅ (retard de spécialisation)</td></tr>
+        <tr><td>2 – Mères traitées par IRS</td><td>Pas de discrimination</td><td>Pas de discrimination ❓ (accélération de la maturation ?)</td></tr>
+      </table>
+      <p>→ Même résultat en mesure visuelle. Hypothèse : les IRS accélèrent la maturation cérébrale → la période sensible se referme plus tôt.</p>
+    </div>
+    <p>Confirmation in utero : fœtus exposés au citalopram discriminent les consonnes dans le ventre (les non-exposés en sont incapables) → maturation accélérée.</p>
+  </div>
+
+  <div class="card">
+    <h3>🐵 Spécialisation perceptive des visages</h3>
+    <p>Bébés jeunes : capables de différencier les visages de toutes les espèces. Progressivement : spécialisation pour les visages de l'espèce familière.</p>
+    <p>Expérience : parents lisent un livre de singes jusqu'aux 6 mois du bébé.</p>
+    <ul>
+      <li>Groupe contrôle : discrimination à 6 mois → perdue à 9 mois (spécialisation normale)</li>
+      <li>Groupe livre : discrimination conservée à 6 ET 9 mois. Généralisation à de nouveaux portraits.</li>
+    </ul>
+    <div class="emphasis">💡 Ce phénomène explique la perception que les personnes d'une autre ethnie « se ressemblent » : critères de discrimination différents. La diversité individuelle paraît plus grande dans l'ethnie familière → biais contribuant aux stéréotypes racistes.</div>
+    <p>La spécialisation perceptive est basée sur l'expérience. L'entraînement permet de généraliser et de conserver des capacités qui auraient disparu.</p>
+  </div>
+
+
+  </div>
+  <div id="subtab-roche-td" class="subtab-panel">
+    <div class="tab-intro" style="background:linear-gradient(135deg,var(--blanc) 0%,#e8f8f3 100%)">
+      Aucun fichier de TD spécifique à Roche-Labarbe n'a été fourni pour l'instant.
+    </div>
+  </div>
+</div><!-- /panel-roche -->
+
+
+<!-- ============================
+     ONGLET 3 : DELAUNAY
+     ============================ -->
+<div id="panel-delaunay" class="tab-panel">
+  <div class="subtabs-bar">
+    <button class="subtab-btn active" data-subtab="delaunay-cm">📖 CM – Cours magistraux</button>
+    <button class="subtab-btn" data-subtab="delaunay-td">🔬 TD – Blanchet · Alimentation</button>
+  </div>
+  <div id="subtab-delaunay-cm" class="subtab-panel active">
+
+
+  <div class="tab-intro" style="background: linear-gradient(135deg, var(--blanc) 0%, #fdf0f4 100%);">
+    <strong>Fil conducteur :</strong> L'alimentation est bien plus qu'un acte vital. C'est un acte bio-psycho-social complexe, inscrit dans des relations, influencé par la sensorialité, la mémoire, les émotions et la culture. Les perturbations alimentaires naissent d'une constellation de facteurs en interaction — jamais d'un seul. La prévention par la <em>guidance parentale</em> est la stratégie d'intervention principale.
+  </div>
+
+  <!-- CM1 : Complexité de l'alimentation -->
+  <div class="section-title">CM1 · Complexité de l'alimentation</div>
+
+  <div class="card">
+    <h3>🍽️ Définitions : l'acte alimentaire selon Poulain (2012)</h3>
+    <p>JP Poulain (sociologue) : l'alimentation fonctionne en <strong>3 pôles interdépendants</strong> :</p>
+    <div class="pill-grid">
+      <span class="pill" style="background:var(--rose)">🤝 Pôle social – partage, culture, médias</span>
+      <span class="pill" style="background:var(--pêche)">😋 Pôle hédonique – plaisir, dimension émotionnelle</span>
+      <span class="pill" style="background:var(--mint)">💊 Pôle santé – aspect vital, nutrition</span>
+    </div>
+    <p>En Occident, les cliniciens travaillent souvent uniquement sur le pôle santé. Or le refus de s'alimenter peut être culturel, et une sur-nutrition peut être socialement valorisée (ex. Maghreb : femme mince = diable).</p>
+    <div class="warn">⚠️ Quand un enfant manque régulièrement de plaisir à manger, il risque de se sous-alimenter. Le pôle hédonique est crucial.</div>
+  </div>
+
+  <div class="card">
+    <h3>🧠 Wallon : l'acte devient activité</h3>
+    <p><strong>Acte alimentaire :</strong> ensemble de mouvements dirigés vers un but (cri de faim, tension corporelle). Ces comportements sont détectés plus ou moins vite par l'entourage.</p>
+    <p><strong>Activité alimentaire :</strong> une fois que l'acte a pris du sens grâce à l'entourage, il devient une activité avec intentions et attente d'une réponse. Activité complexe dotée d'une signification, apprise tôt.</p>
+    <p>Opposition biologique/social qui fonctionne intrinsèquement. Le fœtus entretient des échanges qui modifient progressivement ses fonctions physiologiques.</p>
+    <div class="emphasis">💡 L'alimentation implique un partage émotionnel dès le départ. Une mère très sensible souffre avec son enfant → tensions → pression.</div>
+  </div>
+
+  <div class="card">
+    <h3>🔢 Niveaux de fonctionnement de l'alimentation</h3>
+    <div class="pill-grid">
+      <span class="pill" style="background:var(--rose)">Physiologique (satiété, nausée)</span>
+      <span class="pill" style="background:var(--pêche)">Sensoriel (goût, odeur, texture)</span>
+      <span class="pill" style="background:var(--lavande)">Moteur (praxies, coordination)</span>
+      <span class="pill" style="background:var(--bleu)">Cognitif (mémoire)</span>
+      <span class="pill" style="background:var(--mint)">Émotionnel (motivation, hédonisme)</span>
+      <span class="pill" style="background:var(--pêche2)">Tempérament (néophobie)</span>
+      <span class="pill" style="background:var(--rose2)">Social (partage, transmission)</span>
+      <span class="pill" style="background:var(--jaune)">Culturel (rituels, normes)</span>
+    </div>
+    <div class="warn">⚠️ Il n'y a pas UN déterminant des troubles alimentaires. C'est une constellation de facteurs qui interagissent. Les facteurs ne sont pas seulement inhérents à l'enfant ni seulement à son contexte — c'est bien l'<em>interaction</em> qu'il faut prendre en compte.</div>
+  </div>
+
+  <div class="card">
+    <h3>📅 Périodes de transition alimentaires</h3>
+    <div class="timeline" style="color:#b05070">
+      <div class="timeline-item"><strong>Période fœtale</strong> – Symbiose mère-fœtus. Le capital santé commence avant la naissance. Marqueurs épigénétiques changeants (famines → diabète à 40 ans).</div>
+      <div class="timeline-item"><strong>Alimentation lactée (0-4 mois)</strong> – Lait maternel si possible, ≥ 6 mois selon l'OMS. Les enzymes dégradant le galactose restent actives tant qu'il y a continuité lactée.</div>
+      <div class="timeline-item"><strong>Sevrage et diversification (4-6 mois)</strong> – Ne pas rater la fenêtre d'ouverture à la nouveauté. Fruits puis légumes. Après, les nouveaux aliments sont moins bien acceptés.</div>
+      <div class="timeline-item"><strong>Alimentation solide (avant 10 mois idéal)</strong> – Les morceaux plus tôt = moins de fausses routes. DME (diversification menée par l'enfant) possible avec adaptation et surveillance.</div>
+      <div class="timeline-item"><strong>Néophobie (2-3 ans)</strong> – Plus de 70% des enfants. Phase de transition normale. L'enfant marque son opposition. Aussi lié au « picky eating ».</div>
+      <div class="timeline-item"><strong>Enfant apprenant / phase de latence (~6 ans)</strong> – Alimentation plus facile avec la socialisation scolaire. Mais de plus en plus d'enfants restent néophobes (pression des parents contre-productive).</div>
+      <div class="timeline-item"><strong>Pré-adolescence</strong> – Modulations biologiques (↑ quantité). Effets de genre : filles vers salades/pas de viande, garçons vers protéines.</div>
+      <div class="timeline-item"><strong>Âge adulte</strong> – Lissage possible. Grossesse = révision alimentaire pour certaines. D'autres maintiennent des troubles car l'entourage ne comprend pas.</div>
+    </div>
+    <div class="emphasis">💡 Les premiers suivis longitudinaux montrent qu'il n'y a PAS de norme absolue. Mettre la pression sur l'alimentation = risque que les difficultés perdurent.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CM1 suite : Modèle écosystémique -->
+  <div class="section-title">CM1 · Facteurs multiples & modèle écosystémique</div>
+
+  <div class="card">
+    <h3>🌐 Modèle écosystémique – Arnold Sameroff (2014)</h3>
+    <p>Inspiré de Bronfenbrenner. L'enfant s'inscrit dans une famille, elle-même dans une société portant des valeurs influençant l'alimentation.</p>
+    <div class="schema-box">
+      <div class="schema-title">Schéma des perturbations alimentaires (Sameroff + Sroufe)</div>
+      <p>⬅️ <strong>Enfant</strong> : histoire néonatale, personnalité, profil sensoriel, conduites relationnelles, compétences socio-émotionnelles, IMC, expériences lactées, activité physique</p>
+      <p>⬅️ <strong>Parents</strong> : propositions alimentaires, perceptions parentales, conduites éducatives, niveau d'études, CSP</p>
+      <p>⬅️ <strong>Environnement</strong> : composition famille, mode de garde, école, revenus, territoire, culture, contexte géopolitique</p>
+      <p>🕐 <strong>Temps</strong> : ces éléments évoluent et s'influencent mutuellement</p>
+    </div>
+    <p>Sameroff (2009) : modèle transactionnel avec <strong>Environtype ↔ Phénotype ↔ Génotype</strong> qui s'influencent mutuellement.</p>
+    <p>Russel & Russel (2018) : 3 profils d'enfants :</p>
+    <div class="pill-grid">
+      <span class="pill" style="background:var(--rose)">🍕 Gourmand – signale sa faim</span>
+      <span class="pill" style="background:var(--lavande)">🥦 Sélectif – trie les aliments</span>
+      <span class="pill" style="background:var(--mint)">🍃 Restrictif – mange très peu</span>
+    </div>
+    <p>Ces profils influencent la corpulence, le développement ET les pratiques éducatives parentales.</p>
+  </div>
+
+  <div class="card">
+    <h3>🔗 Importance des relations – Alan Sroufe</h3>
+    <p>En psychopathologie développementale : la qualité des <strong>relations parent-enfant</strong> est centrale. Les troubles de la relation peuvent être à l'origine des troubles des conduites (externalisés ou internalisés).</p>
+    <p>Une fois installés, ces troubles engendrent des <strong>vulnérabilités</strong> inscrites dans un schéma cognitif (facteur de maintien). La relation perturbée influence aussi la régulation émotionnelle en général.</p>
+    <p>Selon Ainsworth : + la figure d'attachement est sensible aux signaux → + l'enfant est sécurisé → <strong>alimentation réceptive et répondante</strong>.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Enjeux alimentation précoce -->
+  <div class="section-title">CM1 · Enjeux de l'alimentation précoce</div>
+
+  <div class="card">
+    <h3>🧬 Croissance rapide & mécanismes d'influence (O'Connor, 2003)</h3>
+    <p>Pendant les 1000 premiers jours, le cerveau et les organes vitaux se développent rapidement. La plasticité est importante. Les comportements d'acceptation alimentaire dépendent de ce qu'on propose et de <em>comment</em> on le propose. Responsabilité partagée parents/enfant (<strong>Ellyn Satter</strong>).</p>
+    <table class="mini">
+      <tr><th>Modèle</th><th>Principe</th><th>Implications</th></tr>
+      <tr><td><strong>Période sensible</strong></td><td>Fenêtre temporelle : des expériences spécifiques doivent survenir pour un développement normal.</td><td>Limité : études jusqu'à 3 ans seulement. Peu adapté à la prise en charge.</td></tr>
+      <tr><td><strong>Adaptation à l'expérience</strong></td><td>L'organisme est prédisposé à s'adapter, mais cette plasticité diminue avec l'âge. Les adaptations initiales deviennent difficiles à modifier.</td><td>Privilégié en psychopathologie développementale. Périodes d'ouverture/fermeture (néophobie). Offre des possibilités de résilience.</td></tr>
+      <tr><td><strong>Effets cumulatifs</strong></td><td>L'âge de l'expérience n'est pas déterminant ; c'est l'accumulation de facteurs de risque dans le temps.</td><td>Explique pourquoi plusieurs facteurs modestes peuvent avoir des effets durables.</td></tr>
+    </table>
+    <div class="emphasis">✅ La psychopathologie développementale privilégie les modèles d'adaptation à l'expérience (plus souples, résilience possible).</div>
+  </div>
+
+  <div class="card">
+    <h3>🏥 Enjeux de santé publique</h3>
+    <p>Risques cumulatifs à prévenir :</p>
+    <div class="pill-grid">
+      <span class="pill" style="background:var(--rose)">Alimentation inadaptée</span>
+      <span class="pill" style="background:var(--lavande)">Troubles de la relation</span>
+      <span class="pill" style="background:var(--mint)">Carences nutritionnelles</span>
+      <span class="pill" style="background:var(--bleu)">Retard de développement</span>
+      <span class="pill" style="background:var(--pêche)">Troubles mentaux</span>
+      <span class="pill" style="background:var(--jaune)">Surpoids / obésité</span>
+      <span class="pill" style="background:var(--rose2)">Maladies chroniques (diabète, cardiovasculaire)</span>
+    </div>
+    <p><strong>Stratégies d'intervention :</strong> La prévention via la <em>guidance parentale</em> (accompagnement, éducation) est prioritaire, avec prise en charge si les troubles sont installés.</p>
+    <div class="warn">⚠️ Imposer un suivi ne fonctionne pas ! Il faut <em>proposer</em>. Il faut changer les représentations mentales des familles, aider les parents à interpréter différemment les comportements alimentaires de l'enfant.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Sensorialité et alimentation -->
+  <div class="section-title">CM1 · Sensorialité et alimentation</div>
+
+  <div class="card">
+    <h3>🌸 La flaveur – l'aliment dans tous ses sens</h3>
+    <p>La flaveur est l'aliment perçu par tous les sens : il se <strong>regarde, se tâte, s'écoute, se sent, se goûte</strong>.</p>
+    <p>Elle est influencée par :</p>
+    <div class="grid-2">
+      <ul>
+        <li>État physiologique</li>
+        <li>Expériences passées</li>
+        <li>Qualité des relations</li>
+        <li>Climat émotionnel familial</li>
+      </ul>
+      <ul>
+        <li>Conditions et styles éducatifs</li>
+        <li>Bien-être psychologique</li>
+        <li>Contexte matériel et social</li>
+        <li>Transmissions socio-culturelles</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🔬 Systèmes chimio-sensoriels précoces</h3>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">Système olfactif (Schaal, 1988)</div>
+        <p>Fonctionnel dès <strong>28 SA</strong>. Les arômes sont détectés par les cellules neuro-réceptives → axones dans le lobe olfactif → synapses dans l'hippocampe (mémorisation).</p>
+        <p>L'expérience modifie la composition et la densité des récepteurs. Neurogenèse tout au long de la vie. La sensibilité aux odeurs influence l'appréciation des aliments.</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">Système gustatif</div>
+        <p>Synthèse des papilles : <strong>6ème-11ème SA</strong>. Bourgeons du goût dans les papilles dès <strong>14 SA</strong>.</p>
+        <p>Densité des papilles corrélée à la sensibilité aux saveurs. Grande variabilité inter-individuelle (de 1 à 7 pour saccharose, Faurion, 2000).</p>
+      </div>
+    </div>
+    <div class="schema-box">
+      <div class="schema-title">Système trijéminal et chémesthésie</div>
+      <p>Lié à la branche maxillaire du nerf trijumeau (Humphrey, 1970). Fonctionnel à la naissance (ammoniac répulsif).</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CM2-CM3 : Mémoire sensorielle et préférences -->
+  <div class="section-title">CM2-CM3 · Mémoire des expériences sensorielles & préférences</div>
+
+  <div class="card">
+    <h3>🧠 Mémoire prénatale des arômes</h3>
+    <p><strong>Schaal (2000) :</strong> Femmes consommant de l'anis pendant la grossesse → nouveau-nés montrent plus de mouvements appétitifs vers cette odeur.</p>
+    <p><strong>Mennella :</strong> Mères prenant des capsules à l'ail → lait maternel modifié → nourrissons exposés tètent plus et plus longtemps 1h après. Mais avec 8 jours d'exposition consécutive → les bébés tètent <em>moins</em> (habituation). Exposition régulière → perte d'intérêt.</p>
+    <p><strong>Mennella (autre expérience) :</strong> Bébés de 6 mois avec lait 2ème âge à la vanille vs sans : les bébés exposés à la vanille tètent plus avivement et plus longtemps.</p>
+    <div class="emphasis">💡 À court terme, changer de saveurs est plaisant pour un enfant qui va bien : curiosité pour la nouveauté.</div>
+  </div>
+
+  <div class="card">
+    <h3>📊 Expériences lactées et préférences (Mennella, 2009)</h3>
+    <p>3 groupes (7 mois en moyenne) : <strong>LM</strong> (lait maternel) / <strong>FCB</strong> (formule caséine bovine) / <strong>FCH</strong> (formule caséine hydrolysée hypoallergénique – 3× plus riche en glutamate).</p>
+    <p>Test : céréales avec liquide sucré, acide, amer, umami (glutamate) ou nature.</p>
+    <p>Résultat : les enfants nourris au FCH mangent <em>beaucoup plus</em> de céréales umami, un peu plus d'acide/amer, autant de sucré → <strong>préférence pour les saveurs fortes</strong>.</p>
+    <div class="emphasis">✅ Les arômes des formules de lait influencent les préférences alimentaires pendant la diversification.</div>
+
+    <p style="margin-top:.8rem"><strong>Étude carotte (Mennella) :</strong> Enfants exposés à la carotte in utero/via le lait → ne mangent pas <em>plus</em> de petit pot carotte que les autres, mais mangent <em>plus rapidement et sans grimace</em>.</p>
+    <p><strong>À 5 ans :</strong> différence significative du répertoire alimentaire selon le lait consommé. Ceux exposés au glutamate préfèrent les aliments soufrés (chou, oignon).</p>
+
+    <p style="margin-top:.8rem"><strong>Étude Koster (1999) :</strong> Adultes nourris au biberon préfèrent significativement le ketchup à la vanille vs ceux nourris au sein (seuil infraliminal). Première preuve d'une <em>mémoire à très long terme</em> des expériences alimentaires précoces.</p>
+  </div>
+
+  <div class="card">
+    <h3>🥕 Importance de la variété alimentaire (Maier-Nath)</h3>
+    <p>Suivi de bébés de 6 mois à 6-7 ans. Deux groupes selon diversification : grande variabilité de propositions vs stabilité.</p>
+    <ul>
+      <li>À <strong>15 mois</strong> : enfants allaités au sein apprécient et mangent plus de légumes que les biberon.</li>
+      <li>Proposer <strong>8-10 fois consécutives</strong> une purée de légume initialement rejetée → acceptation à long terme (79% à 15 mois, 73% à 3 ans).</li>
+      <li>À <strong>6 ans</strong> : enfants allaités + diversification variée mangent plus de légumes et apprécient davantage les aliments nouveaux.</li>
+    </ul>
+    <div class="emphasis">✅ Les apprentissages et la mémoire jouent un rôle fondamental dans la construction des pratiques alimentaires. Les expériences précoces influencent la malléabilité des comportements.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Satiété -->
+  <div class="section-title">CM3 · Complexité de l'alimentation – Faim et satiété</div>
+
+  <div class="card">
+    <h3>⚖️ La cascade de satiété (Blundell / Bellisle, 2005)</h3>
+    <p><strong>Faim :</strong> sensation diffuse de faiblesse physique et mentale accompagnant un déficit énergétique (contractions gastriques, hypoglycémie). Motive à manger = motivation préprandiale.</p>
+    <p><strong>Satiété :</strong> absence de faim accompagnée d'une détente, satisfaction du besoin métabolique (parfois somnolence postprandiale).</p>
+    <p>Le rassasiement commence <em>avant</em> l'ingestion → <strong>rassasiement sensoriel</strong>. Entre 15 et 20 minutes d'exposition à un aliment, la satiété apparaît.</p>
+    <div class="schema-box">
+      <div class="schema-title">Marqueurs biologiques</div>
+      <p><strong>Ghréline</strong> (estomac) : hormone indiquant la faim. Peut faire défaut en cas d'anorexie infantile. En modifiant les interactions pendant les repas, la sensation de faim peut réapparaître.</p>
+      <p><strong>Leptine</strong> : augmente après consommation alimentaire (signal de rassasiement).</p>
+      <p>La simple mastication → salivation → message au cerveau d'absorption d'énergie → diminution de la faim.</p>
+    </div>
+    <p><strong>Rassasiement sensoriel spécifique :</strong> la flaveur d'un aliment déclenche la cascade de satiété spécifique à cet aliment. Un yaourt plus dense → enfants mangent moins.</p>
+    <div class="warn">⚠️ Dans l'anorexie mentale : les parents sont rassurés si le jeune cuisine, mais cuisiner ne signifie pas qu'il va manger (rassasiement sensoriel).</div>
+  </div>
+
+  <div class="card">
+    <h3>🌍 Facteurs environnementaux de la faim/satiété</h3>
+    <p>La faim et la satiété sont influencées par la culture et le milieu socio-économique :</p>
+    <ul>
+      <li>Apports alimentaires moins variés, plus énergétiques en milieu précaire.</li>
+      <li>Taille des assiettes (grandes assiettes → décourage le petit mangeur).</li>
+      <li>Nombre de convives et qualité des relations familiales.</li>
+      <li>Contrôle ou pression parentale inadaptée, surtout si l'enfant est anxieux.</li>
+      <li>Rythmes différents selon l'âge (poussées de croissance chez les ados → ↑ demandes).</li>
+    </ul>
+    <p><strong>Mécanismes homéostatiques</strong> : régulation de la glycémie et des réserves adipeuses. <strong>Mécanismes non homéostatiques</strong> : déclenchés par la disponibilité de l'aliment dans l'environnement.</p>
+    <div class="emphasis">💡 Ellyn Satter : les rythmes faim/satiété du nourrisson sont très variables d'un enfant à l'autre. Les problèmes de régulation émotionnelle sont fréquents : beaucoup d'enfants confondent la faim et l'envie de manger.</div>
+  </div>
+
+
+  <div class="divider"></div>
+
+  <!-- CM2 : Motricité et alimentation précoce -->
+  <div class="section-title">CM2 · Motricité et alimentation précoce</div>
+
+  <div class="card">
+    <h3>👄 La succion : une compétence acquise, pas un réflexe inné</h3>
+    <p>La succion se met en place dès la <strong>10ème semaine</strong> post-conception, indépendamment du cortex (non encore développé). Le fœtus déglutit régulièrement du liquide amniotique. La <strong>coordination succion-déglutition</strong> se développe progressivement au cours de la gestation et est mature vers <strong>32 SA</strong>.</p>
+    <div class="schema-box">
+      <div class="schema-title">Expérience Barlow et al. (2008) – Bébés prématurés</div>
+      <p>Mesure de l'activité corticale chez des prématurés avec ou sans expérience de succion. Résultat : l'activité du <strong>cortex somatosensoriel</strong> est significativement meilleure chez les bébés ayant bénéficié d'une expérience de succion (dès 35 SA).</p>
+      <p>→ La succion dépend de l'activation corticale. Ce n'est pas un réflexe archaïque : elle se construit par l'expérience motrice.</p>
+    </div>
+    <div class="warn">⚠️ Chez les prématurés intubés, la ventilation assistée interrompt les expériences de succion/déglutition → impact sur le développement de cette coordination. Les enfants privés de cette expérience motrice ont de graves problèmes (fausses routes, difficultés d'alimentation).</div>
+    <p>La qualité de la succion nutritive à la naissance est un bon <strong>indicateur d'intégrité du SNC</strong> (pattern cyclique : succion / déglutition / respiration, 1 pour 1).</p>
+    <div class="emphasis">💡 La succion est malléable : plus l'enfant est expérimenté, plus il joue et explore. Elle participe au développement du <strong>premier langage</strong> (lien entre activités alimentaires et pré-langagières).</div>
+  </div>
+
+  <div class="card">
+    <h3>⏱️ La fenêtre des morceaux : avant 9-12 mois</h3>
+    <p>L'introduction d'aliments de plus en plus solides est cruciale. Un enfant qui ne mange que du lisse continue à s'exprimer par tétée et ne développe pas les motricités nécessaires (mastication, déglutition adaptée).</p>
+    <div class="schema-box">
+      <div class="schema-title">Niclaus (comparaison longitudinale)</div>
+      <p>Les enfants acceptent facilement les morceaux à <strong>10 mois</strong>. À <strong>14 mois</strong>, c'est nettement plus difficile. Recommandation : introduire des morceaux avant 1 an.</p>
+      <p>⚠️ Exception : si l'enfant est hypersensible sur le plan sensoriel, forcer peut amener à tout recracher.</p>
+    </div>
+    <p>Au-delà de 9-12 mois sans morceaux : risque d'aversions sensorielles, d'articulation moins bonne, de rejet de nouveaux aliments → l'ouverture alimentaire ne s'installe pas.</p>
+    <div class="emphasis">💡 <strong>DME (Diversification Menée par l'Enfant)</strong> : à partir de 5-6 mois, l'enfant mange ce que mangent les parents (morceaux adaptés). Fonctionne bien car l'enfant est curieux et veut imiter les adultes. Toujours sous surveillance (risque de fausse route).</div>
+  </div>
+
+  <div class="card">
+    <h3>✋ Développement des praxies alimentaires</h3>
+    <p><strong>Praxies :</strong> ensemble des fonctions de coordination et d'adaptation des mouvements volontaires orientés vers un but, issues d'un apprentissage, permettant d'interagir avec le monde extérieur.</p>
+    <p>L'activité alimentaire favorise le développement des praxies, qui évoluent en fonction des expériences proposées. Cela permet un ajustement alimentaire mais aussi pour le <strong>langage articulé</strong>.</p>
+    <div class="schema-box">
+      <div class="schema-title">Lien alimentation ↔ langage (De Boysson-Bardies, Wallon 1941)</div>
+      <p>Les praxies alimentaires sont très proches des praxies articulatoires. Si dès le plus jeune âge on invite l'enfant à mâcher et articuler, il va jouer avec sa bouche et son visage.</p>
+      <p>→ Le bon développement du babillage (6-8 mois) est favorisé par l'entraînement à la mastication. Ces exercices s'apparentent à des <strong>jeux fonctionnels</strong> (Pinker).</p>
+    </div>
+    <p>L'activité alimentaire participe donc à la <strong>programmation des premiers mots</strong> et au développement des <strong>fonctions exécutives</strong> (planification de l'action).</p>
+    <div class="warn">⚠️ Difficultés d'oralité alimentaire fréquentes en cas d'anxiété, retard, ou sur-sollicitation parentale. La qualité de la relation parent-enfant est essentielle à ce développement.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CM3 : Régulation faim/satiété - Birch, Satter -->
+  <div class="section-title">CM3 · Régulation des apports énergétiques</div>
+
+  <div class="card">
+    <h3>📐 Mécanismes homéostatiques et non-homéostatiques</h3>
+    <p>Un enfant naît globalement avec un système de régulation bien en place. Si on respecte ses signaux, la régulation se maintient naturellement.</p>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">Mécanismes homéostatiques</div>
+        <p>Régulation de la glycémie et des réserves adipeuses. Fonctionnels si les repas sont <em>co-régulés</em> (parents respectent les besoins de l'enfant).</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">Mécanismes non-homéostatiques</div>
+        <p>Déclenchés par la <em>disponibilité</em> de l'aliment dans l'environnement. Les déséquilibres liés aux ressources, à la taille des portions, aux pressions parentales → perturbent l'homéostasie.</p>
+      </div>
+    </div>
+    <div class="emphasis">💡 Plus les jeunes grandissent, plus ils perdent leur capacité à réguler leurs besoins, car l'offre n'est pas adaptée. En Occident, les aliments sont souvent trop riches dès la petite enfance.</div>
+  </div>
+
+  <div class="card">
+    <h3>🔬 Birch – Régulation des apports énergétiques</h3>
+    <p>Birch a suivi des enfants de <strong>2 à 5 ans</strong> pendant 6 jours consécutifs. Résultats :</p>
+    <ul>
+      <li>Les enfants arrivent à réguler leurs apports sur <strong>5-6 jours</strong> (très hétérogène d'un repas à l'autre).</li>
+      <li>À l'<strong>adolescence</strong>, cette capacité est quasi perdue. Chez les adultes, encore moins présente.</li>
+      <li>Les enfants <strong>sur-nourris</strong> apprennent vite à consommer trop et ne ressentent la satiété qu'à la proportion habituelle — même si celle-ci est excessive → <strong>perte d'homéostasie</strong>.</li>
+    </ul>
+    <div class="schema-box">
+      <div class="schema-title">Expérience sur la restriction (Fischer & Birch, 1999)</div>
+      <p>Enfants de 3-5 ans : accès libre à un aliment vs accès restreint (aliment visible mais inaccessible 10 min, puis accès 2 min, puis retiré).</p>
+      <p>Résultat : l'accès restreint <strong>augmente l'attrait pour l'aliment</strong>. La restriction → désir accru → surconsommation dès l'accès retrouvé. Les stratégies de restriction sont <strong>corrélées négativement</strong> à la bonne régulation énergétique.</p>
+    </div>
+    <div class="warn">⚠️ Restriction + enfant en surpoids perçu comme problématique par la mère = combinaison la plus à risque (Birch, 2003 – étude longitudinale filles 5-9 ans).</div>
+  </div>
+
+  <div class="card">
+    <h3>⚖️ Ellyn Satter – Partage des responsabilités (1983)</h3>
+    <p>Principe fondateur : <strong>chacun sa responsabilité.</strong></p>
+    <div class="schema-box">
+      <div class="schema-title">Qui décide de quoi ?</div>
+      <p>🧑‍🍳 <strong>Parent :</strong> ce qu'il propose, quand, où (quoi / quand / où)</p>
+      <p>🧒 <strong>Enfant :</strong> s'il mange et combien (si / combien)</p>
+    </div>
+    <p>Expérience Satter (1986, enfants 3-5 ans) : goûter très calorique → enfants mangent beaucoup moins au repas du soir. Pas le cas chez les adultes. La régulation des apports se fait selon la densité énergétique des repas — entre 2 et 5 ans.</p>
+    <ul>
+      <li>Les enfants <strong>dépendent</strong> de l'instauration de conduites d'interaction adaptées au moment des repas.</li>
+      <li>Avant 6 ans, encore capables de réguler leurs apports d'un repas à l'autre.</li>
+      <li>Cette régulation se perd si : stratégies inadaptées, portions trop importantes, contrôle excessif.</li>
+    </ul>
+    <div class="emphasis">💡 Autoriser l'enfant à manger ce qu'il veut au moins une fois par semaine est bénéfique, quand les autres jours les apports sont régulés.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CM3 : Préférences et dégoûts -->
+  <div class="section-title">CM3 · Préférences, dégoûts & transmissions familiales</div>
+
+  <div class="card">
+    <h3>❌ Absence de déterminisme génétique familial (Rigal, 2000)</h3>
+    <p>Nathalie Rigal : seulement <strong>10% de corrélation</strong> entre préférences maternelles et enfantines ; <strong>6%</strong> entre père et enfant. <strong>Pas de déterminisme génétique familial</strong> des préférences alimentaires.</p>
+    <p>Études gémellaires : pas de congruence notable entre vrais jumeaux ; les vrais jumeaux éduqués séparément montrent plus de différences → les aspects génétiques sont <strong>négligeables</strong>.</p>
+    <p>Corrélations un peu plus fortes pour les <strong>aversions</strong> aux aliments forts (pimentés, amers) et pour les enfants hyposensoriels.</p>
+    <p><strong>Si</strong> les deux parents ont un répertoire très restreint et des préférences communes, alors les préférences se transmettent → mais c'est par l'<em>expérience partagée</em>, pas par la génétique.</p>
+    <div class="emphasis">💡 Rozin (1994) : les préférences sont davantage expliquées par le degré de <em>congruence entre les deux parents</em> et par le contexte socioculturel que par l'hérédité.</div>
+  </div>
+
+  <div class="card">
+    <h3>🤢 Les dégoûts alimentaires – Paul Rozin (1994)</h3>
+    <p>Trois catégories de dégoûts :</p>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">1. Dégoût sensoriel</div>
+        <p>Lié à la vue, l'odeur, la saveur. Intensité sensorielle corrélée au rejet. Peut aller jusqu'à la douleur (hypersensibilité). À 2-3 ans, les aspects <em>visuels</em> (couleur) sont très importants.</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">2. Dégoût associatif</div>
+        <p>Mis en place après un <em>conditionnement aversif</em> (intoxication alimentaire, nausée). Association forte et durable.</p>
+      </div>
+    </div>
+    <div class="schema-box">
+      <div class="schema-title">3. Dégoût cognitif</div>
+      <p>Lié aux représentations, croyances, culture (ex. : insectes en Occident). Partagé socialement. Plus on approche des représentations socioculturelles, plus il est difficile de s'en détacher.</p>
+    </div>
+    <div class="warn">⚠️ Un dégoût à un moment T ne persiste pas nécessairement. L'exposition régulière dans un contexte ludique permet de diminuer le rejet. Les émotions pendant les repas ne se réduisent pas à l'hédonisme (aime/aime pas) : leur intensité et leur qualité comptent.</div>
+    <p>Culture (Chiva, 1997) : la culture oriente les conventions sociales, les représentations des aliments "bons ou mauvais", les relations pendant les repas et les préférences/dégoûts. Les matrices culturelles façonnent rapidement les représentations mentales de l'enfant.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CM3 : Styles éducatifs et stratégies parentales -->
+  <div class="section-title">CM3 · Conduites parentales & socialisation alimentaire</div>
+
+  <div class="card">
+    <h3>👨‍👩‍👧 Styles éducatifs appliqués à l'alimentation (Baumrind 1966 / Savage, Fischer & Birch, 2007)</h3>
+    <table class="mini">
+      <tr><th>Style</th><th>Caractéristiques</th><th>Impact alimentaire</th></tr>
+      <tr><td><strong>Autoritaire / Directif</strong></td><td>Règles strictes, peu de réponse aux besoins, sévère</td><td>Peu de fruits/légumes proposés. "Mange et tais-toi."</td></tr>
+      <tr><td><strong>Démocratique / Incitatif</strong></td><td>Règles souples, réponses adaptées aux besoins, négociation</td><td>Plus de fruits/légumes. Co-régulation. "Tu goûtes, et on en parle."</td></tr>
+      <tr><td><strong>Permissif</strong></td><td>Peu de règles appliquées, l'enfant décide</td><td>Demandes faibles, peu de réponses aux besoins. "Goûte si tu veux."</td></tr>
+      <tr><td><strong>Négligent</strong></td><td>Peu d'attention portée à l'enfant</td><td>L'enfant se débrouille seul.</td></tr>
+    </table>
+    <div class="warn">⚠️ Approche catégorielle : un parent ne reste pas dans un style unique. Les profils sont plus complexes et contextuels. Ne pas réduire à une étiquette.</div>
+  </div>
+
+  <div class="card">
+    <h3>🎯 Stratégies parentales pour nourrir l'enfant (Rigal et al., 2012)</h3>
+    <p>Quatre stratégies observées (indépendantes du style éducatif global) :</p>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">🔴 Coercition</div>
+        <p>Imposer des contraintes fortes (gronder, forcer, punir). Corrélée à des conflits, une ambiance négative et une augmentation du déplaisir alimentaire.</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">🔴 Contingence de renforcement</div>
+        <p>Utiliser la nourriture comme récompense ou comme chantage ("si tu finis, t'auras un dessert"). Effet positif à court terme seulement, pas à long terme.</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">🟡 Explication</div>
+        <p>Expliquer pourquoi manger varié est bon. Stratégie plus neutre.</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">🟢 Préférence</div>
+        <p>Donner ce que l'enfant préfère (accepter que certains aliments soient laissés). Plus respectueux des signaux.</p>
+      </div>
+    </div>
+    <div class="emphasis">✅ Résultat clé : coercition + contingence sont corrélées à plus de néophobie, plus de sélectivité, moins de plaisir à manger, plus de manque d'appétit. Plus le parent est contrôlant → plus l'enfant devient difficile.</div>
+    <p>Ces stratégies dépendent aussi du NSC et du niveau d'éducation des parents (Saxton et al., 2008). Les familles à haut niveau d'éducation utilisent davantage la contingence sucrée comme réconfort.</p>
+  </div>
+
+  <div class="card">
+    <h3>👥 Socialisation alimentaire et partage social (Birch / Hendy & Raudenbush)</h3>
+    <p>L'enfant est un <strong>imitateur</strong>. Le modèle social est essentiel.</p>
+    <div class="schema-box">
+      <div class="schema-title">Expérience Hendy & Raudenbush – L'éducateur enthousiaste</div>
+      <p>À table avec un adulte <em>enthousiaste</em> qui mange des légumes → l'enfant mange plus de légumes.</p>
+      <p>Mais si 1 ou 2 enfants à la même table rejettent l'aliment → l'enfant ne mange pas non plus. Le <strong>mimétisme joue dans les deux sens</strong>.</p>
+      <p>→ Conseil pratique : mixer les groupes d'enfants en crèche/école (ne pas mettre ensemble tous les "picky eaters").</p>
+    </div>
+    <p><strong>Birch (2007) + Poulain (2012) :</strong> les expressions émotionnelles <em>négatives</em> pendant les repas motivent l'appréhension et créent un stress contagieux. Au sein d'une famille où on n'apprécie pas les légumes, même un repas festif peut permettre de les manger → les expressions négatives au quotidien bloquent la dynamique.</p>
+    <div class="warn">⚠️ Un enfant laissé seul dans une pièce s'arrêtera de manger. Laisser un enfant manger seul est maltraitant : l'acte alimentaire est inscrit dans les relations sociales, sans quoi la motivation à manger disparaît.</div>
+  </div>
+
+  <div class="card">
+    <h3>🔄 Co-régulation adaptée et relation parent-enfant (ALS, 1986 / Ellyn Satter, 1987)</h3>
+    <p>La <strong>co-régulation adaptée</strong> est la clé d'une alimentation saine. Elle repose sur :</p>
+    <ul>
+      <li>Respecter les <strong>signaux de faim</strong> dès la naissance (laisser l'enfant exprimer son besoin).</li>
+      <li>Proposer des aliments <strong>appropriés au niveau de développement</strong>.</li>
+      <li>Respecter les rythmes faim/satiété et d'autres besoins (un pleur peut être de la fatigue, pas de la faim).</li>
+      <li>Laisser une <strong>autonomie progressive</strong> (même si ça en met partout).</li>
+      <li>Servir de <strong>modèle</strong> : ne pas seulement proposer des fruits et légumes, mais en manger soi-même.</li>
+    </ul>
+    <div class="schema-box">
+      <div class="schema-title">Transactions relationnelles (Birch / Savage et al., 2007)</div>
+      <p>Les pratiques alimentaires parentales se transmettent de génération en génération, souvent sans réflexion, héritées de peurs ancestrales de famine → encore fréquemment utilisées en routine alors qu'inadaptées au contexte actuel de surabondance.</p>
+      <p>Un enfant nourri uniquement quand il manifeste sa faim, en bonnes quantités, de manière régulière → développe une <em>confiance</em> et des attentes favorables.</p>
+    </div>
+    <div class="emphasis">💡 Les perturbations alimentaires s'inscrivent dans la relation parent-enfant, pas dans l'enfant seul. On essaie de repérer les <strong>transactions</strong> favorables ou non et de propulser la famille vers des échanges plus heureux pour favoriser une régulation émotionnelle plus adéquate.</div>
+  </div>
+
+  </div><!-- /subtab-delaunay-cm -->
+
+  <div id="subtab-delaunay-td" class="subtab-panel">
+
+    <div class="tab-intro" style="background:linear-gradient(135deg,var(--blanc) 0%,#fdf0f4 100%)">
+      <strong>TDs Delaunay / Blanchet :</strong> Difficultés alimentaires de l'enfant et de l'adolescent — néophobie, picky eating, aversion sensorielle, TCA, scénarios de Steiner.
+    </div>
+
+    <div class="section-title">TD1-2 · Néophobie alimentaire</div>
+
+    <div class="card">
+      <h3>🆕 Définition et trajectoire</h3>
+      <p><strong>Néophobie alimentaire :</strong> rejet ou réticence à goûter un aliment inconnu. Période normale du développement (70% des enfants). Trait de personnalité adaptatif inhérent — évolutionniste : éviter les aliments potentiellement toxiques quand l'enfant devient mobile.</p>
+      <p>La néophobie est surmontée une fois que l'aliment se trouve en bouche : c'est la mise à la bouche qui constitue le seuil.</p>
+      <div class="schema-box">
+        <div class="schema-title">Trajectoire développementale (Rigal, Nicklaus)</div>
+        <p>Pic néophobique entre <strong>2 et 6 ans</strong>. Débute vers 18 mois avec la catégorisation (ce qui se mange / ce qu'on aime). Diminution naturelle avec l'âge car moins d'aliments sont «nouveaux». Plateau stable à l'adolescence (13 ans) et à l'âge adulte. Recrudescence possible chez les personnes âgées (mauvais odorat, dentition, habitudes figées).</p>
+      </div>
+      <p><strong>Dilemme de l'omnivore :</strong> on mange de tout, mais on ne mange pas n'importe quoi. L'enfant construit un schéma de «l'aliment acceptable» selon la présentation visuelle et l'odeur → aliments trop différents de ce schéma sont rejetés.</p>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ Facteurs de risque et de protection (Néophobie)</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>Facteurs de risque :</strong></p>
+          <ul>
+            <li>Pression parentale aux repas → aversion pour l'aliment (Fisher et al., Wardle et al.)</li>
+            <li>Tempérament anxieux / émotif (Nicklaus) → évitement alimentaire</li>
+            <li>Parent néophobique → présente moins d'aliments, moins d'autonomie enfant</li>
+            <li>Précarité / alimentation moins variée</li>
+            <li>Carences alimentaires (fibres, vitamines)</li>
+            <li>Présentations négatives d'aliments → associations négatives durables</li>
+            <li>Personnalité renfermée ou «névrosée» (Steptoe et al.)</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Facteurs de protection :</strong></p>
+          <ul>
+            <li>Allaitement maternel (variété des saveurs, lait de goût variable)</li>
+            <li>Alimentation variée de la mère pendant la grossesse (épigénétique)</li>
+            <li>Style alimentaire parental positif : modelage, encouragements</li>
+            <li>Modelage par les pairs (effet d'imitation, conformité sociale)</li>
+            <li>Personnalité ouverte / en recherche de sensations</li>
+            <li>Accès à diversité culturelle alimentaire (milieu urbain)</li>
+            <li>Haut niveau d'éducation des parents</li>
+          </ul>
+        </div>
+      </div>
+      <div class="emphasis">💡 Pas de différence de genre avérée. L'âge est un facteur développemental, pas un facteur de risque.</div>
+    </div>
+
+    <div class="card">
+      <h3>🔄 Prise en charge</h3>
+      <ul>
+        <li>Psychoéducation des parents (guidance parentale)</li>
+        <li><strong>Exposition répétée :</strong> 10 à 15 expositions positives pour familiariser un aliment inconnu (Birch et al., Wardle et al.)</li>
+        <li>Présentation visuelle attrayante, aspect ludique, inclusion dans la cuisine</li>
+        <li>Effet de facilitation sociale : parents mangent en même temps</li>
+        <li>Compléments alimentaires si carences avérées</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">TD1-2 · Picky Eating (PE) et Sensory Food Aversion (SFA)</div>
+
+    <div class="card">
+      <h3>🍽️ Picky Eating – Définition et spécificités</h3>
+      <p>Pas de définition faisant consensus. Dovey et al. : enfant qui consomme une variété inadéquate d'aliments en rejetant une quantité importante d'aliments <em>familiers</em> (et non familiers). Va plus loin que la néophobie : certains enfants rejettent les textures d'aliments connus.</p>
+      <p>3 comportements caractéristiques :</p>
+      <div class="pill-grid">
+        <span class="pill" style="background:var(--rose)">Ne mange pas assez / très pointilleux</span>
+        <span class="pill" style="background:var(--pêche)">Mange lentement</span>
+        <span class="pill" style="background:var(--lavande)">Pas intéressé par la nourriture</span>
+      </div>
+      <p>Courant dans la petite enfance (4-6 ans), peut être transitoire ou permanent. Le choix des aliments change d'un repas à l'autre en fonction de l'humeur, du besoin de plaire ou de contrôler le parent — mais pour les enfants avec aversion, le refus est <em>cohérent</em>.</p>
+      <div class="warn">⚠️ Picky eating prédicteur d'anorexie mentale à l'adolescence (Chatoor). Ressemble à l'anorexie infantile : pas d'intérêt pour la nourriture, ne ressent pas ou peu la faim, grignotage — sous-entend quelque chose de dépressif.</div>
+    </div>
+
+    <div class="card">
+      <h3>👃 Sensory Food Aversion (SFA) – Aversion sensorielle alimentaire (Chatoor)</h3>
+      <p>Aversion prononcée pour certaines textures, goûts, températures, odeurs. Expériences tactiles classiques perçues comme offensantes (grimaces, cracher, vomissements). Se produit <em>en continu</em>, cohérence dans les refus — contrairement au PE qui varie selon l'humeur.</p>
+      <p>Symptomatique dès 6-12 mois. Associée à d'autres difficultés sensorielles dans la vie quotidienne :</p>
+      <div class="pill-grid">
+        <span class="pill" style="background:var(--rose)">Sensibilité aux bruits, lumières, odeurs</span>
+        <span class="pill" style="background:var(--pêche)">N'aime pas se salir les mains</span>
+        <span class="pill" style="background:var(--lavande)">N'aime pas marcher pieds nus dans le sable / l'herbe</span>
+        <span class="pill" style="background:var(--mint)">Hypersensibilité au toucher (certains tissus)</span>
+        <span class="pill" style="background:var(--bleu)">N'aime pas se brosser les dents</span>
+      </div>
+      <p>Peut entraîner : anxiété, symptômes obsessionnels compulsifs, difficultés sociales et scolaires (repas = moment de socialisation).</p>
+      <div class="emphasis">⚠️ Alimentation sélective dans l'enfance = facteur de risque pour l'anorexie mentale à l'adolescence.</div>
+    </div>
+
+    <div class="card">
+      <h3>📊 Facteurs de risque PE/SFA</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>Périnataux/précoces :</strong></p>
+          <ul>
+            <li>Difficultés alimentaires dès la naissance</li>
+            <li>Schéma de succion différent (&lt; 100 succions/tétée)</li>
+            <li>17% des enfants difficiles refusent le sein (grande entrée sensorielle) mais acceptent le biberon (tétine lisse)</li>
+            <li>Introduction tardive d'aliments grumeleux au sevrage</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Relationnels / parentaux :</strong></p>
+          <ul>
+            <li>Pression parentale → trauma + généralisation</li>
+            <li>Si l'enfant perçoit que le parent veut absolument qu'il mange : prise de contrôle sur la situation</li>
+            <li>Moments des repas sources d'angoisse pour l'enfant ET les parents</li>
+            <li>Troubles digestifs associés (manque de fibres, vitamines)</li>
+            <li>Risque obésité si alimentation à forte valeur hédonique (sucré/salé uniquement)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🔁 Le continuum difficulté → trouble alimentaire</h3>
+      <div class="schema-box">
+        <div class="schema-title">Spectre développemental (Blanchet)</div>
+        <p>Néophobie alimentaire → Picky eating / Alimentation sélective → Aversion alimentaire sensorielle → ARFID → Trouble de l'oralité</p>
+        <p>↕ continuum ↕</p>
+        <p>Développement normal ←————————→ Développement pathologique</p>
+      </div>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">Trouble des conduites alimentaires (TCA)</div>
+          <p>Difficultés sur le versant <strong>psychologique</strong>. Cognitif +++. Sélection des aliments selon l'aspect calorique (anorexie, boulimie, hyperphagie). Enjeux relationnels.</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Trouble de l'oralité</div>
+          <p>Difficultés sur le versant <strong>sensoriel et mécanique</strong>. Sélection selon textures, couleur, odeur, aspect visuel. Difficultés précoces (dès la petite enfance).</p>
+        </div>
+      </div>
+      <div class="warn">⚠️ NE PAS parler de «causes» mais de facteurs de risque. Ce n'est jamais un lien de cause à effet direct. Une difficulté alimentaire maintenue par l'environnement familial peut constituer un terrain favorisant les TCA — mais pas automatiquement.</div>
+    </div>
+
+    <div class="card">
+      <h3>📈 Trajectoires du picky eating (Carbona Cano, 2015 – Cohorte Pays-Bas)</h3>
+      <p>Étude longitudinale sur les trajectoires développementales du picky eating de 2 à 6 ans. Résultats : <strong>il n'existe pas une trajectoire prototypique</strong>, mais de multiples trajectoires.</p>
+      <div class="schema-box">
+        <div class="schema-title">Principales trajectoires observées</div>
+        <ul>
+          <li>~⅓ des enfants : diminution progressive du picky eating → disparaît à 6 ans (le plus fréquent)</li>
+          <li>5% : ne manifestent jamais de picky eating</li>
+          <li>Late picky eaters : apparaît vers 6 ans alors qu'absent à 3 ans</li>
+          <li>Trajectoire persistante : maintien ou aggravation</li>
+        </ul>
+      </div>
+      <p><strong>Facteurs de risque d'une trajectoire persistante :</strong></p>
+      <div class="pill-grid">
+        <span class="pill" style="background:var(--rose)">👦 Garçon</span>
+        <span class="pill" style="background:var(--pêche)">⚖️ Petit poids de naissance</span>
+        <span class="pill" style="background:var(--lavande)">🌍 Origine ethnique non occidentale</span>
+        <span class="pill" style="background:var(--bleu)">💰 Faible revenu parental</span>
+      </div>
+      <p style="margin-top:.6rem"><strong>Facteurs de maintien (Walton et al., 2017) :</strong> la <em>qualité de la relation alimentaire</em> explique la persistance du picky eating. Quand la relation est marquée par des conflits et que l'enfant résiste aux stratégies de contrôle → les parents perçoivent l'enfant comme difficile → émotions négatives → cercle vicieux.</p>
+      <div class="emphasis">💡 Pour dépasser : revenir à une co-régulation adaptée, restaurer des transactions favorables. Les comportements alimentaires déclarés par les parents (sélectivité, lenteur, manque de plaisir, appétit) sont significativement différents chez les picky vs non-picky — c'est une combinaison de problèmes, pas un seul.</div>
+    </div>
+
+    <div class="card">
+      <h3>🌡️ Continuum néophobie → ARFID (Dovey, 2016)</h3>
+      <div class="schema-box">
+        <div class="schema-title">Le spectre des évitements alimentaires</div>
+        <p><strong>Alimentation adaptée au développement</strong> ←──────────────────────────────→ <strong>ARFID diagnostiqué</strong></p>
+        <p style="margin-top:.3rem">Néophobie alimentaire → Picky eating → Alimentation très sélective → ARFID</p>
+        <p style="margin-top:.3rem">Les comportements d'évitement et d'anxiété alimentaire sont de plus en plus importants en allant vers l'ARFID, avec :</p>
+        <ul style="margin-top:.3rem">
+          <li>Carences alimentaires progressives</li>
+          <li>Anxiété croissante liée à l'alimentation</li>
+          <li>Aversions sensorielles marquées</li>
+          <li>Très peu de variété diététique</li>
+        </ul>
+      </div>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">Néophobie</div>
+          <p>Phase développementale attendue (75-80% des enfants). Disparaît avec une prise en charge adaptée et la socialisation.</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">ARFID</div>
+          <p>Une fois présent, les comportements sont <strong>stables et difficiles à modifier</strong>. Mal vécu par la personne et son entourage. Pas de levier simple de sortie contrairement à la néophobie.</p>
+        </div>
+      </div>
+      <div class="warn">⚠️ Prévenir au plus tôt est essentiel. Mais aucune intervention ne fonctionne sans l'implication des parents. Kerzner et al. (2015) : 25% des enfants hospitalisés pour problème alimentaire ont en réalité des parents avec des <em>biais de perception</em> — pas de problème chez l'enfant.</div>
+    </div>
+
+    <div class="card">
+      <h3>🏥 Classification des difficultés alimentaires – Kerzner et al. (2015)</h3>
+      <p>Classification pédopsychiatrique distinguant les difficultés biologiques/organiques des comportementales. 4 grands profils :</p>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">1. Manque d'appétit</div>
+          <p>Non-perception de la faim, désintérêt pour l'alimentation. Peut aller jusqu'à l'hospitalisation si sévère. Lié à un déficit de la ghréline ou de ses récepteurs.</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">2. Sélectivité / évitements</div>
+          <p>Néophobie, picky eating, gradation vers la sélectivité sévère. Inclut les aversions de texture. Fréquent dans l'autisme (TSA).</p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">3. Peur de se nourrir</div>
+          <p>L'enfant a développé des peurs liées à des événements traumatiques associés à l'alimentation : coliques, allergies sources de douleur, enfant forcé à manger, fausse route. Anxiété alimentaire conditionnée.</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">4. Feeding style parental (profil centré sur le parent)</div>
+          <p>La difficulté est principalement liée aux pratiques éducatives du parent, qui doit être pris en charge à part entière. Représente ~25% des prises en charge hospitalières.</p>
+        </div>
+      </div>
+      <div class="warn">⚠️ Ces profils peuvent se combiner. 25% des parents consultant en service hospitalier affirment qu'il y a un problème alimentaire chez l'enfant alors que ce n'est pas le cas : c'est un <strong>biais de perception parentale</strong>.</div>
+      <div class="emphasis">💡 Ne pas raisonner par prototype : on repère des évolutions vers des conduites de plus en plus inadaptées, <em>mais aussi</em> vers des conduites de plus en plus adaptées. Diminuer les facteurs de risque peut suffire à faire diminuer les symptômes.</div>
+    </div>
+
+    <div class="card">
+      <h3>📎 Cas clinique : Mathéo, 7 ans</h3>
+      <p>CE1, famille recomposée, sœur Clara (9 ans, hémiplégie, IME). Parents séparés puis remis ensemble. Comportements régressifs depuis le retour du père. Particularités sensorielles (bruits, herbe pieds nus). Difficultés d'endormissement et cauchemars.</p>
+      <p><strong>Alimentation :</strong> repas différent de la famille, il choisit son repas. Refuse de goûter. Diversification très difficile. A pu se faire vomir quand forcé. Mange textures molles, sucré. Mange à la cantine sans difficulté.</p>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">Facteurs de risque</div>
+          <p>Difficultés scolaires · Anxiété · Sensibilité · Alimentation source de conflit · Pressions parentales · Difficultés alimentaires précoces</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Facteurs de protection</div>
+          <p>Modelage par les pairs à la cantine · Parents prenant conscience des particularités sensorielles · Arrêt des pressions · Prise en charge pluridisciplinaire + psychoéducation</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">TD3 · Attachement et alimentation</div>
+
+    <div class="card">
+      <h3>🔗 Théorie de l'attachement (Bowlby, 1969) appliquée à l'alimentation</h3>
+      <p>L'attachement est un besoin primaire (Bowlby) inspiré de l'empreinte de Lorenz. Une relation d'attachement sécurisée est le fondement de la croissance de l'autonomie — y compris alimentaire.</p>
+      <div class="schema-box">
+        <div class="schema-title">4 styles d'attachement (Ainsworth – situation étrange, 1978)</div>
+        <table class="mini">
+          <tr><th>Style</th><th>Comportement</th><th>Lien alimentation</th></tr>
+          <tr><td><strong>Sécure</strong></td><td>Fait appel à la FA, exploration, retrouvailles plaisantes</td><td>Curiosité alimentaire, tolérance à la nouveauté</td></tr>
+          <tr><td><strong>Insécure évitant</strong></td><td>Masque sa détresse, ne sollicite pas la FA</td><td>Anorexie infantile possible (ne ressent pas la faim)</td></tr>
+          <tr><td><strong>Insécure ambivalent</strong></td><td>FA imprévisible → ambivalence, résistance au réconfort</td><td>Picky eating lié au contrôle, PE entretenu comme «jeu»</td></tr>
+          <tr><td><strong>Désorganisé</strong></td><td>FA non adaptée, figement aux retrouvailles</td><td>Troubles sévères, maltraitance associée</td></tr>
+        </table>
+      </div>
+      <p><strong>MIO (Modèles Internes Opérants) :</strong> si la FA répond aux signaux, perception de l'environnement comme fiable → favorise la curiosité et la confiance, y compris alimentaire.</p>
+      <p><strong>Caregiving :</strong> versant parental de l'attachement. La «nourriture» affective est vitale. Hospitalisme (Spitz) : nourrissons dans les pouponnières d'après-guerre — besoins physiques assouvis, pas les besoins affectifs → cessent de s'alimenter, dépression anaclitique.</p>
+      <div class="emphasis">💡 Les facteurs relationnels et la notion d'attachement sont des éléments essentiels à prendre en compte dans la compréhension des difficultés alimentaires chez l'enfant.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">TD4 · TCA : Troubles des conduites alimentaires</div>
+
+    <div class="card">
+      <h3>📖 Définition DSM-5</h3>
+      <p>«Perturbations persistantes de l'alimentation ou du comportement alimentaire entraînant un mode de consommation pathologique ou une absorption de nourriture délétère pour la santé physique ou le fonctionnement social.»</p>
+      <div class="pill-grid">
+        <span class="pill" style="background:var(--rose)">PICA</span>
+        <span class="pill" style="background:var(--pêche)">Mérycisme</span>
+        <span class="pill" style="background:var(--lavande)">ARFID</span>
+        <span class="pill" style="background:var(--rose2)">Anorexie mentale</span>
+        <span class="pill" style="background:var(--mint)">Boulimie</span>
+        <span class="pill" style="background:var(--bleu)">Accès hyperphagiques (BED)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🚫 Anorexie mentale</h3>
+      <p>Prédominance chez les filles (9F/1G). Deux pics : 14-18 ans. <strong>Triade des 3 A :</strong> anorexie (restriction active) + amaigrissement + aménorrhée.</p>
+      <p><strong>Critères DSM-5 :</strong> restriction prolongée des apports énergétiques · peur intense de prendre du poids · altération de la perception du corps · déni de gravité.</p>
+      <p>Maladie psychiatrique la plus mortelle (<strong>10% de décès</strong>) — complications médicales ou suicide.</p>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">Caractéristiques psychiques</div>
+          <p>Déni de la maigreur · préoccupations poids/nourriture/cuisine · absence d'intérêt pour la sexualité · hyper investissement scolaire · évitement social · dépendance exagérée aux parents · comportements de tri, cachette, stockage de nourriture · bradycardie, baisse de tension</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Étiologie (multifactorielle)</div>
+          <p><strong>Prédisposants :</strong> génétique, culturel, personnalité, relations précoces<br>
+          <strong>Précipitants :</strong> puberté, conflits familiaux<br>
+          <strong>Pérennisants :</strong> dénutrition, déni de la gravité</p>
+          <p>Clinique prof : carence affective, auto-dépendance (attachement insécure évitant), contrôle du passage à l'adulte, corps enfantin, réappropriation de l'attention parentale.</p>
+        </div>
+      </div>
+      <p><strong>2 types :</strong> Restrictif (régimes, jeûnes, exercice) vs Accès hyperphagiques/purgatifs (vomissements).</p>
+      <p><strong>Critères de gravité :</strong> FC &lt; 40 bpm · anomalies ECG · troubles hydroélectrolytiques · T° &lt; 35,5°C · perte pondérale rapide · risque suicidaire · épuisement de l'entourage.</p>
+      <p><strong>Soins :</strong> Hôpital de jour ou hospitalisation à temps plein (contrat de poids + renutrition + PEC psy + mode d'interaction familial). Soins ambulatoires : référant somatique + référant psy + thérapie familiale. Rechutes fréquentes, PEC longue.</p>
+    </div>
+
+    <div class="card">
+      <h3>🌊 Boulimie nerveuse</h3>
+      <p>4 à 12% des adolescentes. Pic vers 18-20 ans. Crise = ingestion massive, impulsive, irrésistible → comportements compensatoires (vomissements, laxatifs, hyperactivité) → honte et dégoût de soi.</p>
+      <p><strong>Critères DSM-5 :</strong> accès hyperphagique + comportements compensatoires ≥ 1 fois/semaine pendant 3 mois + estime de soi influencée par le poids.</p>
+      <p><strong>Clinique prof :</strong> carence affective + sensation de manque → suralimenter quand pas bien + vouloir annuler ce moment de faiblesse. Méconnaissance de ses sensations et émotions. Bcp de pression sur la personne.</p>
+    </div>
+
+    <div class="card">
+      <h3>🍕 Accès hyperphagiques (BED)</h3>
+      <p>Absorption d'une quantité excessive en période limitée (&lt;2h) + perte de contrôle. Parfois état dissociatif. ≥ 1 fois/semaine pendant 6 mois. <strong>PAS de comportement compensatoire</strong> (≠ boulimie).</p>
+      <p>Sentiment de honte, dégoût de soi, culpabilité. Crise souvent nocturne, en secret. À court terme atténue la détresse, à long terme → autodépréciation et humeur dépressive.</p>
+      <p><strong>Clinique prof :</strong> carence affective + mécanisme addictif + méconnaissance des émotions et sensations. Corps asexué.</p>
+    </div>
+
+    <div class="card">
+      <h3>🔍 ARFID (Avoidant/Restrictive Food Intake Disorder)</h3>
+      <p>Forme d'amaigrissement sévère ne relevant pas de l'anorexie mentale. La perte de poids n'est pas liée à une préoccupation envers le poids/la forme du corps mais à un manque d'appétit, une répulsion ou un dégoût sensoriel envers les aliments.</p>
+      <p>Caractéristiques sensorielles et mécaniques de l'alimentation prédominantes. Peut survenir très tôt dans la vie.</p>
+    </div>
+
+    <div class="card">
+      <h3>🧑‍🧑‍🧒 Adolescence et risques TCA</h3>
+      <div class="grid-2">
+        <div>
+          <p><strong>Enjeux de l'adolescence :</strong></p>
+          <ul>
+            <li>Corps : transformation imposée, maîtrise d'un corps qui se transforme</li>
+            <li>Personnalité en devenir : irruption pulsions + sexualité</li>
+            <li>Narcissisme : doute sur ses capacités</li>
+            <li>Famille : incompréhension, opposition</li>
+            <li>Société : injonctions alimentaires, surconsommation</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Fonctions des TCA à l'ados :</strong></p>
+          <ul>
+            <li>Maîtriser son apparence, contrôler les angoisses</li>
+            <li>Revenir à un corps d'enfant (sexualité évitée)</li>
+            <li>S'opposer en évitant le conflit</li>
+            <li>Éviter la mort/la vieillesse</li>
+            <li>Grandir sans grandir (dépendance aux parents)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="emphasis">💡 Cas Tiphaine (15 ans) : rencontre recruteur mannequinat → restriction + sport excessif. Hospitalisation «miraculeuse». Déni, pensées paradoxales, contrôle, isolement social dissimulé. Médiations nécessaires pour accéder à elle. → Soins multidisciplinaires, alliance thérapeutique avec la patiente ET la famille.</div>
+      <p><strong>Ressources :</strong> FFAB · FNA TCA · Ligne Anorexie Boulimie info écoute : 09 69 325 900</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-title">TD5 · Scénarios de Steiner & Triangle de Karpman</div>
+
+    <div class="card">
+      <h3>🎭 Les scénarios de Steiner (élève de Berne)</h3>
+      <p>Question centrale : pas seulement pourquoi le symptôme est apparu, mais <strong>ce qui fait que le symptôme ne disparaît pas</strong>. Steiner travaille sur les transactions.</p>
+      <p><strong>Situation existentielle de l'enfant :</strong> divergence entre le besoin d'autonomie et ce qui est permis. L'enfant est contraint de choisir entre ses besoins développementaux et la pression parentale / le besoin d'affection.</p>
+      <div class="schema-box">
+        <div class="schema-title">Injonctions et attributions</div>
+        <p><strong>Injonction :</strong> «il faut / je dois / tu dois faire des câlins à maman»</p>
+        <p><strong>Attribution :</strong> qualification de l'enfant → «tu n'es pas capable de faire cela», «c'est mal de demander ça»</p>
+        <p>Ex : père qui interdit à sa fille de désirer quoi que ce soit → elle apprend à ne rien désirer.</p>
+      </div>
+      <p><strong>Scénario :</strong> décision forcée et prématurée qui agit contre nos besoins, nous prive de notre autonomie. Se met en place quand les besoins développementaux sont trop contrariés. Répétitif (ex : se faire tromper 10 fois → scénario de soumission).</p>
+      <p><strong>Jeu :</strong> séquence relationnelle avec mobile caché, bénéfice pour tous les joueurs, permet d'obtenir une forme de reconnaissance, confirme le scénario. Le picky eating peut devenir un «jeu» : l'enfant tire un bénéfice (attention maternelle), les parents aussi.</p>
+    </div>
+
+    <div class="card">
+      <h3>🔺 Le triangle de Karpman – Jeu du sauvetage (Wyckloff)</h3>
+      <div class="schema-box">
+        <div class="schema-title">3 rôles</div>
+        <p><strong>Victime :</strong> incapable de faire quelque chose, ne croit ni en sa capacité à s'aider ni à être aidée.</p>
+        <p><strong>Sauveur :</strong> culpabilise de ne pas aider → aide sans réfléchir. Finit souvent par devenir persécuteur en échouant.</p>
+        <p><strong>Persécuteur :</strong> en colère contre la victime (impuissante et de sa faute).</p>
+      </div>
+      <p>La famille comme terrain d'entraînement : entraîner les enfants à être des victimes impuissantes (faire à leur place), genré (garçons → impuissance émotionnelle «ne pleure pas», filles → «sois belle et tais-toi»).</p>
+      <div class="emphasis">💡 Pour sortir du sauvetage : refuser de jouer. La personne en face est capable, ce n'est pas une victime. Elle peut entendre «non» sans s'effondrer. Le bon diagnostic : s'appuyer sur des changements de comportement, pas classer des cases.</div>
+      <p><strong>Application au picky eating :</strong> fils (victime exprimant son aversion) · père (persécuteur) · mère (sauveuse qui apporte pizza en cachette) → tout le monde tire un bénéfice, le symptôme est maintenu.</p>
+    </div>
+
+    <div class="card">
+      <h3>📌 Repères cliniques importants (prof)</h3>
+      <ul>
+        <li>Ne pas parler de <em>causes</em> mais de <em>facteurs de risque</em>.</li>
+        <li>Steiner : «il n'y a pas d'un côté les personnes normales et de l'autre les anormales — notre rôle n'est pas de les séparer.»</li>
+        <li>Rappeler au patient que c'est un continuum : on est tous un peu picky eating / néophobique. Déculpabilise.</li>
+        <li>Le symptôme remplace les compétences développementales non développées (failles de développement).</li>
+        <li>On évalue : compétences dev du patient → on restaure les compétences dev manquantes.</li>
+        <li>Notion de performance dans l'anorexie : fierté de remplir un objectif difficile qui ne dépend que d'elle. Comment peut-elle se valoriser autrement ?</li>
+      </ul>
+      <p><strong>Bibliographie recommandée :</strong> Des scénarios et des hommes (Steiner) · L'ABC des émotions (Claude Steiner) · Le désir est un sport de combat (Rebecca Levy-Guillain).</p>
+    </div>
+
+  </div><!-- /subtab-delaunay-td -->
+</div><!-- /panel-delaunay -->
+
+<script>
+  const btns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Sub-tabs (Zabalia CM/TD)
+  document.querySelectorAll('.subtab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parentPanel = btn.closest('.tab-panel');
+      parentPanel.querySelectorAll('.subtab-btn').forEach(b => b.classList.remove('active'));
+      parentPanel.querySelectorAll('.subtab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('subtab-' + btn.dataset.subtab).classList.add('active');
+    });
+  });
+
+</script>
+
+
+<!-- ============================
+     ONGLET 4 : DUMONT
+     ============================ -->
+<div id="panel-dumont" class="tab-panel">
+
+  <div class="tab-intro" style="background:linear-gradient(135deg,var(--blanc) 0%,#fff3e0 100%)">
+    <strong>Fil conducteur :</strong> La <em>périnatalité</em> comme période clé du développement — des 1000 premiers jours à la petite enfance. Guidance parentale, neurosciences du nourrisson, gestion des émotions et comportements en crèche. Victoria Dumont, psychologue intervenant dans 42 crèches du Calvados et de la Manche.
+  </div>
+
+  <div class="subtabs-bar">
+    <button class="subtab-btn active" data-subtab="dumont-td1">📌 TD1 – Périnatalité &amp; parentalité</button>
+    <button class="subtab-btn" data-subtab="dumont-td2">🧠 TD2 – Neurosciences &amp; agressivité</button>
+    <button class="subtab-btn" data-subtab="dumont-td3">📋 TD3-4 – Référentiel</button>
+  </div>
+
+  <!-- TD1 -->
+  <div id="subtab-dumont-td1" class="subtab-panel active">
+
+    <div class="section-title">TD1 · La périnatalité</div>
+
+    <div class="card">
+      <h3>🌱 Définition et enjeux</h3>
+      <p><strong>Périnatalité (OMS) :</strong> période entre la 28ème semaine de grossesse et la 1ère semaine de vie. En psychologie : de la conception jusqu'à la 2ème année de vie (~1000 premiers jours).</p>
+      <p>Inclut : désir d'enfant (ou non), diagnostic anténatal, grossesse, accouchement, allaitement, post-partum, place du 2nd parent, fratrie.</p>
+      <div class="schema-box">
+        <div class="schema-title">Rapport «1000 premiers jours» (septembre 2020)</div>
+        <p>Volonté gouvernementale : nouvelle politique publique visant la <strong>continuité</strong> entre la grossesse, la naissance, les premières semaines et les premières années. Décloisonner les approches, coordonner les professionnels.</p>
+        <p>Période la plus plastique du cerveau (naissance = «couteau suisse» → options se referment progressivement selon les besoins de l'environnement). Plasticité maximale jusqu'à ~2 ans.</p>
+      </div>
+      <div class="warn">⚠️ Attention : période très importante mais tout ne s'y décide pas. Plus on intervient précocement, mieux c'est — mais ce n'est pas irrémédiable.</div>
+    </div>
+
+    <div class="card">
+      <h3>🗂️ Les 5 axes prioritaires du rapport</h3>
+      <div class="timeline" style="color:#8b4a00">
+        <div class="timeline-item"><strong>Axe 1 :</strong> Améliorer l'accompagnement continu des parents (entretien prénatal précoce, retour à domicile, sage-femme, cercles de parents, 3 séances prises en charge).</div>
+        <div class="timeline-item"><strong>Axe 2 :</strong> Accompagnement renforcé selon les besoins — handicap parental, détresse psychologique, référents de parcours périnatalité (RéPAP). 4 entretiens proposés (2 pendant grossesse, 2 après).</div>
+        <div class="timeline-item"><strong>Axe 3 :</strong> Informations simples et fiables pour les parents (livret 1000 premiers jours des CAF depuis 2021, groupes de parents).</div>
+        <div class="timeline-item"><strong>Axe 4 :</strong> Temps pour construire la relation parent-enfant. Congé paternité porté à <strong>28 jours</strong> (dont 7 obligatoires) depuis juillet 2021.</div>
+        <div class="timeline-item"><strong>Axe 5 :</strong> Améliorer les modes d'accueil du jeune enfant (LAEP, analyses des pratiques en crèche — 6h obligatoires/an).</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🧠 Le soin psychique en périnatalité</h3>
+      <p>Vise à maintenir cohérence et continuité de l'anté au postnatal (Dayan, 1999). Offrir une contenance aux mouvements émotionnels des grossesses «tout-venant» — souvent les traumas ressortent quand on devient parent.</p>
+      <p>Situations à risque :</p>
+      <div class="pill-grid">
+        <span class="pill" style="background:var(--pêche)">Somatique : anomalie fœtale, prématurité, deuil périnatal</span>
+        <span class="pill" style="background:var(--lavande)">Événementiel : difficultés conjugales, séparation, deuil</span>
+        <span class="pill" style="background:var(--rose)">Psychique : dépression post-natale, psychose puerpérale</span>
+      </div>
+      <div class="warn">⚠️ Les 3 jours de maternité sont trop courts pour repérer une psychose puerpérale (risque d'infanticide ou de suicide maternel).</div>
+      <p>Les situations les plus complexes sont souvent les <strong>entre-deux</strong> : ça ne va pas franchement mal, mais pas vraiment bien non plus.</p>
+    </div>
+
+    <div class="card">
+      <h3>👨‍👩‍👧 Périnatalité et parentalité : le post-partum</h3>
+      <p>Période de reconstruction complète :</p>
+      <div class="pill-grid">
+        <span class="pill" style="background:var(--rose)">Nouveau corps (séquelles de grossesse)</span>
+        <span class="pill" style="background:var(--pêche)">Nouvelle famille (ordre des générations modifié)</span>
+        <span class="pill" style="background:var(--lavande)">Nouveau couple (baby clash vers 3 mois : fatigue)</span>
+        <span class="pill" style="background:var(--mint)">Nouvelle sexualité, finances différentes</span>
+      </div>
+      <p>Pas de parent parfait. Écart inévitable entre le parent qu'on pensait être et le parent qu'on est. Les pleurs ont une raison physiologique : libération de cortisol → pleurs de décharge. Le but n'est pas d'arrêter les pleurs avec une tétine mais d'<em>accompagner</em> les pleurs.</p>
+      <div class="emphasis">💡 En tant que psy : accueillir toutes les parentalités sans jugement. Parfois consultation one-shot ou two-shot → donner des tips dès la première séance.</div>
+    </div>
+
+    <div class="card">
+      <h3>🧭 La guidance parentale</h3>
+      <p>Grande partie du travail du psy en périnatalité/petite enfance en libéral. Démarche d'accompagnement clinique visant à soutenir les parents dans leur fonction éducative et affective. Ne se substitue pas aux parents mais <strong>renforce leurs compétences</strong>.</p>
+      <p><strong>Objectifs :</strong> éclairer le développement psychologique et affectif · renforcer les compétences parentales · prévenir ou réduire conflits et comportements problématiques · soutenir le lien parent-enfant · accompagner les ajustements éducatifs en tenant compte du contexte familial, culturel, social.</p>
+      <p><strong>Modalités :</strong> entretiens cliniques (un ou deux parents) · analyse des difficultés · stratégies éducatives concrètes · soutien émotionnel · valorisation des efforts · parfois inclusion de l'enfant en séance.</p>
+    </div>
+
+  </div><!-- /subtab-dumont-td1 -->
+
+  <!-- TD2 -->
+  <div id="subtab-dumont-td2" class="subtab-panel">
+
+    <div class="section-title">TD2 · Neurosciences de la petite enfance &amp; agressivité</div>
+
+    <div class="card">
+      <h3>⚠️ L'adultomorphisme</h3>
+      <p>Risque de projeter sur l'enfant des attentes d'adulte :</p>
+      <ul>
+        <li>Sur l'enfant : attentes irréalistes, punitions injustes, culpabilisation</li>
+        <li>Sur la relation : incompréhension, perte de confiance, insécurité affective</li>
+        <li>Sur le développement : exiger des compétences que l'enfant ne peut pas encore mobiliser</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🧬 Neurosciences et petite enfance</h3>
+      <p>100 milliards de neurones, seulement <strong>10% connectés à la naissance</strong>. Explosion de connexions entre la naissance et 2 ans. Le cerveau se modifie en fonction des expériences répétées.</p>
+      <div class="schema-box">
+        <div class="schema-title">Les 3 cerveaux (simplification pédagogique)</div>
+        <p><strong>Reptilien + Limbique</strong> : instincts primaires, émotions, mémorisation → dominent jusqu'à ~5 ans.</p>
+        <p><strong>Néocortex</strong> : raisonnement, fonctions cognitives supérieures → commence à intervenir vers 5-6 ans, maturité vers 25 ans.</p>
+      </div>
+      <p><strong>Conséquences de l'immaturité cérébrale :</strong></p>
+      <ul>
+        <li><strong>Cortex préfrontal immature :</strong> pas de contrôle émotionnel, cognitif, moteur → colères, tempêtes émotionnelles, incapacité à se calmer seul. Rôle de l'adulte : <em>prêter son cortex</em> (sécuriser, contenir, apaiser, réguler).</li>
+        <li><strong>Système d'inhibition immature :</strong> avant 2 ans, l'enfant ne peut pas s'arrêter d'agir. L'adulte doit intervenir <em>physiquement</em> pour stopper l'action.</li>
+      </ul>
+      <div class="emphasis">💡 Élagage synaptique : progressif, élimine les connexions inutilisées, conserve les plus sollicitées → spécialisation et efficacité du cerveau.</div>
+    </div>
+
+    <div class="card">
+      <h3>😤 L'agressivité chez l'enfant</h3>
+      <p>Langage pré-verbal, pas une intention de nuire. Fonctions : communiquer un besoin · tester les limites · décharger une tension émotionnelle.</p>
+      <div class="timeline" style="color:#8b4a00">
+        <div class="timeline-item"><strong>0-12 mois :</strong> plutôt réflexe, premières morsures/griffures accidentelles.</div>
+        <div class="timeline-item"><strong>24-36 mois :</strong> pic d'agressivité physique — langage encore insuffisant, recours aux gestes pour exprimer la frustration.</div>
+        <div class="timeline-item"><strong>Après 3 ans :</strong> début de régulation par l'accès au langage et l'imitation d'adultes modèles. Agressivité davantage verbale ou symbolique.</div>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">Identifier la fonction du comportement</div>
+        <p><strong>S</strong>ensoriel · <strong>É</strong>vitement · <strong>A</strong>ttention · <strong>C</strong>ommunication → identifier la fonction pour agir dessus.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🛑 Que faire en cas de conflits ? La règle des 4 R</h3>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">Règle des 4 R pour les règles</div>
+          <p><strong>R</strong>econnue à l'avance<br>
+          <strong>R</strong>eliée au problème<br>
+          <strong>R</strong>aisonnable<br>
+          <strong>R</strong>espectueuse</p>
+          <p>+ Pas de négation dans la formulation + proposer une alternative (ou deux).</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Protocole d'intervention</div>
+          <p>1. Garder son calme<br>
+          2. Verbaliser le stop<br>
+          3. Intervenir physiquement pour stopper le geste<br>
+          4. Réconforter l'enfant chahuté<br>
+          5. Verbaliser l'émotion possible de l'enfant<br>
+          6. Rappeler l'interdit + montrer la conséquence<br>
+          7. Proposer de réparer (sans forcer les excuses)<br>
+          8. Proposer une alternative</p>
+        </div>
+      </div>
+      <p><strong>À ne pas faire :</strong> réactions fortes/répressives · isolation (pas de time out porte fermée) · étiqueter l'enfant («le mordeur») · punir pour réfléchir.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎯 La théorie bayésienne : le cerveau comme machine à prédire</h3>
+      <p>Le cerveau n'est pas un simple récepteur d'informations — il anticipe en permanence ce qui va arriver. L'enfant compare constamment ses attentes internes avec les signaux de l'environnement.</p>
+      <div class="grid-2">
+        <div class="schema-box">
+          <div class="schema-title">Prédiction confirmée</div>
+          <p>→ Sécurité, calme</p>
+        </div>
+        <div class="schema-box">
+          <div class="schema-title">Prédiction déjouée</div>
+          <p>→ Incertitude, stress, agitation</p>
+        </div>
+      </div>
+      <p>D'où l'<strong>importance des rituels apaisants et de la prévisibilité</strong> pour le tout-petit.</p>
+      <div class="emphasis">💡 Ne pas «gérer» les émotions mais développer la compétence émotionnelle dans son ensemble : accueillir l'émotion sans la juger, nommer les émotions, prêter son cortex avant de demander l'autorégulation.</div>
+    </div>
+
+  </div><!-- /subtab-dumont-td2 -->
+
+  <!-- TD3-4 -->
+  <div id="subtab-dumont-td3" class="subtab-panel">
+
+    <div class="section-title">TD3-4 · Référentiel</div>
+
+    <div class="card">
+      <h3>📄 À travailler</h3>
+      <p>TD3 et TD4 portent sur la discussion du <strong>référentiel professionnel</strong> (pages 29 à 37) + réponse du comité, suivis d'un quiz.</p>
+      <div class="emphasis">📚 Lire sur e-campus : référentiel page 29 à 37 + réponse du comité.</div>
+    </div>
+
+  </div><!-- /subtab-dumont-td3 -->
+
+</div><!-- /panel-dumont -->
+
+</body>
+</html>
