@@ -388,6 +388,46 @@
   #panel-dumont .author-chip { background: #fde8d0; color: #8b4a00; }
   #panel-dumont table.mini th { background: #fde8d0; }
 
+  /* ANNALES */
+  .tab-btn[data-tab="annales"] {
+    background: var(--jaune); color: #6b5200;
+    border-color: var(--jaune2);
+  }
+  .tab-btn[data-tab="annales"]:hover,
+  .tab-btn[data-tab="annales"].active {
+    background: var(--jaune2); box-shadow: 0 3px 12px rgba(200,170,0,.3);
+  }
+  #panel-annales { background: linear-gradient(160deg, #fffde8 0%, #fffef5 60%); }
+  #panel-annales .section-title { color: #6b5200; }
+  #panel-annales .card { border-left-color: var(--jaune2); }
+  #panel-annales .badge { background: var(--jaune); color: #6b5200; }
+  #panel-annales table.mini th { background: var(--jaune); }
+  #panel-annales .subtabs-bar { border-bottom-color: var(--jaune2); }
+  #panel-annales .subtab-btn { border-color: var(--jaune2); color: #6b5200; }
+  #panel-annales .subtab-btn.active,
+  #panel-annales .subtab-btn:hover { background: var(--jaune2); color: #3d2e00; box-shadow: 0 2px 8px rgba(200,170,0,.25); }
+  .annale-header {
+    background: linear-gradient(135deg, #fdf4c1 0%, #fff9e0 100%);
+    border: 2px solid var(--jaune2);
+    border-radius: 16px;
+    padding: 1rem 1.4rem;
+    margin-bottom: 1.2rem;
+    font-size: .9rem;
+  }
+  .annale-header strong { font-size: 1rem; display: block; margin-bottom: .3rem; color: #6b5200; }
+  .plan-box {
+    background: linear-gradient(135deg, #f0fff8 0%, #e8f5ff 100%);
+    border: 1.5px solid var(--mint2);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    margin: .7rem 0;
+    font-size: .9rem;
+  }
+  .plan-box .plan-title { font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; margin-bottom: .5rem; color: #2b6657; }
+  .plan-box ol { padding-left: 1.3rem; }
+  .plan-box ol li { margin-bottom: .3rem; }
+  .corr-intro { background: #fff3cd; border-left: 4px solid #f0a500; padding: .6rem 1rem; border-radius: 0 10px 10px 0; font-size: .88rem; margin-bottom: 1rem; font-style: italic; }
+
 
 </style>
 </head>
@@ -403,6 +443,7 @@
   <button class="tab-btn" data-tab="roche">🟢 Roche-Labarbe – Neuroconstructivisme</button>
   <button class="tab-btn" data-tab="delaunay">🌸 Delaunay – Développement alimentaire</button>
   <button class="tab-btn" data-tab="dumont">🟠 Dumont – Périnatalité &amp; petite enfance</button>
+  <button class="tab-btn" data-tab="annales">📝 Annales – Sujets &amp; corrections</button>
 </div>
 
 <!-- ============================
@@ -428,8 +469,12 @@
 
   <div class="card">
     <h3>🏛️ Pourquoi une approche contemporaine ?</h3>
-    <p>La psychologie classique est née dans un <strong>contexte historique précis</strong> (après la 2ᵉ Guerre Mondiale). Elle était influencée par les représentations culturelles du moment : famille nucléaire standardisée, rôle de la mère central, pathologies sociales (alcoolisme, handicap) non prises en compte.</p>
-    <p>La <strong>santé mentale</strong> n'était pas la priorité avant-guerre : on traitait les problèmes de santé publique (poliomyélite, carences en fer). L'ADN n'est découvert qu'en 1953. Les structures familiales atypiques (divorce, familles recomposées) n'étaient pas théorisées.</p>
+    <p>La psychologie classique est née dans un <strong>contexte historique précis</strong> (après la 2ᵉ Guerre Mondiale). Elle était influencée par les représentations culturelles du moment : famille nucléaire standardisée, rôle de la mère central, pathologies sociales (alcoolisme, handicap) non prises en compte. La zone de vie au 20ème siècle s'étend à 30 km autour de soi ; peu d'accès aux problématiques internationales.</p>
+    <p>La <strong>santé mentale</strong> n'était pas la priorité avant-guerre : on traitait les problèmes de santé publique (poliomyélite, carences en fer). L'ADN n'est découvert qu'en 1953. Les structures familiales atypiques (divorce, familles recomposées, adoption) n'étaient pas théorisées. La place du père était négligée, le rôle des fratries n'a été théorisé qu'à partir des <strong>années 90</strong>.</p>
+    <div class="schema-box">
+      <div class="schema-title">Tavistock Clinic (Angleterre) — Winnicott, Bowlby, Michael Balint</div>
+      <p>Des pédiatres-psychanalystes (Bowlby, Winnicott) s'intéressent aux enfants isolés pendant la guerre. Prise de conscience de l'importance des relations sociales : les enfants dépérissent malgré les soins hygiéniques → <strong>dépression anaclitique</strong> (hospitalisme). Naissance de la théorie de l'attachement. Michael Balint : développe la supervision clinique dans ce contexte.</p>
+    </div>
     <div class="emphasis">💡 L'approche contemporaine <em>complète</em> les théories classiques, elle ne les remplace pas. Elle les approfondit en tenant compte des enjeux actuels.</div>
   </div>
 
@@ -446,11 +491,11 @@
     <h3>🗺️ Les 5 contextes du développement</h3>
     <p>Le cadre général du développement s'inscrit dans 5 contextes qui évoluent tout au long de la vie :</p>
     <div class="timeline" style="color:#7c5faa">
-      <div class="timeline-item"><strong>Contexte biologique</strong> – Corps agissant, chromosomes, neurochimie. « C'est parce que je suis que je pense. » Le fonctionnement psychologique influence le biologique et vice-versa.</div>
-      <div class="timeline-item"><strong>Contexte individuel</strong> – Fonctionnement psychologique du sujet (le plus documenté ; risque d'y accorder trop de place).</div>
-      <div class="timeline-item"><strong>Contexte familial</strong> – Structure variable d'adultes exerçant des fonctions éducatives. L'enfant influence ses parents autant qu'il est influencé par eux. Le père longtemps négligé.</div>
-      <div class="timeline-item"><strong>Contexte social</strong> – Périmètre s'agrandissant au fil de la vie. École dès 3 ans, clubs, pairs. Lieu de socialisation et de discrimination possible.</div>
-      <div class="timeline-item"><strong>Contexte culturel</strong> – Valeurs, représentations culturelles, lois, médias. Influence les pratiques éducatives et les attentes envers l'enfant (ex. école obligatoire à 3 ans).</div>
+      <div class="timeline-item"><strong>Contexte biologique</strong> – Corps agissant, chromosomes, neurochimie. <em>« C'est parce que je suis que je pense »</em> (vs Descartes). Particularités chromosomiques ou gonosomiques (ex. syndrome de Turner) → trajectoire moins optimale. L'état psychologique influence le biologique et vice-versa. Ex. concret : <strong>intolérance au gluten</strong> → tensions aux repas, relation avec la nourriture impactée, sans que ce soit une pathologie psy lourde. On rougit quand quelqu'un nous plaît : preuve du lien corps/psyché.</div>
+      <div class="timeline-item"><strong>Contexte individuel</strong> – Fonctionnement psychologique du sujet (le plus documenté ; risque d'y accorder trop de place au détriment des autres contextes — vigilance).</div>
+      <div class="timeline-item"><strong>Contexte familial</strong> – Structure variable d'adultes exerçant des fonctions éducatives. L'enfant influence ses parents autant qu'il est influencé par eux. Père longtemps négligé dans les modèles. Fratries théorisées seulement dans les années 90.</div>
+      <div class="timeline-item"><strong>Contexte social</strong> – Périmètre s'agrandissant au fil de la vie. École dès 3 ans, clubs, pairs. Lieu de socialisation mais aussi de discrimination possible. Ex. : <strong>parents sud-coréens</strong> : le contexte social (discrimination, pression culturelle de performance) influence directement le développement de l'enfant.</div>
+      <div class="timeline-item"><strong>Contexte culturel</strong> – Valeurs, représentations culturelles, lois, médias. Influence les pratiques éducatives et les attentes envers l'enfant (ex. école obligatoire à 3 ans). La représentation d'un papa et d'une maman est influencée par les médias.</div>
     </div>
     <div class="warn">⚠️ Ces contextes sont en constante évolution. Aucune théorie prise isolément ne peut répondre à la totalité de la psychopathologie d'un individu.</div>
   </div>
@@ -471,14 +516,16 @@
 
     <div class="card">
       <h3>🔄 Modèle béhavioriste</h3>
-      <p>Le sujet apprend par :</p>
+      <p>Le sujet apprend par 3 mécanismes :</p>
       <ul>
-        <li><strong>Conditionnement classique</strong> (Pavlov) – associations stimulus/réponse</li>
-        <li><strong>Conditionnement opérant</strong> – renforcements positifs/négatifs</li>
-        <li><strong>Imitation / modelage</strong> – apprentissage par observation</li>
+        <li><strong>Conditionnement classique</strong> (Pavlov) – associations stimulus/réponse (ex. : phobie par conditionnement)</li>
+        <li><strong>Conditionnement opérant</strong> – renforcements positifs/négatifs modifient la fréquence d'un comportement (extinction = pas de réponse)</li>
+        <li><strong>Imitation / modelage</strong> – vecteur d'apprentissage très fort, intégration des normes sociales, l'enfant joue à faire semblant</li>
       </ul>
-      <p>Pathologie = <em>inadaptation</em> en termes de fréquence et d'intensité d'un comportement par rapport aux attentes du contexte.</p>
-      <div class="emphasis">✅ Ce qu'on retient : il n'existe pas de comportement psychopathologique dans l'absolu — tout dépend du contexte et de l'âge.</div>
+      <p>Psychopathologie = <strong>inadaptation</strong> : déviation en termes de fréquence et d'intensité d'un comportement par rapport aux attentes du contexte et de l'âge. Deux formes : <em>déficit</em> (trop peu) ou <em>excès</em> (stéréotypies, TOC).</p>
+      <div class="warn">⚠️ <strong>Il n'existe pas de comportement psychopathologique dans l'absolu.</strong> Ce n'est pas la nature du comportement qui pose problème mais sa fréquence, son intensité et l'âge auquel il survient. Ex. : stéréotypies pendant un examen = non pathologique ; les mêmes 24h/24 envahissantes = pathologique. La norme n'est pas universelle — elle dépend des attentes culturelles et contextuelles.</div>
+      <div class="emphasis">✅ Ce qu'on retient : concept de <strong>signe pathognomonique</strong> (signe caractérisant spécifiquement une pathologie) + l'importance de l'<strong>environnement stimulant</strong> pour le développement + comportement adapté/inadapté selon les attentes de l'environnement → base de la psychologie interculturelle.</div>
+      <div class="warn">⚠️ Limite : relation causale simpliste. Ignore la complexité de l'écosystème et la vie intérieure du sujet.</div>
     </div>
   </div>
 
@@ -487,38 +534,69 @@
     <details>
       <summary>1. Psychanalyse classique (Freud)</summary>
       <div style="padding: .5rem 0">
-        <p><strong>Modèle structural (2ème topique) :</strong> Ça (pulsions inconscientes) / Moi (régulation) / Surmoi (normes intériorisées). Espace fermé → équilibre homéostatique. Conflit → tension → symptôme.</p>
-        <p><strong>Modèle en stades psychosexuels :</strong> Oral (0-1 an) → Anal (1-3 ans) → Phallique (3-6 ans, complexe d'Œdipe) → Latence (6-11 ans) → Génital (adolescence).</p>
-        <p>Psychopathologie = <strong>fixation</strong> (arrêt à un stade) ou <strong>régression</strong> (retour à un stade antérieur). Pathologique seulement si massif et global.</p>
+        <p><strong>Modèle structural (2ème topique) :</strong> l'appareil psychique est un espace <em>fermé</em> composé de 3 instances :</p>
+        <table class="mini">
+          <tr><th>Instance</th><th>Rôle</th><th>Si déséquilibre</th></tr>
+          <tr><td><strong>Ça</strong></td><td>Pulsions inconscientes, recherche le plaisir immédiat</td><td>Trop fort → comportements pulsionnels, manque de contrôle</td></tr>
+          <tr><td><strong>Moi</strong></td><td>Régulation, médiateur entre le ça, le surmoi et la réalité</td><td>Écrasé → difficulté à gérer la réalité</td></tr>
+          <tr><td><strong>Surmoi</strong></td><td>Normes, interdits, règles sociales intériorisées</td><td>Trop fort → culpabilité, rigidité excessive</td></tr>
+        </table>
+        <div class="emphasis">💡 <strong>Homéostasie psychique :</strong> l'espace est fini. Si une instance prend trop de place, les autres se réduisent. Freud utilise une <em>métaphore thermodynamique</em> (cocotte-minute) : conflit → tension → malaise → symptôme.</div>
+        <p style="margin-top:.5rem"><strong>Modèle en stades psychosexuels :</strong></p>
+        <table class="mini">
+          <tr><th>Stade</th><th>Âge</th><th>Zone érogène</th></tr>
+          <tr><td>Oral</td><td>0-1 an</td><td>Bouche, succion</td></tr>
+          <tr><td>Anal</td><td>1-3 ans</td><td>Maîtrise des sphincters</td></tr>
+          <tr><td>Phallique</td><td>3-6 ans</td><td>Complexe d'Œdipe, différence des sexes</td></tr>
+          <tr><td>Latence</td><td>6-11 ans</td><td>Mise en veille des pulsions</td></tr>
+          <tr><td>Génital</td><td>Adolescence</td><td>Sexualité adulte</td></tr>
+        </table>
+        <p>Psychopathologie = <strong>fixation</strong> (arrêt à un stade, ex. : caractère obsessionnel fixé au stade anal) ou <strong>régression</strong> (retour temporaire à un stade antérieur sous stress). Pathologique seulement si massif, global, et empêche l'adaptation.</p>
+        <p><strong>Lacan :</strong> reformulation de Freud — ce n'est pas la possession ou non d'un phallus (organe) qui intéresse l'enfant dans le complexe d'Œdipe, mais la <em>place symbolique que le père occupe</em> dans le discours maternel. Le père comme instance symbolique (nom-du-père).</p>
+        <div class="warn">⚠️ Limite structurale : les structures (névroses/psychoses) ne permettent pas de classer les états-limites (personnalités borderline). → D'où les développements de l'ego-psychologie.</div>
       </div>
     </details>
     <details>
-      <summary>2. Ego-psychologie et développement en étapes (Anna Freud, Erikson, Spitz)</summary>
+      <summary>2. Ego-psychologie et développement en étapes (Anna Freud, Erikson, Spitz, Zazzo)</summary>
       <div style="padding: .5rem 0">
-        <p><strong>Anna Freud :</strong> concept de <em>dysharmonie d'évolution</em> (lignes de développement) – tout ne va pas à la même vitesse. Le Moi a sa propre maturation indépendante du Ça.</p>
-        <p><strong>Erikson :</strong> modèle psycho-social en défis développementaux. La trajectoire dépend de la résolution des défis (ex. confiance vs méfiance de 0 à 18 mois). Non déterministe.</p>
-        <p><strong>René Spitz :</strong> <em>Embryogenèse du Moi</em> – 3 organisateurs psychiques :</p>
+        <p><strong>Anna Freud :</strong> concept de <em>dysharmonie d'évolution</em> (lignes de développement) — tout ne va pas à la même vitesse. Le <strong>Moi a sa propre maturation</strong>, indépendante du Ça. Il est le résultat d'une énergie propre, ce n'est pas une instance subalterne.</p>
+        <p><strong>René Zazzo :</strong> hétérochronie de développement (travaux sur la DI). Pas d'étapes standardisées au même âge pour tous. Même concept que les lignes d'Anna Freud.</p>
+        <p><strong>Erik Erikson (1902-1994) :</strong> modèle psycho-social en <em>défis développementaux</em>. L'effet de l'environnement (réponses de l'entourage) oriente la résolution du défi → trajectoire différente selon la direction prise. Modèle <strong>non déterministe</strong> : on peut changer de trajectoire et valider des défis antérieurs plus tard.</p>
         <div class="schema-box">
-          <div class="schema-title">Les 3 organisateurs de Spitz</div>
+          <div class="schema-title">Exemple : défi Trust vs Mistrust (0-18 mois)</div>
+          <p>Si l'environnement est sécurisant → enfant sécure (résolution positive). Si le parent a une pathologie mentale → environnement devient insécure → résolution négative. Mais non figée : un environnement ultérieur peut modifier la trajectoire.</p>
+        </div>
+        <p><strong>René Spitz — Embryogenèse du Moi :</strong> le développement psychique se construit par <em>paliers organisateurs</em>, comme l'embryon biologique se développe par étapes successives. Ces <strong>organisateurs psychiques</strong> sont des moments sensibles qui orientent durablement la trajectoire. Si perturbés → développement fragile ou dévié.</p>
+        <div class="schema-box">
+          <div class="schema-title">Les 3 organisateurs psychiques de Spitz</div>
           <table class="mini">
-            <tr><th>Organisateur</th><th>Âge</th><th>Signification</th></tr>
-            <tr><td><strong>Sourire social réponse</strong></td><td>2-3 mois</td><td>Fin de la confusion Moi/Autrui. Début du lien relationnel.</td></tr>
-            <tr><td><strong>Angoisse de l'étranger</strong></td><td>8-9 mois</td><td>Reconnaissance de la figure d'attachement. Prise de conscience de la perte possible.</td></tr>
-            <tr><td><strong>Le « Non »</strong></td><td>15-18 mois</td><td>Affirmation d'un Moi autonome. Première symbolisation de l'opposition.</td></tr>
+            <tr><th>Organisateur</th><th>Âge</th><th>Signification développementale</th></tr>
+            <tr><td><strong>Sourire social réponse</strong></td><td>2-3 mois</td><td>Fin de la confusion Moi/Autrui. Différenciation Soi/Monde. Début du lien relationnel. (<em>Pas</em> le sourire réflexe néonatal.)</td></tr>
+            <tr><td><strong>Angoisse de l'étranger</strong> (8e mois)</td><td>8-9 mois</td><td>Reconnaissance de la figure d'attachement comme privilégiée. Prise de conscience que l'autre peut partir → prise de conscience de la perte possible. (cf. situation étrange d'Ainsworth)</td></tr>
+            <tr><td><strong>Apparition du « Non »</strong></td><td>15-18 mois</td><td>Première symbolisation de l'opposition. Affirmation d'un Moi autonome, individué. L'enfant préserve son intégrité psychique, prend conscience que sa pensée ne se mélange pas avec celle de l'autre.</td></tr>
           </table>
         </div>
-        <p>Chaque organisateur ouvre/ferme des trajectoires. Si perturbé → dev fragile ou dévié.</p>
-        <p><strong>René Zazzo :</strong> hétérochronie de développement (avec des personnes atteintes de DI).</p>
+        <div class="emphasis">💡 Chaque organisateur ouvre/ferme des trajectoires développementales. Ce n'est pas déterministe a priori, mais conditionne l'orientation. <strong>Diminution de l'autodétermination de l'adulte sur l'enfant</strong> : l'enfant a une part active dans sa propre construction.</div>
       </div>
     </details>
     <details>
       <summary>3. Théories de la relation d'objet (Bowlby, Winnicott, Klein, Mahler)</summary>
       <div style="padding: .5rem 0">
-        <p>Contexte : enfants survivants de la guerre dépérissent malgré les soins hygiéniques → <strong>hospitalisme / dépression anaclitique</strong> → ce qui compte, c'est la <em>relation</em>, pas la satisfaction alimentaire.</p>
-        <p><strong>Bowlby :</strong> Théorie de l'attachement. Ensemble de comportements innés (pleurs, agrippement, sourire…) pour créer et maintenir le lien. Le besoin de relation prime sur les besoins primaires (cf. singes de Harlow).</p>
-        <p><strong>Mahler :</strong> Processus de séparation/individuation. L'autonomie motrice → autonomie psychique. Phase symbiotique → différenciation Moi/Autrui.</p>
-        <p><strong>Klein :</strong> Intégration progressive d'un « bon objet » (réponse stable et cohérente de la mère).</p>
-        <p><strong>Winnicott :</strong> Préoccupation maternelle primaire ; la mère « suffisamment bonne » s'adapte aux besoins sans être parfaite.</p>
+        <p><strong>Contexte d'émergence :</strong> Bowlby, Winnicott et d'autres pédiatres/psychanalystes de la Tavistock Clinic (Londres) s'occupent d'enfants isolés pendant la guerre. Malgré des soins hygiéniques et alimentaires corrects, les enfants dépérissent → prise de conscience que c'est la <em>relation</em> qui est le moteur du développement, pas la satisfaction alimentaire.</p>
+        <div class="schema-box">
+          <div class="schema-title">Hospitalisme / Dépression anaclitique (Spitz)</div>
+          <p>Enfants en institution : après une phase de protestation, ils se laissent aller → atonie psychomotrice, retard développemental, dépression. Cause : carence affective et relationnelle, malgré les soins de base. ← Remet en cause Freud (satisfaction alimentaire = base de l'attachement).</p>
+        </div>
+        <p><strong>Bowlby — Théorie de l'attachement :</strong> ensemble de comportements <em>innés</em> (pleurs, agrippement, sourire, suivi des yeux, succion non nutritive) pour créer et maintenir le lien avec la figure d'attachement. Le besoin de relation <strong>prime sur les besoins primaires</strong> (cf. singes de Harlow : préfèrent la mère en tissu à la mère en fil de fer qui nourrit). Part active du nouveau-né dans la construction de son lien.</p>
+        <p><strong>Modèles internes opérants (Bowlby) :</strong> schémas cognitifs relationnels construits à partir des expériences. On construit des scripts (scripts de restaurant, de relation amoureuse...) → risque de reproduire les mauvais schémas appris, mais possibilité de transformation dans le cadre de nouvelles relations ou de la thérapie.</p>
+        <p><strong>Mahler — Séparation/individuation :</strong> l'enfant dispose d'activités motrices propres → expériences d'initiative de rapprochement/éloignement de la figure maternelle → construction de l'autonomie psychique. L'autonomie <em>physique</em> facilite l'autonomie <em>psychique</em>.</p>
+        <ul>
+          <li>Phase symbiotique : l'enfant associe le parent à lui-même (pas encore de frontière claire Moi/Autrui)</li>
+          <li>Différenciation progressive → individuation</li>
+        </ul>
+        <p><strong>Klein :</strong> intégration progressive d'un « bon objet » (réponse stable et cohérente) ou d'un « mauvais objet » (réponse incohérente). Le bébé n'a pas d'abord une représentation totale de la mère — bonne mère vs mauvaise mère.</p>
+        <p><strong>Winnicott :</strong> <em>préoccupation maternelle primaire</em> — quand le bébé est tout petit, le parent est en phase totale avec ses besoins. Plus l'enfant grandit, moins cette synchronisation totale est nécessaire (l'enfant peut exprimer ses besoins). La mère « suffisamment bonne » s'adapte sans être parfaite.</p>
+        <div class="emphasis">💡 Ces théories permettent de penser l'environnement : les circonstances défavorables à la construction psychique (logement, difficultés économiques, maladie du parent) ne sont pas des fautes de l'enfant ni de l'adulte, mais des contextes qui impactent la qualité des relations.</div>
       </div>
     </details>
   </div>
@@ -526,6 +604,7 @@
   <div class="card">
     <h3>🔗 Modèle systémique (Salvador Minuchin)</h3>
     <p>Théorie générale des systèmes : pour comprendre un phénomène, tenir compte des <em>interactions</em> entre ses éléments. La famille = un système organisé en <strong>sous-systèmes</strong> avec des frontières.</p>
+    <p><strong>Idée générale :</strong> les systèmes tendent naturellement vers la stabilité et s'<strong>autoréguler</strong>. Ex. : les bancs de poissons se synchronisent spontanément. La tendance d'un système est de tendre vers un état stable, cohérent et pérenne. Pour ce faire, il y a des propriétés d'<strong>auto-organisation</strong>.</p>
     <div class="grid-2">
       <div>
         <p><strong>Sous-systèmes familiaux :</strong></p>
@@ -560,13 +639,23 @@
 
   <div class="card">
     <h3>🌀 Wallon – Modèle socio-constructiviste</h3>
-    <p>Neurologue, clinicien, philosophe marxiste. S'intéresse au développement de la <em>personne entière</em> (pas seulement l'intelligence comme Piaget).</p>
+    <p>Neurologue, clinicien, philosophe marxiste. S'intéresse au développement de la <em>personne entière</em> (pas seulement l'intelligence comme Piaget). Approche <strong>bio-psycho-sociale</strong> avant l'heure : tient compte des représentations des parents, des facteurs biologiques et sociaux.</p>
     <p>Deux grandes dimensions en <strong>spirale</strong> tout au long de la vie :</p>
     <div class="pill-grid">
-      <span class="pill" style="background: var(--lavande);">Caractère (psychoaffectif)</span>
+      <span class="pill" style="background: var(--lavande);">Caractère (psychoaffectif / personnalité)</span>
       <span class="pill" style="background: var(--mint);">Intelligence (cognitif)</span>
     </div>
-    <p>Les deux s'alternent. L'un prend le dessus puis cède la place à l'autre. Modèle dynamique, circulaire, très moderne. Il fait de l'<strong>émotion le facteur principal du développement</strong>.</p>
+    <p>Les deux s'alternent : l'un prend le dessus puis cède la place à l'autre. Il fait de l'<strong>émotion le facteur principal du développement</strong>. Modèle dynamique, circulaire, très moderne.</p>
+    <div class="schema-box">
+      <div class="schema-title">Alternance des phases (spirale)</div>
+      <p>1. <strong>Acte moteur</strong> prédominant à la naissance<br>
+      2. <strong>Stade émotionnel</strong> (dialogue émotionnel — pleurs, sourires) : l'enfant prend conscience de son effet sur le monde<br>
+      3. <strong>Développement moteur</strong> (exploration physique)<br>
+      4. <strong>Phase de latence affective</strong> : mise à distance de la dimension émotionnelle pendant que l'intelligence se développe<br>
+      5. <strong>Retour affectif</strong> (adolescence)…<br>
+      → Le développement circule d'un domaine à l'autre en spirale.</p>
+    </div>
+    <div class="emphasis">💡 Wallon s'intéresse au <strong>normal ET au pathologique</strong> dans une démarche comparative — l'un éclaire l'autre. Ancêtre de la psychopathologie développementale.</div>
   </div>
 
   <div class="card">
@@ -575,18 +664,23 @@
     <details>
       <summary>1. Modèles cumulatifs</summary>
       <div style="padding:.5rem 0">
-        <p><strong>a. Modèles en trait</strong> (ex. : théorie de l'attachement de Bowlby)<br>
-        Un trait acquis pendant une période sensible reste stable toute la vie, indépendamment de l'environnement.<br>
-        Limite : ne décrit pas bien la réalité psychologique (fonctionne mieux pour les traits biologiques comme la T21).</p>
-        <p><strong>b. Modèles environnementaux</strong> (ex. : Bronfenbrenner)<br>
-        L'état de l'enfant est uniquement fonction de l'état de l'environnement.</p>
+        <p><strong>a. Modèles en trait</strong> (ex. : théorie de l'attachement de Bowlby)</p>
+        <p>Un <strong>trait</strong> = caractéristique individuelle stable. Acquis pendant une période sensible, il reste stable toute la vie, <em>indépendamment des effets ultérieurs de l'environnement</em>. Ex. classique Bowlby : si la mère est sensible au T1, l'enfant devient sécure → même si l'environnement se dégrade ensuite (décès, maladie), le trait reste.</p>
+        <div class="warn">⚠️ Limite : fonctionne bien pour les traits biologiques (T21, couleur des yeux). Mais pour le fonctionnement psychologique, décrit mal la réalité. On sait aujourd'hui que la sécurité d'attachement <em>peut</em> changer selon les relations ultérieures → le modèle en trait est insuffisant.</div>
+        <p style="margin-top:.5rem"><strong>b. Modèles environnementaux</strong> (ex. : Bronfenbrenner)</p>
+        <p>L'état de l'enfant est <em>uniquement</em> fonction de l'état de l'environnement. Si l'environnement se dégrade → développement se dégrade. Les caractéristiques propres de l'enfant n'importent pas.</p>
         <div class="schema-box">
-          <div class="schema-title">Cercles de Bronfenbrenner</div>
-          <p><strong>Microsystème</strong> : biologie, génétique du sujet lui-même<br>
-          <strong>Mésosystème</strong> : adultes avec fonctions parentales (mère, père, nourrices...)<br>
-          <strong>Exosystème</strong> : famille étendue, communauté, lieu de travail des parents<br>
-          <strong>Macrosystème</strong> : valeurs culturelles, lois, représentations sociales</p>
+          <div class="schema-title">Cercles de Bronfenbrenner — niveaux d'influence</div>
+          <table class="mini">
+            <tr><th>Niveau</th><th>Contenu</th><th>Exemples</th></tr>
+            <tr><td><strong>Microsystème</strong></td><td>Biologie, génétique du sujet lui-même</td><td>Génotype, phénotype, santé</td></tr>
+            <tr><td><strong>Mésosystème</strong></td><td>Adultes avec fonctions parentales</td><td>Mère, père, nourrices, enseignants — on n'est pas le même parent selon l'enfant</td></tr>
+            <tr><td><strong>Exosystème</strong></td><td>Environnement proche non immédiat</td><td>Famille étendue, communauté, travail des parents (proche ou loin = disponibilité différente), services de soins</td></tr>
+            <tr><td><strong>Macrosystème</strong></td><td>Valeurs sociales, culturelles, lois</td><td>Lois (scolarité obligatoire à 3 ans), normes culturelles, représentations médiatiques des rôles parentaux</td></tr>
+          </table>
+          <p style="margin-top:.5rem">→ Ces cercles évoluent dans le temps. → Permet d'identifier <em>tous</em> les facteurs d'influence du développement de l'enfant.</p>
         </div>
+        <div class="warn">⚠️ Limite des modèles environnementaux : l'enfant n'a aucune influence sur son environnement. Trop réducteur. → D'où les modèles interactionnistes.</div>
       </div>
     </details>
 
@@ -605,7 +699,7 @@
         <div class="schema-box">
           <div class="schema-title">Modèle de Sameroff 2009</div>
           <p><strong>Génotype</strong> (micro-écosystème) ↔ <strong>Phénotype</strong> (caractéristiques observables) ↔ <strong>Environtype</strong> (macro-écosystème : famille, communauté, culture, lois)</p>
-          <p>Les 3 s'influencent mutuellement et se transforment en permanence. L'expression génétique peut être influencée par l'environnement (ex. : exposition chimique maternelle).</p>
+          <p>Les 3 s'influencent mutuellement et se transforment en permanence. L'expression génétique peut être influencée par l'environnement (ex. : exposition chimique maternelle). Exemple frappant : le <strong>nainisme de détresse</strong> — carence affective, éducative, relationnelle → ralentissement de la croissance (phénotype modifié par l'environtype).</p>
         </div>
       </div>
     </details>
@@ -623,15 +717,22 @@
       <li>Au départ, trajectoires typiques proches pour tous (tenir sa tête, marcher…)</li>
       <li>Progressivement : divergences en trajectoires adaptées ou inadaptées</li>
       <li>Impossible de prédire à l'avance → uniquement constatable <em>a posteriori</em></li>
+      <li>On peut mal partir et finalement avoir une trajectoire adaptée — et inversement.</li>
     </ul>
+    <div class="schema-box">
+      <div class="schema-title">La dynamique des trajectoires : contraintes et opportunités</div>
+      <p>Les trajectoires sont soumises à des forces : <strong>contraintes</strong> (qui freinent) et <strong>opportunités</strong> (qui favorisent le développement). Une même caractéristique peut être opportunité dans un contexte et contrainte dans un autre.</p>
+      <p><em>Exemple :</em> un enfant très sensible à l'art, né en Israël dans une famille qui nourrit sa créativité → opportunité, développement d'un talent. Le même enfant, né à Gaza en contexte de conflit armé → cette même sensibilité devient source de souffrance plus intense et durable.</p>
+      <p>→ On ne peut pas établir de liste universelle d'opportunités : tout dépend du contexte familial, culturel, sociopolitique.</p>
+    </div>
     <div class="grid-2">
       <div class="schema-box">
         <div class="schema-title">Équifinalité</div>
-        <p>Deux trajectoires différentes aboutissent au même résultat développemental.</p>
+        <p>Deux trajectoires <em>différentes</em> aboutissent au même résultat développemental. (Trajectoires A et D arrivent au même endroit.)</p>
       </div>
       <div class="schema-box">
         <div class="schema-title">Multifinalité</div>
-        <p>Des trajectoires similaires (ex. : frères et sœurs) aboutissent à des issues différentes.</p>
+        <p>Des trajectoires <em>similaires</em> (ex. : fratries) aboutissent à des issues développementales différentes.</p>
       </div>
     </div>
   </div>
@@ -661,6 +762,18 @@
   </div>
 
   <div class="card">
+    <h3>🤝 Le rôle central des expériences relationnelles</h3>
+    <p>Tous les facteurs de risque et de protection dont on a parlé <strong>ne s'expriment pas directement</strong> sur l'enfant — ils s'expriment <em>à travers ses relations</em>.</p>
+    <div class="schema-box">
+      <div class="schema-title">Exemple : la pauvreté</div>
+      <p>La pauvreté n'affecte pas directement l'enfant par magie. Elle réduit les ressources de la famille (nourriture, chauffage) → stress des parents → moins de disponibilité relationnelle → interactions moins nombreuses et de moins bonne qualité → impact sur le développement. C'est via la <em>relation</em> que le risque se traduit.</p>
+    </div>
+    <p>Les expériences relationnelles traduisent la pression des risques. L'écosystème de l'enfant se traduit à travers la <strong>complexité des relations entre la famille et l'enfant</strong> (spirale transactionnelle).</p>
+    <p><strong>Modèles internes opérants (Bowlby) :</strong> l'enfant construit des <em>schémas cognitifs relationnels</em> (scripts, scénarios) à partir de ses expériences. Ces schémas guident ses attentes et comportements dans les futures relations. Risque de reproduire les mauvais schémas — mais ces schémas peuvent aussi <strong>se transformer</strong> dans le cadre de nouvelles relations positives ou d'une thérapie.</p>
+    <div class="emphasis">💡 Conclusion : ce qui compte le plus, ce ne sont pas les risques en eux-mêmes, mais la façon dont ils impactent la qualité des transactions relationnelles entre l'enfant et son entourage.</div>
+  </div>
+
+  <div class="card">
     <h3>📌 Synthèse : les grands principes</h3>
     <div class="schema-box">
       <p>Le développement est le résultat des <strong>transactions continuelles et réciproques</strong> entre l'organisme et son environnement (vu comme écosystème incluant les humains et leurs représentations).</p>
@@ -671,6 +784,7 @@
       <li>Les expériences interpersonnelles occupent une place centrale.</li>
       <li>L'individu est le produit de <em>toutes</em> ses expériences, pas seulement des précoces.</li>
       <li>Développement typique et troublé s'éclairent mutuellement.</li>
+      <li><strong>Réfutation de la tabula rasa</strong> : l'idée que l'être humain naît vierge de toute influence (concept d'origine judéo-chrétienne) est fausse. L'influence de l'environnement commence in utero et le génotype prédispose des directions développementales.</li>
     </ul>
   </div>
 
@@ -689,6 +803,11 @@
 
     <!-- TD3 : HANDICAP -->
     <div class="section-title">TD3 · Naissance d'un enfant porteur de handicap : une spirale transactionnelle</div>
+
+    <div class="card">
+      <h3>🔁 Rappel : la spirale transactionnelle (Sibylle Escalona)</h3>
+      <p>Quand deux individus sont en interaction, les relations ont un effet <strong>bidirectionnel</strong> : j'influence l'autre, et sa réponse m'influence en retour. Ex. : un bébé très tonique induira un type de parentage différent d'un bébé calme. Ce concept de <em>spirale transactionnelle</em> (Escalona) est le fil conducteur de ce TD : que se passe-t-il quand l'enfant est <em>autre chose</em> que l'enfant envisagé ?</p>
+    </div>
 
     <div class="card">
       <h3>👶 La gestation psychique du nouveau-né</h3>
@@ -986,10 +1105,10 @@
 
   <div class="card">
     <h3>📈 Point de départ : les inégalités scolaires</h3>
-    <p>Étude longitudinale (6-12 ans, du CP au collège) : les performances scolaires se répartissent selon le <strong>niveau socio-économique</strong> des parents — et particulièrement selon le <strong>niveau d'éducation de la mère</strong> (facteur le plus déterminant pour le fonctionnement exécutif).</p>
-    <p>Les groupes ne convergent pas : les inégalités s'aggravent. L'école ne réduit pas les inégalités d'origine socio-économique.</p>
-    <div class="emphasis">💰 Économistes (Heckman) : le retour sur investissement des programmes d'intervention est maximal avant le CP. Plus on intervient tard, moins c'est efficace.</div>
-    <p>Conclusion : il faut intervenir <strong>le plus tôt possible</strong>, quand le cerveau est plus plastique.</p>
+    <p>Étude longitudinale (6-12 ans, du CP au collège) : les performances aux tests d'aptitude scolaire (type <strong>PISA</strong> en France) se répartissent selon le <strong>niveau socio-économique</strong> des parents — revenus, mais surtout <strong>niveau d'éducation de la mère</strong> (facteur le plus déterminant pour le fonctionnement exécutif de l'enfant).</p>
+    <p>Les groupes ne convergent pas : les inégalités s'aggravent avec l'âge. <strong>L'école ne réduit pas les inégalités d'origine socio-économique.</strong></p>
+    <div class="emphasis">💰 Économistes (Heckman) : le retour sur investissement des programmes d'intervention est maximal <strong>avant le CP</strong>. Plus on intervient tard, moins c'est efficace. Les programmes après l'âge scolaire ont des résultats décevants → il faut agir quand le cerveau est <em>plastique</em>.</div>
+    <p>Conclusion : il faut mettre les efforts de remédiation cognitive sur les <strong>enfants les plus jeunes possibles</strong>.</p>
   </div>
 
   <div class="card">
@@ -1024,7 +1143,13 @@
         <p>Pont entre primatologie et psychologie du bébé (tâche A non-B). Neurosciences cognitives développementales. IRM, EEG : outils qui révèlent le cerveau en développement.</p>
       </div>
     </div>
-    <p style="margin-top:.5rem">L'IRM fonctionnelle et l'EEG permettent de montrer que <strong>l'essentiel de la structuration des réseaux neuronaux</strong> se fait pendant le 3ème trimestre de grossesse et juste après la naissance.</p>
+    <p style="margin-top:.5rem">L'IRM fonctionnelle et l'EEG permettent de montrer que <strong>l'essentiel de la structuration des réseaux neuronaux</strong> se fait pendant le 3ème trimestre de grossesse et juste après la naissance. Petite enfance : élagage synaptique basé sur les expériences sensorielles et les activités cognitives.</p>
+    <div class="schema-box">
+      <div class="schema-title">La tâche A non-B (Baillargeon / Diamond)</div>
+      <p>On montre à l'enfant qu'on cache un objet sous une boîte A → il sait retrouver l'objet (permanence de l'objet). Puis on cache l'objet sous B devant lui → il cherche encore en A. <strong>L'enfant persiste dans sa réponse motrice antérieure.</strong></p>
+      <p>Utilisée simultanément par les primatologues (sur les primates adultes) et les psychologues (sur les bébés humains). <strong>Adèle Diamond</strong> a remarqué que les deux communautés testaient la même compétence sans se parler → elle organise des congrès pour mettre en commun les approches biologiques et psychologiques.</p>
+      <p>Baillargeon utilise les <strong>temps de regard</strong> pour contourner la motricité : plus l'enfant regarde longtemps, plus il est surpris/intéressé. Ex. : le train qui ne réapparaît pas → l'enfant regarde plus longtemps l'endroit où il devrait apparaître → preuve qu'il avait une attente.</p>
+    </div>
   </div>
 
   <div class="card">
@@ -1043,7 +1168,7 @@
     <p>On ne peut pas comprendre un processus cognitif sans observer comment fonctionne le corps. <strong>Bio-psycho-social = Gènes + Corps + Environnement + Cerveau.</strong></p>
     <p>Des représentations naissent de l'activité neuronale : ce que ça <em>nous fait</em> d'avoir des neurones activés (idée, image mentale, sentiment abstrait). Elles se construisent par accumulation d'expériences sensorielles et sont uniques à chaque cerveau → d'où la nécessité du mot comme symbole partagé.</p>
     <div class="warn">Les représentations sont <strong>partielles et combinatoires</strong> : pas une par objet/personne, mais fragmentées et recombinables. Ce qui permet d'apprendre à l'infini.</div>
-    <p style="margin-top:.5rem"><strong>Principes du neuroconstructivisme :</strong></p>
+    <p style="margin-top:.5rem"><strong>Principes du neuroconstructivisme</strong> (Westermann et al., 2007) :</p>
     <div class="pill-grid">
       <span class="pill" style="background:var(--mint)">Mécanismes : compétition, cooptation, chronotopie</span>
       <span class="pill" style="background:var(--bleu)">Processus : proactivité, spécialisation progressive</span>
@@ -1101,7 +1226,7 @@
     <p><strong>4 lois :</strong></p>
     <ul>
       <li><strong>Causalité circulaire</strong> (épigenèse probabiliste) : les gènes s'expriment plus ou moins probablement selon les influences sensorielles. Cercle d'influence biologie ↔ psychologie.</li>
-      <li><strong>Interactivité et réseaux</strong> : le cerveau est un réseau qui descend dans tout le corps (peau + système nerveux = même feuillet embryonnaire).</li>
+      <li><strong>Interactivité et réseaux</strong> : penser le cerveau comme un réseau qui descend dans tout le corps. Le tube digestif, la peau et le système nerveux central sont issus du <strong>même feuillet embryonnaire</strong> et fonctionnent ensemble tout au long de la vie.</li>
       <li><strong>Auto-organisation et activité-dépendance</strong> : le cerveau s'auto-organise par sa propre activité (omnipotent → modulaire).</li>
       <li><strong>Topologie dynamique</strong> : la localisation des zones spécialisées change selon le temps et le moment de la vie.</li>
     </ul>
@@ -1195,7 +1320,8 @@
       </div>
       <div class="schema-box">
         <div class="schema-title">Aspects éthiques</div>
-        <p>Choix cornélien. Chirurgies multiples (taille adaptée à l'enfant). Communauté sourde : langue des signes = langue et culture à part entière.</p>
+        <p>Choix cornélien. Chirurgies multiples (taille adaptée à l'enfant). Communauté sourde : langue des signes = langue et culture à part entière. Certains adultes implantés regrettent leur implantation.</p>
+        <p>📍 <strong>Note locale :</strong> « <em>Unicine</em> » à Caen = association pour apprendre la langue des signes.</p>
         <p>Implant bilatéral précoce → risque de troubles du comportement (autisme léger). Aujourd'hui : implant unilatéral de préférence.</p>
       </div>
     </div>
@@ -1285,16 +1411,42 @@
   <div class="card">
     <h3>🔢 Niveaux de fonctionnement de l'alimentation</h3>
     <div class="pill-grid">
-      <span class="pill" style="background:var(--rose)">Physiologique (satiété, nausée)</span>
-      <span class="pill" style="background:var(--pêche)">Sensoriel (goût, odeur, texture)</span>
-      <span class="pill" style="background:var(--lavande)">Moteur (praxies, coordination)</span>
+      <span class="pill" style="background:var(--rose)">Physiologique (satiété, alliesthésie, nausée)</span>
+      <span class="pill" style="background:var(--pêche)">Sensoriel (goût, odeur, texture, couleur)</span>
+      <span class="pill" style="background:var(--lavande)">Moteur (praxies, expressions, coordination)</span>
       <span class="pill" style="background:var(--bleu)">Cognitif (mémoire)</span>
       <span class="pill" style="background:var(--mint)">Émotionnel (motivation, hédonisme)</span>
-      <span class="pill" style="background:var(--pêche2)">Tempérament (néophobie)</span>
-      <span class="pill" style="background:var(--rose2)">Social (partage, transmission)</span>
+      <span class="pill" style="background:var(--pêche2)">Trait de caractère (néophobie, oppositions)</span>
+      <span class="pill" style="background:var(--rose2)">Social (partage, transmissions verticales et horizontales)</span>
       <span class="pill" style="background:var(--jaune)">Culturel (rituels, normes)</span>
     </div>
     <div class="warn">⚠️ Il n'y a pas UN déterminant des troubles alimentaires. C'est une constellation de facteurs qui interagissent. Les facteurs ne sont pas seulement inhérents à l'enfant ni seulement à son contexte — c'est bien l'<em>interaction</em> qu'il faut prendre en compte.</div>
+  </div>
+
+  <div class="card">
+    <h3>⚙️ Activités alimentaires complexes et évolutives – approche systémique</h3>
+    <p>Plusieurs systèmes sont à l'œuvre simultanément dans l'activité alimentaire :</p>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">🧬 Systèmes biologiques</div>
+        <p>Phénomènes sensori-moteurs (si défaillants → stress). Marqueurs épigénétiques qui évoluent tout au long de l'embryogenèse : les aliments façonnent l'expression des gènes. Preuve historique : personnes ayant vécu des famines → plus à risque de diabète à 40 ans (adaptation métabolique à la pénurie, puis surabondance).</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">😊 Phénomènes émotionnels</div>
+        <p>Les émotions naissent dans la relation à l'autre, activent un système d'analyse cognitif. Ex. : l'odeur de frites attire quand on a faim mais pas après avoir mangé. La motivation à manger est émotionnelle autant que physiologique.</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">🌍 Phénomènes socioculturels</div>
+        <p>Les relations autour et en amont du repas sont déterminantes. Un enfant perçu comme fragile génère une pression parentale accrue → stress partagé. Un enfant hyper-contrôlé à la maison mais mangeant seul à l'école manquera de flexibilité. Relations = contexte de toutes les transactions alimentaires.</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">🧠 Facteurs psychologiques</div>
+        <p>Mémoire, connaissances, tempérament, attachement, compétences sociales. Trouble de l'attachement souvent associé à l'anorexie infantile. Tempérament anxieux/dépressif → risque de sous-alimentation. Tempérament extraverti avec émotions marquées → dégoût plus net.</p>
+      </div>
+    </div>
+    <div class="warn">⚠️ Ces systèmes s'influencent et doivent être compris comme un tout. On ne peut pas traiter le biologique sans tenir compte du psychologique et du socioculturel.</div>
   </div>
 
   <div class="card">
@@ -1310,6 +1462,8 @@
       <div class="timeline-item"><strong>Âge adulte</strong> – Lissage possible. Grossesse = révision alimentaire pour certaines. D'autres maintiennent des troubles car l'entourage ne comprend pas.</div>
     </div>
     <div class="emphasis">💡 Les premiers suivis longitudinaux montrent qu'il n'y a PAS de norme absolue. Mettre la pression sur l'alimentation = risque que les difficultés perdurent.</div>
+    <div class="warn">⚠️ <strong>+25% des cas d'inadaptations pendant les repas</strong> sont la conséquence directe de la pression familiale — et non de caractéristiques propres à l'enfant.</div>
+    <div class="emphasis">💡 Un enfant laissé seul pour manger <strong>s'arrêtera de manger</strong> (cf. travaux d'Harlow). <strong>Isoler un enfant pour manger est maltraitant</strong> : l'acte alimentaire est inscrit dans les relations sociales, sans lesquelles la motivation disparaît. Le niveau de <em>ruralité</em> peut aussi influencer l'alimentation indépendamment des revenus (famille rurale vs quartier citadin : diversité alimentaire différente).</div>
   </div>
 
   <div class="divider"></div>
@@ -1335,6 +1489,11 @@
       <span class="pill" style="background:var(--mint)">🍃 Restrictif – mange très peu</span>
     </div>
     <p>Ces profils influencent la corpulence, le développement ET les pratiques éducatives parentales.</p>
+    <div class="schema-box">
+      <div class="schema-title">Biais de perception — Canada (Delaunay)</div>
+      <p>Des mères canadiennes qui perçoivent que le biberon passe mal — <em>d'autant plus si le bébé est un garçon de petit poids</em> — ont un biais de perception. Elles changent la position du bébé inutilement → crée des difficultés alimentaires (picky eating) plus tard. Les professionnels peuvent induire des transactions favorables en travaillant sur ces perceptions biaisées.</p>
+    </div>
+    <div class="warn">⚠️ Attention au terme <strong>« période critique »</strong> : côté rédhibitoire, en opposition avec l'approche développementale. Préférer <strong>« période sensible »</strong>. Plusieurs travaux (Flavor Programming – Mennella et al., 2014 ; De Cosmi et al., 2017) mettent l'accent sur des périodes critiques de programmation des trajectoires — la prof les juge trop simplistes, car ils manquent de complexité.</div>
   </div>
 
   <div class="card">
@@ -1344,10 +1503,77 @@
     <p>Selon Ainsworth : + la figure d'attachement est sensible aux signaux → + l'enfant est sécurisé → <strong>alimentation réceptive et répondante</strong>.</p>
   </div>
 
-  <div class="divider"></div>
+  <div class="card">
+    <h3>😰 Alimentation émotionnelle & biais parentaux de perception</h3>
+    <p><strong>Alimentation émotionnelle :</strong> erreur qui pousse l'individu à se nourrir pour faire face à une source de mal-être, non basé sur la faim réelle mais sur le désir de manger pour réguler une émotion. Facteur de risque de suralimentation, obésité, troubles des conduites alimentaires à l'adolescence.</p>
+    <div class="schema-box">
+      <div class="schema-title">Perception du poids idéal – Savage, Fischer & Birch (2007)</div>
+      <p>Le poids idéal selon les parents diffère du poids idéal médical. Dépend du NSC et de la culture d'origine.</p>
+      <ul>
+        <li>Nourrisson potelé = perçu comme sain et signe de succès dans le parentage → encouragement implicite à suralimenter</li>
+        <li>Mères hispanique d'Amérique du Sud : moins préoccupées par l'obésité que les mères non-hispaniques</li>
+        <li>Mères à faible revenu : interprètent souvent les cris du bébé comme signaux de faim (y compris douleur → réponse alimentaire) → aliments trop denses ou trop sucrés comme réconfort</li>
+        <li><strong>80% des mères américaines à faible revenu</strong> ayant un enfant en surpoids le considèrent comme normo-pondéral</li>
+      </ul>
+      <p>→ Les critères médicaux et les critères parentaux varient <strong>énormément</strong>. La guidance parentale doit prendre en compte ces biais culturels sans culpabiliser.</p>
+    </div>
+  </div>
 
-  <!-- Enjeux alimentation précoce -->
-  <div class="section-title">CM1 · Enjeux de l'alimentation précoce</div>
+  <div class="card">
+    <h3>🔢 Facteurs multiples de la néophobie – Scaglioni et al. (2008)</h3>
+    <p>Les conduites néophobes sont influencées par une multitude de facteurs interagissant :</p>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">Liés à l'enfant</div>
+        <ul>
+          <li>Caractéristiques individuelles (tempérament)</li>
+          <li>Apprentissages et pratiques antérieures</li>
+          <li>Corpulence, activité physique</li>
+        </ul>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">Liés à la mère</div>
+        <ul>
+          <li>Son propre rapport à la nourriture</li>
+          <li>Sa santé physique et mentale</li>
+        </ul>
+      </div>
+    </div>
+    <div class="schema-box">
+      <div class="schema-title">Liés au contexte familial</div>
+      <ul>
+        <li>Repas devant la télé</li>
+        <li>Structuration des repas (horaires, lieu)</li>
+        <li>Proportions proposées (trop tôt l'enfant apprend à manger trop)</li>
+        <li>Variété alimentaire proposée</li>
+        <li>Stratégies pour nourrir l'enfant : pression, contrôle restrictif, renforcement</li>
+        <li>Style éducatif (autoritaire vs démocratique)</li>
+        <li>Climat émotionnel des repas</li>
+        <li>Niveau d'études et revenus parentaux</li>
+      </ul>
+    </div>
+    <div class="emphasis">💡 Pas UN facteur déterminant → toujours une constellation. Chaque facteur pris isolément n'explique rien. C'est leur combinaison et leur persistance dans le temps qui orientent la trajectoire.</div>
+  </div>
+
+  <div class="card">
+    <h3>🏥 Enjeu de santé publique – Risques cumulés</h3>
+    <p>En tenant compte des facteurs de développement, les risques cumulés de vulnérabilité peuvent être contrôlés et prévenus. Sans intervention, une trajectoire alimentaire perturbée peut mener à :</p>
+    <div class="pill-grid">
+      <span class="pill" style="background:var(--rose)">Alimentation inadaptée</span>
+      <span class="pill" style="background:var(--pêche)">Troubles de la relation parent/enfant</span>
+      <span class="pill" style="background:var(--lavande)">Trajectoire développementale déviante et stabilisée</span>
+      <span class="pill" style="background:var(--bleu)">Carences nutritionnelles</span>
+      <span class="pill" style="background:var(--mint)">Retard de développement</span>
+      <span class="pill" style="background:var(--rose2)">Troubles mentaux</span>
+      <span class="pill" style="background:var(--jaune2)">Surpoids, obésité</span>
+      <span class="pill" style="background:var(--pêche2)">Maladies chroniques (diabète, cardio-vasculaire)</span>
+    </div>
+    <div class="emphasis">✅ <strong>Objectif clinique :</strong> repérer les facteurs protecteurs, les renforcer et mettre en place des stratégies d'intervention <em>avant</em> que les risques soient trop graves (prévention) <em>et</em> après (intervention). En pratique : les deux simultanément. La <strong>guidance parentale</strong> vise une alimentation réceptive (aux signaux de l'enfant) et répondante (propositions adaptées à ses besoins).</div>
+    <div class="schema-box">
+      <div class="schema-title">« Food that shapes you » – C. Florean</div>
+      <p>Le régime alimentaire façonne l'individu dans toutes ses dimensions : les expériences alimentaires influencent des mécanismes biochimiques autour de l'ADN → <strong>modifications épigénétiques</strong> (acétylation des histones, méthylation de l'ADN) → modification de l'expression des gènes. Les transitions dans le développement sont liées aux étapes importantes du développement (<em>lois de développement</em>). Pour étudier les comportements de l'enfant, il faut observer ses activités (<em>lois d'intégration fonctionnelle</em>).</p>
+    </div>
+  </div>
 
   <div class="card">
     <h3>🧬 Croissance rapide & mécanismes d'influence (O'Connor, 2003)</h3>
@@ -1358,7 +1584,7 @@
       <tr><td><strong>Adaptation à l'expérience</strong></td><td>L'organisme est prédisposé à s'adapter, mais cette plasticité diminue avec l'âge. Les adaptations initiales deviennent difficiles à modifier.</td><td>Privilégié en psychopathologie développementale. Périodes d'ouverture/fermeture (néophobie). Offre des possibilités de résilience.</td></tr>
       <tr><td><strong>Effets cumulatifs</strong></td><td>L'âge de l'expérience n'est pas déterminant ; c'est l'accumulation de facteurs de risque dans le temps.</td><td>Explique pourquoi plusieurs facteurs modestes peuvent avoir des effets durables.</td></tr>
     </table>
-    <div class="emphasis">✅ La psychopathologie développementale privilégie les modèles d'adaptation à l'expérience (plus souples, résilience possible).</div>
+    <div class="emphasis">✅ La psychopathologie développementale privilégie les modèles d'adaptation à l'expérience (plus souples, résilience possible). Rutter & O'Connor (2004) — études sur le devenir des enfants adoptés — montrent que la pertinence de ces modèles varie selon les dimensions psychologiques. Sroufe & Rutter (1984) : <em>« Dans une certaine mesure, les précurseurs adaptatifs de la plupart des troubles sont encore à découvrir. »</em></div>
   </div>
 
   <div class="card">
@@ -1407,12 +1633,14 @@
     <div class="grid-2">
       <div class="schema-box">
         <div class="schema-title">Système olfactif (Schaal, 1988)</div>
-        <p>Fonctionnel dès <strong>28 SA</strong>. Les arômes sont détectés par les cellules neuro-réceptives → axones dans le lobe olfactif → synapses dans l'hippocampe (mémorisation).</p>
-        <p>L'expérience modifie la composition et la densité des récepteurs. Neurogenèse tout au long de la vie. La sensibilité aux odeurs influence l'appréciation des aliments.</p>
+        <p>Fonctionnel dès <strong>28 SA</strong>. Les arômes alimentaires sont détectés lors de la déglutition : le flux d'air intérieur → extérieur ramène les arômes vers les neurorécepteurs olfactifs → axones vers le lobe olfactif → synapses dans l'<strong>hippocampe</strong> (mémorisation).</p>
+        <p><strong>Cortex olfactif primaire :</strong> l'une des premières zones corticales à se développer. <strong>Seulement 2 synapses avant le système limbique</strong> → voie émotionnelle directe et très rapide.</p>
+        <p><strong>Cortex olfactif secondaire :</strong> passe par le thalamus → voie cognitive, plus élaborée.</p>
+        <p>L'expérience modifie la composition et la densité des récepteurs olfactifs (expériences sur ratons : exposition menthol → neurones olfactifs se ressemblent tous → préférence pour le menthol). Neurogenèse tout au long de la vie. Ce système est un des premiers à être atteint dans les neurodégénérescences → marqueur précoce possible.</p>
       </div>
       <div class="schema-box">
         <div class="schema-title">Système gustatif</div>
-        <p>Synthèse des papilles : <strong>6ème-11ème SA</strong>. Bourgeons du goût dans les papilles dès <strong>14 SA</strong>.</p>
+        <p>Synthèse des papilles et synaptogenèse : <strong>6ème-11ème SA</strong> (Witt & Reuteurs, 1996). Bourgeons du goût dans les papilles dès <strong>14 SA</strong> (Mistretta, 1991).</p>
         <p>Densité des papilles corrélée à la sensibilité aux saveurs. Grande variabilité inter-individuelle (de 1 à 7 pour saccharose, Faurion, 2000).</p>
       </div>
     </div>
@@ -1466,17 +1694,34 @@
 
   <div class="card">
     <h3>⚖️ La cascade de satiété (Blundell / Bellisle, 2005)</h3>
-    <p><strong>Faim :</strong> sensation diffuse de faiblesse physique et mentale accompagnant un déficit énergétique (contractions gastriques, hypoglycémie). Motive à manger = motivation préprandiale.</p>
-    <p><strong>Satiété :</strong> absence de faim accompagnée d'une détente, satisfaction du besoin métabolique (parfois somnolence postprandiale).</p>
-    <p>Le rassasiement commence <em>avant</em> l'ingestion → <strong>rassasiement sensoriel</strong>. Entre 15 et 20 minutes d'exposition à un aliment, la satiété apparaît.</p>
+    <p><strong>Faim :</strong> sensation diffuse de faiblesse physique et mentale accompagnant un déficit énergétique — contractions gastriques douloureuses, hypoglycémie, difficultés de concentration, sueurs, anxiété possible. Motivation préprandiale à manger. Variable selon l'intensité et d'une personne à l'autre.</p>
+    <p><strong>Satiété :</strong> absence de faim/désir de manger accompagnée d'une détente (système parasympathique), satisfaction du besoin métabolique, parfois somnolence postprandiale (20 min après = conseillé).</p>
+    <div class="warn">⚠️ Si 0 apport alimentaire pendant longtemps, les sensations de faim finissent par disparaître (ex. : restrictions alimentaires sévères → plus conscience de la faim → phénomène addictif à ces sensations disparues).</div>
+
     <div class="schema-box">
-      <div class="schema-title">Marqueurs biologiques</div>
-      <p><strong>Ghréline</strong> (estomac) : hormone indiquant la faim. Peut faire défaut en cas d'anorexie infantile. En modifiant les interactions pendant les repas, la sensation de faim peut réapparaître.</p>
-      <p><strong>Leptine</strong> : augmente après consommation alimentaire (signal de rassasiement).</p>
-      <p>La simple mastication → salivation → message au cerveau d'absorption d'énergie → diminution de la faim.</p>
+      <div class="schema-title">La cascade de satiété : 4 dimensions</div>
+      <p><strong>1. Aspects sensoriels (rassasiement sensoriel précoce) :</strong> Le rassasiement commence <em>avant</em> l'ingestion. Vue, odeur seule d'un aliment peuvent déjà rassasier après 15-20 min d'exposition. Les enfants en néophobie peuvent n'avoir plus faim avant même d'avoir goûté → inutile de les forcer. La palatabilité stimule la faim mais déclenche aussi la satiété par surconsommation.</p>
+      <p><strong>Rassasiement sensoriel spécifique :</strong> la satiété est spécifique à l'aliment. On peut ne plus vouloir de pizza tout en ayant encore faim pour le dessert. → Conseil pratique : donner le yaourt même si l'enfant n'a pas mangé son plat, il aura au moins mangé quelque chose.</p>
+      <p><strong>2. Aspects cognitifs :</strong> anticipation, apprentissage et représentations mentales. Les enfants apprennent à associer la densité énergétique et la flaveur d'un aliment à sa valeur rassasiante. Expérience : yaourt plus dense → enfants mangent moins de yaourt. Apprentissage dose-dépendant.</p>
+      <p><strong>3. Aspects émotionnels :</strong> si le repas est teinté d'émotions négatives, la satiété précoce est apprise. L'émotion négative pendant un repas déclenche une satiété anticipée → l'enfant ne mange pas.</p>
+      <p><strong>4. Aspects physiologiques (pré- et post-absorptifs) :</strong></p>
+      <ul>
+        <li>Phénomènes pré-absorptifs : signaux sensoriels et gastriques → rassasiement précoce pendant le repas</li>
+        <li>Phénomènes post-absorptifs : modifications métaboliques et hormonales (leptine, insuline, CCK) → satiété prolongée, empêche reprise alimentaire pendant plusieurs heures</li>
+        <li><em>Événements périphériques et centraux de la cascade de satiété</em> — Helford et al. (2003)</li>
+      </ul>
     </div>
-    <p><strong>Rassasiement sensoriel spécifique :</strong> la flaveur d'un aliment déclenche la cascade de satiété spécifique à cet aliment. Un yaourt plus dense → enfants mangent moins.</p>
-    <div class="warn">⚠️ Dans l'anorexie mentale : les parents sont rassurés si le jeune cuisine, mais cuisiner ne signifie pas qu'il va manger (rassasiement sensoriel).</div>
+
+    <div class="schema-box">
+      <div class="schema-title">Neuro-hormones clés</div>
+      <p><strong>Ghréline :</strong> neurohormone diffusée par l'estomac. Plus le déficit énergétique est important, plus la ghréline est concentrée → stimule l'hypothalamus → pousse à manger. Peut <em>faire défaut</em> en cas d'anorexie infantile (enfants qui n'ont pas la sensation de faim, déficit de synthèse ou des récepteurs). En modifiant les comportements et interactions pendant les repas, la sensation de faim peut réapparaître progressivement. Le stress et la pression n'aident pas.</p>
+      <p><strong>Leptine :</strong> diffusée par les tissus adipeux. Plus forte concentration chez les personnes en surpoids/obésité morbide → mais souvent résistance des récepteurs → satiété moins bien ressentie → continuent à manger malgré des réserves suffisantes.</p>
+      <p><strong>Mastication seule :</strong> envoie au cerveau le signal d'absorption d'énergie → diminution de la faim. Explique le rassasiement sensoriel avant même l'ingestion.</p>
+    </div>
+
+    <p><strong>Conditionnement aversif :</strong> si vomissement ou intoxication alimentaire après un aliment → aversion durable pour cet aliment (dégoût associatif, Rozin).</p>
+    <div class="warn">⚠️ Dans l'anorexie mentale : les parents sont rassurés si le jeune cuisine, mais cuisiner ne signifie pas qu'il va manger — le rassasiement sensoriel est déjà déclenché.</div>
+    <div class="emphasis">💡 <strong>Palatabilité</strong> (ou appétibilité, valeur hédonique) : caractéristique du goût et de la texture d'un aliment agréable au palais. Active le système de récompense. La palatabilité est dépendante de multiples facteurs et motive la prise alimentaire au-delà du simple besoin énergétique.</div>
   </div>
 
   <div class="card">
@@ -1489,7 +1734,7 @@
       <li>Contrôle ou pression parentale inadaptée, surtout si l'enfant est anxieux.</li>
       <li>Rythmes différents selon l'âge (poussées de croissance chez les ados → ↑ demandes).</li>
     </ul>
-    <p><strong>Mécanismes homéostatiques</strong> : régulation de la glycémie et des réserves adipeuses. <strong>Mécanismes non homéostatiques</strong> : déclenchés par la disponibilité de l'aliment dans l'environnement.</p>
+    <p><strong>Mécanismes homéostatiques</strong> : régulation de la glycémie et des réserves adipeuses. Fonctionnels si les repas sont co-régulés dès la naissance. <strong>Mécanismes non homéostatiques</strong> : déclenchés par la disponibilité de l'aliment dans l'environnement (taille des portions, offre environnementale).</p>
     <div class="emphasis">💡 Ellyn Satter : les rythmes faim/satiété du nourrisson sont très variables d'un enfant à l'autre. Les problèmes de régulation émotionnelle sont fréquents : beaucoup d'enfants confondent la faim et l'envie de manger.</div>
   </div>
 
@@ -2092,32 +2337,7 @@
   </div><!-- /subtab-delaunay-td -->
 </div><!-- /panel-delaunay -->
 
-<script>
-  const btns = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.tab-panel');
 
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  });
-
-  // Sub-tabs (Zabalia CM/TD)
-  document.querySelectorAll('.subtab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const parentPanel = btn.closest('.tab-panel');
-      parentPanel.querySelectorAll('.subtab-btn').forEach(b => b.classList.remove('active'));
-      parentPanel.querySelectorAll('.subtab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('subtab-' + btn.dataset.subtab).classList.add('active');
-    });
-  });
-
-</script>
 
 
 <!-- ============================
@@ -2303,5 +2523,480 @@
 
 </div><!-- /panel-dumont -->
 
+<!-- ============================
+     ONGLET 5 : ANNALES
+     ============================ -->
+<div id="panel-annales" class="tab-panel">
+
+  <div class="tab-intro" style="background:linear-gradient(135deg,var(--blanc) 0%,#fffde0 100%)">
+    <strong>📝 Annales – Sujets corrigés</strong><br>
+    Corrections types pour chaque sujet d'annale. Format : <em>plan détaillé + développement argumenté + auteurs clés</em>. Les corrections sont organisées par intervenant. Les réponses s'appuient exclusivement sur les contenus CM et TD de l'UE23.
+  </div>
+
+  <div class="subtabs-bar">
+    <button class="subtab-btn active"    data-subtab="annales-delaunay">🌸 Delaunay / Blanchet</button>
+    <button class="subtab-btn"           data-subtab="annales-roche">🟢 Roche-Labarbe</button>
+    <button class="subtab-btn"           data-subtab="annales-zabalia">🟣 Zabalia</button>
+  </div>
+
+  <!-- ── DELAUNAY / BLANCHET ── -->
+  <div id="subtab-annales-delaunay" class="subtab-panel active">
+
+
+    <div class="annale-header">
+      <strong>📅 Décembre 2024 — Delaunay / Blanchet / Reutimann · Cas clinique Jon (3,5 ans)</strong>
+      Q1 (TD, /12) : Analyses des situations · Q2 (CM, /8) : Solutions pour la famille
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-title">📋 Plan Q1 – Analyse (2 méthodes TD : Kerzner + spirale transactionnelle)</div>
+      <ol>
+        <li>Identifier le profil clinique de Jon selon Kerzner (2015)</li>
+        <li>Analyser la dynamique relationnelle : spirale transactionnelle défavorable</li>
+        <li>Repérer les facteurs de risque et de maintien</li>
+        <li>Identifier les facteurs de protection existants</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Q1 – Analyse clinique détaillée</h3>
+      <p><strong>Rappel du cas.</strong> Jon, 3,5 ans. Dès 7 mois : refus alimentaire progressif, hospitalisé, alimentation par sonde. Origine organique écartée. Amélioré après guidance parentale (arrêt de la pression). Aujourd'hui : tri des aliments, lenteur, opposition, préférences rigides (pâtes/beurre/gruyère/jambon). Mère use de stratégies de contingence (manège), puis de distraction (vidéos), sans succès durable. Rejette de plus en plus. La mère est terrorisée, culpabilise, ne dort plus.</p>
+
+      <p><strong>Méthode 1 — Classification Kerzner (2015) : profil combiné.</strong></p>
+      <ul>
+        <li>🔴 <strong>Profil sélectif / évitant</strong> : Jon trie, s'oppose aux propositions, préférences très restreintes (pâtes/gruyère/jambon). Comportements alimentaires cohérents et persistants → sélectivité installée.</li>
+        <li>🔴 <strong>Profil peur de se nourrir</strong> : le vomissement provoqué par la force à 7 mois constitue un événement traumatique. Conditionnement aversif possible : l'acte alimentaire est associé à une expérience aversive (force, hospitalisation, sonde).</li>
+        <li>🔴 <strong>Profil feeding style parental</strong> : la mère présente un biais de perception anxieux, des stratégies inadaptées (contingence de renforcement → manège ; distraction → vidéos), et une incapacité croissante à poser un cadre. Elle est dans la position du « sauveur » (triangle de Karpman), ce qui maintient le symptôme.</li>
+      </ul>
+      <div class="warn">⚠️ Les 3 profils se combinent et s'alimentent mutuellement → complexité clinique à ne pas réduire à un seul facteur.</div>
+
+      <p style="margin-top:.8rem"><strong>Méthode 2 — Spirale transactionnelle (Sameroff / Russell & Russell, 2018).</strong></p>
+      <div class="schema-box">
+        <div class="schema-title">Reconstruction de la spirale transactionnelle</div>
+        <p>1. Jon (7 mois) : tempérament possiblement anxieux, début d'opposition alimentaire → mère anxieuse perçoit une fragilité → force l'alimentation.</p>
+        <p>2. Transaction défavorable : Jon vomit, est hospitalisé → traumatisme alimentaire. La mère culpabilise davantage → redouble d'efforts.</p>
+        <p>3. Amélioration temporaire (guidance : arrêt pression) → mais les représentations maternelles anxieuses n'ont pas changé en profondeur.</p>
+        <p>4. Aujourd'hui : Jon affirme son opposition (stade développemental normal à 3 ans). Sa sélectivité pousse la mère à user de contingence (manège) → Jon apprend que l'opposition aboutit → renforce l'opposition → mère escalade les stratégies → Jon escalade le refus → <strong>cercle vicieux installé</strong>.</p>
+      </div>
+
+      <p><strong>Facteurs de risque identifiés :</strong></p>
+      <ul>
+        <li>Traumatisme alimentaire précoce (7 mois, vomissement forcé, hospitalisation)</li>
+        <li>Anxiété et culpabilité maternelle chronique → biais de perception</li>
+        <li>Stratégies parentales inadaptées : contingence de renforcement (manège) et distraction (vidéos) = formes de contrôle qui renforcent le trouble</li>
+        <li>Absence de cadre stable autour des repas</li>
+        <li>Père peu présent comme soutien dans la gestion des repas</li>
+      </ul>
+      <p><strong>Facteurs de protection :</strong></p>
+      <ul>
+        <li>Amélioration passée prouvée : Jon a su manger normalement → la capacité existe</li>
+        <li>Le père a pris l'initiative de consulter → ouverture au changement</li>
+        <li>Origine organique écartée → champ libre pour intervention psychologique</li>
+      </ul>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-title">📋 Plan Q2 – Solutions (CM, /8, argumentation CM + TD)</div>
+      <ol>
+        <li>Restaurer un cadre alimentaire sécurisant : co-régulation adaptée</li>
+        <li>Modifier les stratégies parentales : partage des responsabilités (Satter)</li>
+        <li>Travail sur les représentations maternelles</li>
+        <li>Profiter des leviers de plasticité et des facteurs de protection</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Q2 – Solutions proposées</h3>
+      <p><strong>1. Restaurer un cadre alimentaire sécurisant.</strong> La première priorité est de <em>dépressuriser</em> les repas. Les repas doivent redevenir un moment neutre, prévisible, sans enjeu émotionnel fort. Cela passe par : cadre temporel et spatial stable (même lieu, même heure), durée limitée (~20 min), assiettes adaptées à l'enfant (pas de grande assiette décourageante), pas de télévision ni de distraction (vidéos), présence calme des parents qui mangent eux-mêmes.</p>
+      <p><strong>2. Appliquer le partage des responsabilités (Ellyn Satter, 1983).</strong> Expliquer aux parents que : <em>le parent décide quoi, quand et où proposer</em> ; <em>l'enfant décide s'il mange et combien</em>. Cela permet de sortir du rapport de force. La mère doit apprendre à accepter que Jon ne mange pas, sans stratégie de contingence. Lui expliquer le rassasiement sensoriel spécifique (Blundell) : Jon peut être rassasié pour les légumes mais pas pour les pâtes — ce n'est pas un caprice, c'est physiologique.</p>
+      <p><strong>3. Modifier les représentations maternelles.</strong> La mère perçoit Jon comme fragile depuis l'hospitalisation. Ce biais de perception amplifie la pression. La guidance parentale doit l'aider à : reconnaître les signaux réels de faim et de satiété de Jon, interpréter l'opposition alimentaire comme une étape développementale normale (affirmation de soi à 3 ans), déconstruire la culpabilité. Rappel : imposer un suivi ne fonctionne pas — la famille doit s'approprier les changements.</p>
+      <p><strong>4. Exploiter les facteurs de protection.</strong> Jon a mangé normalement dans le passé → preuve de compétence. Proposer des expositions répétées et non coercitives aux légumes rejetés (8-10 présentations, contexte ludique, Niclaus). Impliquer le père comme relais positif. Exploiter la socialisation : repas avec d'autres enfants mangeant varié (effet de modelage, Hendy & Raudenbush).</p>
+      <div class="emphasis">✅ Objectif global : restaurer des transactions alimentaires favorables, en modifiant les pratiques parentales ET l'environnement du repas. Ce n'est pas Jon qui doit changer seul, c'est la dynamique relationnelle.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SUJET 3 : Déc. 2022 S1 -->
+    <div class="annale-header">
+      <strong>📅 Décembre 2022 — Sujet 1 (Delaunay, Blanchet, Morière, Fontaine, Jean)</strong>
+      <em>« Qu'apportent les réflexions menées selon les principes de l'approche de psychopathologie développementale à la compréhension des trajectoires de développement alimentaire déviantes ou non ? »</em>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-title">📋 Plan proposé</div>
+      <ol>
+        <li><strong>Introduction</strong> — Définir psychopatho dév., trajectoire, alimentation comme domaine complexe</li>
+        <li><strong>I. L'alimentation, un acte bio-psycho-social aux multiples déterminants</strong><br>
+          1.1 Poulain : 3 pôles (social, hédonique, santé)<br>
+          1.2 Wallon : de l'acte à l'activité alimentaire (8 niveaux)<br>
+          1.3 Facteurs multiples et approche systémique (Sameroff)</li>
+        <li><strong>II. Les trajectoires alimentaires : diversité et déviations</strong><br>
+          2.1 Les phases de transition (fœtal → adulte)<br>
+          2.2 Modèles d'influence précoce : O'Connor (période sensible, adaptation, cumulatif)<br>
+          2.3 Trajectoires du picky eating : Carbona Cano (2015)</li>
+        <li><strong>III. Comprendre les déviations grâce à l'approche développementale</strong><br>
+          3.1 La spirale transactionnelle comme outil d'analyse<br>
+          3.2 Facteurs de risque, de maintien et de protection<br>
+          3.3 Du continuum (Dovey 2016) à la prévention</li>
+        <li><strong>Conclusion</strong> — Implications cliniques</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Correction développée — Points clés à développer</h3>
+      <p><strong>Introduction.</strong> L'alimentation est l'un des domaines les plus complexes du développement humain. Elle mobilise simultanément des processus biologiques (satiété, neurodéveloppement), psychologiques (mémoire, émotions, régulation), sociaux (partage, transmission culturelle) et moteurs (praxies). La psychopathologie développementale apporte un regard original sur ce domaine : elle ne cherche pas de cause unique à un trouble, mais s'intéresse aux <strong>trajectoires</strong> — comment un développement alimentaire déviant se construit, se maintient ou se résorbe au fil du temps et des transactions.</p>
+
+      <p><strong>I — L'alimentation, un acte complexe.</strong> JP Poulain (2012) montre que l'alimentation fonctionne selon 3 pôles interdépendants : social, hédonique, santé. Negliger le pôle hédonique (comme trop souvent en clinique occidentale) est un facteur de risque : un enfant qui ne prend pas plaisir à manger risque de se sous-alimenter. Wallon distingue l'<em>acte</em> (mouvement dirigé vers un but : cri de faim) de l'<em>activité</em> alimentaire (signification, intentions, interactions socio-émotionnelles). Dès 5-7 mois, l'alimentation implique une pensée. Les 8 niveaux de fonctionnement (physiologique, sensoriel, moteur, cognitif, émotionnel, tempérament, social, culturel) montrent la multiplicité des entrées dans ce domaine.</p>
+
+      <p><strong>II — Trajectoires et périodes de transition.</strong> O'Connor (2003) propose trois modèles : <em>période sensible</em> (fenêtre temporelle déterminante), <em>adaptation à l'expérience</em> (plasticité décroissante mais modifiable), <em>effets cumulatifs</em> (accumulation de facteurs de risque). La psychopathologie développementale privilégie le modèle d'adaptation à l'expérience car il permet la résilience et l'intervention. Carbona Cano (2015) montre qu'il n'y a pas une trajectoire de picky eating mais des trajectoires plurielles : certains enfants se normalisent, d'autres persistent, d'autres débutent tard. Les facteurs de trajectoire persistante : sexe masculin, petit poids de naissance, faible revenu parental.</p>
+
+      <p><strong>III — Les apports de l'approche transactionnelle.</strong> Le modèle transactionnel (Sameroff, Russell & Russell 2018) révèle comment des transactions répétées entre l'enfant et son environnement construisent progressivement un trouble ou le préviennent. Le continuum de Dovey (2016) — néophobie → picky eating → ARFID — montre que les troubles alimentaires ne surgissent pas ex nihilo : ils s'installent progressivement, souvent à partir de périodes développementales normales mal accompagnées. Les stratégies parentales inadaptées (coercition, contingence de renforcement, Rigal et al. 2012) sont des facteurs de maintien documentés. À l'inverse, la guidance parentale basée sur la co-régulation adaptée (Satter, ALS) est un puissant facteur protecteur.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SUJET 4 : Juin 2024 Marianne -->
+    <div class="annale-header">
+      <strong>📅 Juin 2024 — Blanchet / Delaunay / Reutimann · Cas clinique Marianne (17 ans)</strong>
+      <em>Étude de cas selon 2 approches TD. Argumenter. 1 copie double max.</em>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-title">📋 Plan proposé (2 approches TD : Kerzner + spirale transactionnelle)</div>
+      <ol>
+        <li>Analyse clinique : profil Kerzner + diagnostic DSM-5</li>
+        <li>Reconstruction de la spirale transactionnelle</li>
+        <li>Facteurs de risque, de maintien, de protection</li>
+        <li>Propositions d'intervention</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Rappel du cas et analyse clinique</h3>
+      <p><strong>Rappel.</strong> Marianne, 17 ans. Perçue comme « gourmande » par son père boulanger. Sa mère l'a mise au régime dès 12 ans. Depuis 1 an : maigrit alors qu'elle mange bien en apparence. Se pèse matin et soir. Isolement social. Quitte la table en fin de repas, va aux toilettes. S'inscrit seule en salle de sport. Honte de son corps. Impression que son ventre et ses cuisses grossissent à vue d'œil (dysmorphie). IMC dans la norme. La mère félicite la perte de poids ; le père s'inquiète.</p>
+
+      <p><strong>Méthode 1 — Profil clinique.</strong></p>
+      <ul>
+        <li><strong>Diagnostic principal probable : Anorexie mentale</strong> (DSM-5 : restriction apports, peur intense de grossir, perturbation de l'image corporelle). La restriction est masquée (mange à table, purge ensuite → comportements compensatoires → boulimie-purge ou anorexie restrictive purgative à préciser).</li>
+        <li>Comportements compensatoires : aller aux toilettes après repas (vomissements probables), exercice physique excessif (salle de sport seule le soir).</li>
+        <li>Dysmorphie corporelle : se perçoit comme grossissant alors que IMC normal.</li>
+        <li>Isolement social progressif : facteur de maintien et d'aggravation.</li>
+      </ul>
+
+      <p><strong>Méthode 2 — Spirale transactionnelle.</strong></p>
+      <div class="schema-box">
+        <div class="schema-title">Reconstruction chronologique</div>
+        <p>1. <em>Facteur prédisposant</em> : père boulanger (alimentation hédonique valorisée), Marianne perçue comme « gourmande » → représentation précoce d'elle-même comme mangeant trop.</p>
+        <p>2. <em>Transaction défavorable précoce</em> : puberté précoce (9-11 ans) + remarques blessantes à l'école et dans la famille → Marianne associe son corps changeant à quelque chose de négatif.</p>
+        <p>3. <em>Transaction maternelle délétère</em> : la mère impose des régimes dès 12 ans, craint l'obésité → valide l'idée que le corps de Marianne est un problème à résoudre. Contrôle restrictif → augmente l'attrait pour les aliments « interdits » (Birch).</p>
+        <p>4. <em>Adolescence</em> : Marianne maigrit → mère félicite → renforcement positif de la restriction → le comportement de restriction est valorisé socialement (par la mère).</p>
+        <p>5. <em>Aujourd'hui</em> : perte de poids continue malgré alimentation apparente, isolement, dysmorphie → trouble installé. La mère félicite encore (ne perçoit pas le danger) → facteur de maintien. Le père s'inquiète → tension parentale → facteur de stress supplémentaire.</p>
+      </div>
+
+      <p><strong>Facteurs de risque :</strong> contrôle restrictif maternel précoce, valorisation sociale de la minceur, dysmorphie, isolement, comportements compensatoires cachés, puberté précoce, environnement familial conflictuel autour du poids.</p>
+      <p><strong>Facteurs de protection :</strong> IMC encore dans la norme (pas de dénutrition sévère), père inquiet et motivé à agir, Marianne va encore au lycée (liens sociaux résiduels).</p>
+      <p><strong>Intervention :</strong> prise en charge pluridisciplinaire (médicale, nutritionnelle, psychologique). Travail sur les représentations corporelles et la dysmorphie. Déconstruire la valorisation maternelle de la minceur. Ne pas dramatiser ni minimiser. Restaurer des transactions alimentaires non-anxiogènes dans la famille.</p>
+    </div>
+
+  </div><!-- /subtab-annales-delaunay -->
+
+  <!-- ── ROCHE-LABARBE ── -->
+  <div id="subtab-annales-roche" class="subtab-panel">
+
+    <div class="annale-header">
+      <strong>📅 Décembre 2023 — Roche-Labarbe (10 points)</strong>
+      <em>« Une jeune femme dépressive traitée aux IRS a un projet d'enfant. Doit-elle arrêter son antidépresseur pendant la grossesse pour le bon développement de son futur bébé ? »</em>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-title">📋 Plan proposé</div>
+      <ol>
+        <li><strong>Introduction</strong> — Poser l'enjeu : tension entre bien-être maternel et développement fœtal</li>
+        <li><strong>I. Ce que l'on sait des IRS sur le neurodéveloppement (modèles animaux)</strong><br>
+          1.1 Rôle de la sérotonine dans le développement cérébral précoce<br>
+          1.2 Effets du citalopram sur la spécialisation corticale (rongeurs)<br>
+          1.3 Effets comportementaux chez les ratons exposés</li>
+        <li><strong>II. Données chez l'humain : accélération de la maturation cérébrale</strong><br>
+          2.1 Étude 3 groupes (contrôle / dépression non traitée / IRS)<br>
+          2.2 Résultats : discrimination des phonèmes et maturation accélérée<br>
+          2.3 Étude in utero : battements cardiaques fœtaux et consonnes</li>
+        <li><strong>III. Réponse nuancée : ni arrêt brutal, ni maintien sans réflexion</strong><br>
+          3.1 Risques de l'arrêt brutal (sevrage, rechute dépressive)<br>
+          3.2 Risques du maintien (spécialisation prématurée, effets à long terme incertains)<br>
+          3.3 La dépression maternelle non traitée est aussi un facteur de risque<br>
+          3.4 Recommandation : décision individualisée, anticipation, suivi pluridisciplinaire</li>
+        <li><strong>Conclusion</strong></li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Correction développée</h3>
+      <p><strong>Introduction.</strong> La question de la poursuite d'un traitement antidépresseur par IRS pendant la grossesse illustre parfaitement la complexité du neuroconstructivisme : le développement cérébral fœtal est activité-dépendant et dépend des entrées chimiques autant que sensorielles. Cette question n'a pas de réponse simple — elle nécessite de peser les effets de l'exposition aux IRS <em>contre</em> les effets de la dépression maternelle non traitée sur le développement de l'enfant.</p>
+
+      <p><strong>I — Effets des IRS sur le neurodéveloppement (données animales, Simpson et al. PNAS 2011).</strong> La sérotonine joue un rôle très tôt dans le développement : prolifération neuronale, différenciation et mise en place des connexions. L'exposition prénatale au citalopram (IRS) chez les rongeurs montre une <em>moins bonne spécialisation</em> du cortex auditif primaire : plus de zones striées (neurones non spécialisés), organisation tonotopique dégradée. Sur le plan comportemental : les ratons exposés passent moins de temps à explorer des jouets nouveaux et jouent moins avec leurs congénères (symptômes TSA-like). Ces effets sont plus marqués chez les mâles, ce qui est cohérent avec la surreprésentation masculine dans les TSA.</p>
+
+      <p><strong>II — Données chez l'humain.</strong> L'étude en 3 groupes (bébés 6-10 mois de mères : contrôles / dépressives non traitées / traitées aux IRS) montre des résultats frappants sur la discrimination des phonèmes d'une langue étrangère (Hindi). Groupe contrôle : discriminent à 6 mois, plus à 10 mois (spécialisation normale). Groupe dépression non traitée : retard de spécialisation (influence postnatale de la dépression maternelle : la mère interagit moins). Groupe IRS : <strong>ne discriminent ni à 6 mois ni à 10 mois</strong> → spécialisation déjà clôturée avant 6 mois → <em>maturation accélérée</em>. Même résultat en modalité visuelle. Confirmation in utero (battements cardiaques fœtaux) : les fœtus exposés au citalopram détectent le changement de consonne à 36 SA alors que ce n'est pas attendu à cet âge → <strong>maturation accélérée des périodes sensibles</strong>.</p>
+
+      <p><strong>III — Réponse nuancée : ni oui ni non.</strong></p>
+      <ul>
+        <li><strong>Ne pas arrêter brutalement</strong> : le sevrage aux IRS est inconfortable et demande plusieurs semaines à mois. Un arrêt brutal en début de grossesse expose à une rechute dépressive, qui est elle aussi un facteur de risque pour le développement de l'enfant (dépression maternelle → moins d'interactions → retard développemental).</li>
+        <li><strong>Les effets de l'exposition aux IRS existent</strong> : maturation accélérée, effets sur la spécialisation sensorielle à long terme, possible lien avec des symptômes TSA-like (à confirmer chez l'humain). Mais ces effets ne constituent pas une contre-indication absolue.</li>
+        <li><strong>La dépression non traitée est aussi un risque</strong> : une mère sévèrement dépressive interagit moins bien avec son enfant, produit moins de stimulations adaptées → retard de spécialisation (groupe 3 de l'étude). Ce risque est documenté.</li>
+        <li><strong>Recommandation clinique</strong> : anticiper si possible (prévoir l'arrêt progressif avant conception), discuter cas par cas avec le médecin (intensité de la dépression, risque de rechute), envisager un substitut non pharmacologique si le risque de rechute est faible ou modéré (soutien psychologique). La décision est toujours individualisée.</li>
+      </ul>
+      <div class="emphasis">✅ Réponse attendue : concise, structurée, directement ancrée sur les données du cours. Éviter de remplir avec des généralités sur la dépression.</div>
+    </div>
+
+  </div><!-- /subtab-annales-roche -->
+
+  <!-- ── ZABALIA ── -->
+  <div id="subtab-annales-zabalia" class="subtab-panel">
+
+    <!-- SUJET 1 : Déc. 2025 -->
+    <div class="annale-header">
+      <strong>📅 Décembre 2025 — Zabalia</strong>
+      <em>« En vous appuyant sur des exemples issus du cours, expliquez en quoi l'approche transactionnelle renouvelle la compréhension des psychopathologies de l'enfant. »</em><br>
+      Durée : 1h30 · Documents non autorisés
+      <br><span style="font-size:.85rem;color:#6b5200">⚠️ La correction s'appuie sur les contenus CM Zabalia (psychopatho développementale) : modèle transactionnel (Sameroff), trajectoires (Sroufe), équifinalité/multifinalité, 5 contextes — pas sur les contenus Delaunay.</span>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-title">📋 Plan proposé</div>
+      <ol>
+        <li><strong>Introduction</strong> — Définir psychopathologie développementale, trajectoire, transaction. Annoncer l'enjeu : dépasser le modèle causal linéaire.</li>
+        <li><strong>I. Le modèle transactionnel : principes et ruptures</strong><br>
+          1.1 De la causalité linéaire à la causalité circulaire (Sameroff)<br>
+          1.2 L'enfant et son environnement se co-construisent<br>
+          1.3 Les trois composantes : phénotype, génotype, environtype</li>
+        <li><strong>II. Comprendre les psychopathologies autrement</strong><br>
+          2.1 Trajectoires multiples, pas de norme unique (Sroufe)<br>
+          2.2 Les facteurs de risque et de protection comme levier<br>
+          2.3 L'importance des périodes sensibles et des transactions précoces</li>
+        <li><strong>III. Exemples cliniques illustrant l'apport transactionnel</strong><br>
+          3.1 Alimentation : le picky eating comme exemple de spirale transactionnelle<br>
+          3.2 Attachement et troubles relationnels<br>
+          3.3 Implications pour la prévention et la guidance parentale</li>
+        <li><strong>Conclusion</strong> — Le modèle transactionnel comme outil clinique : repérer, comprendre, intervenir.</li>
+      </ol>
+    </div>
+
+    <div class="corr-intro">Développement détaillé ci-dessous — les titres de partie ne s'écrivent pas sur la copie, ils structurent votre pensée.</div>
+
+    <div class="card">
+      <h3>📌 Introduction</h3>
+      <p>La psychopathologie développementale s'intéresse aux trajectoires de développement plus ou moins adaptées. Elle cherche à comprendre pourquoi, à partir d'un même point de départ, certains enfants développent des troubles durables quand d'autres ne le font pas. Une des contributions majeures de l'approche contemporaine est le <strong>modèle transactionnel</strong> (Sameroff, 1975), qui rompt avec les explications causales linéaires en proposant que l'enfant et son environnement se <em>co-transforment</em> mutuellement au fil du temps.</p>
+      <p>Une <strong>transaction</strong> (à distinguer d'une simple interaction) désigne un échange qui provoque un changement durable de fonctionnement chez les deux participants. Cette conception renouvelle profondément la façon dont on comprend et prend en charge les psychopathologies de l'enfant.</p>
+    </div>
+
+    <div class="card">
+      <h3>I. Le modèle transactionnel : principes et ruptures épistémologiques</h3>
+      <p><strong>De la causalité linéaire à la causalité circulaire.</strong> Les modèles classiques (médical, béhavioriste) cherchaient une cause unique et directe au trouble. Ex : « l'enfant a un TDAH parce qu'il est né prématuré. » Le modèle transactionnel de Sameroff (2009) postule au contraire une <strong>causalité circulaire</strong> : les gènes influencent le comportement, qui influence l'environnement, qui modifie en retour l'expression des gènes (épigenèse probabiliste).</p>
+      <p><strong>Les trois composantes interdépendantes.</strong> Sameroff distingue le <em>phénotype</em> (caractéristiques observables de l'enfant : poids, tempérament, comportements), le <em>génotype</em> (patrimoine génétique, non déterministe), et l'<em>environtype</em> (l'environnement dans sa totalité : famille, culture, société). Ces trois niveaux s'influencent mutuellement et en permanence. Exemple alimentaire : un enfant gourmand (phénotype) suscite plus d'interactions positives autour des repas (environtype) → renforce son appétit (phénotype) → les parents ont confiance en leur parentage (transaction favorable).</p>
+      <div class="emphasis">💡 Rupture majeure : ce n'est plus <em>l'enfant</em> qui porte le trouble, ni <em>les parents</em> qui en sont responsables — c'est la <strong>dynamique transactionnelle</strong> entre les deux qui façonne le développement.</div>
+    </div>
+
+    <div class="card">
+      <h3>II. Comprendre les psychopathologies autrement grâce au modèle transactionnel</h3>
+      <p><strong>Trajectoires multiples, pas de norme unique (Sroufe, 1997).</strong> Il n'existe pas une trajectoire développementale normale mais une pluralité de trajectoires plus ou moins adaptées. Un même facteur de risque (ex : prématurité) ne conduit pas systématiquement à un trouble — cela dépend de la qualité des transactions qui suivent. À l'inverse, des transactions répétées défavorables peuvent créer une vulnérabilité à partir d'une situation anodine.</p>
+      <p><strong>Facteurs de risque, de protection et de maintien.</strong> Le modèle transactionnel distingue : les risques à l'origine des perturbations (anxiété parentale, biais de perception), les risques de maintien (aversions sensorielles installées, manque de plaisir) et les facteurs protecteurs (sensibilité parentale, guidance, socialisation). L'intervention vise à <em>modifier les transactions</em> pour diminuer les facteurs de risque et renforcer les facteurs protecteurs.</p>
+      <p><strong>Périodes sensibles et transactions précoces.</strong> Les transactions les plus impactantes ont lieu pendant les périodes sensibles, où la plasticité cérébrale est maximale. Le modèle transactionnel appliqué à l'alimentation (Russell & Russell, 2018) montre que les traits alimentaires de l'enfant (gourmand, sélectif, restrictif) influencent les pratiques parentales, qui influencent en retour les comportements alimentaires : <strong>spirale qui peut être favorable ou délétère</strong>.</p>
+    </div>
+
+    <div class="card">
+      <h3>III. Exemples cliniques illustrant l'apport transactionnel</h3>
+      <p><strong>Le picky eating comme spirale transactionnelle.</strong> Un enfant perçu comme fragile dès la naissance (petit poids, tempérament anxieux) pousse ses parents à forcer l'alimentation. Cette pression génère une aversion alimentaire chez l'enfant → les repas deviennent conflictuels → le parent renforce la pression → cercle vicieux. Sans le modèle transactionnel, on attribuerait le trouble à l'enfant seul (il est « difficile ») ou aux parents seuls (ils sont « contrôlants »). L'approche transactionnelle révèle la <em>dynamique relationnelle</em> et ouvre des leviers d'intervention sur les deux pôles (guidance parentale + environnement du repas).</p>
+      <p><strong>Attachement et régulation émotionnelle.</strong> Selon Ainsworth, la sensibilité maternelle aux signaux de l'enfant construit la sécurité d'attachement. Une mère dépressive interagit moins, joue moins, répond moins aux signaux — transactions défavorables répétées → retard de spécialisation perceptive (cf. étude IRS, Roche-Labarbe) → déficit de régulation émotionnelle → risque de troubles internalisés. Là encore, la psychopathologie n'est pas dans l'enfant, ni dans la mère seule, mais dans la <em>qualité des échanges.</em></p>
+      <p><strong>Implications pour la prévention : la guidance parentale.</strong> Puisque les troubles émergent dans des transactions défavorables répétées, la prévention consiste à modifier les transactions le plus tôt possible. La guidance parentale (Ellyn Satter, ALS 1986) aide les parents à : lire les signaux de l'enfant, répondre de façon adaptée, instaurer une co-régulation. Elle ne culpabilise pas, elle outille. Rappel clé : imposer un suivi ne fonctionne pas — il faut proposer et laisser les familles s'approprier les changements.</p>
+      <div class="warn">⚠️ Éviter les termes « cause » et « période critique » → préférer « facteur de risque » et « période sensible ». Ne jamais isoler un seul facteur comme déterminant.</div>
+    </div>
+
+    <div class="card">
+      <h3>📌 Conclusion</h3>
+      <p>Le modèle transactionnel renouvelle fondamentalement la compréhension des psychopathologies de l'enfant : il déplace le regard de l'individu vers la <strong>dynamique développementale</strong>, replace chaque trouble dans une trajectoire faite d'échanges accumulés, et offre des leviers d'intervention à tout âge. Il oblige à penser en termes de systèmes, de temps et d'interaction plutôt qu'en termes de causes et d'effets. Cliniquement, cette approche est plus juste, moins culpabilisante pour les familles, et plus efficace car elle agit sur les transactions elle-mêmes.</p>
+    </div>
+
+    <div class="divider"></div>
+
+
+    <div class="divider"></div>
+
+
+    <!-- SUJET Déc. 2023 Anquetil - Agathe -->
+    <div class="annale-header">
+      <strong>📅 Décembre 2023 — Anquetil (10 points) · Cas clinique Agathe (7 ans)</strong>
+      <em>Décrire la trajectoire développementale, proposer un diagnostic principal et différentiel. Argumenter avec le vocabulaire de la psychopathologie développementale.</em>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-title">📋 Plan proposé</div>
+      <ol>
+        <li>Description de la trajectoire développementale avec le vocabulaire adapté</li>
+        <li>Facteurs de risque et de protection identifiés</li>
+        <li>Diagnostic principal (avec justification)</li>
+        <li>Diagnostic différentiel</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Rappel des éléments cliniques clés</h3>
+      <p>Agathe, 7 ans, CP (2ème année). Née à 34 SA (prématurée). Bon développement global initial. Contexte : parents séparés l'année dernière, mère très occupée, sœur aînée peu disponible, accès tablette prolongé. Difficultés scolaires : lecture non pleinement acquise, décroche rapidement, attention sur stimuli non pertinents, du mal à s'organiser. Comportements : recherche de sensations (parfois danger), agrippement fort aux personnes, frustration → agressivité (école et maison). Évaluation Tea-Ch : difficultés à passer d'une tâche à l'autre, attention soutenue déficitaire. BRIEF-P : Score composite exécutif global 71 (+2 SD), contrôle inhibiteur 65, flexibilité 60, métacognition émergente 73.</p>
+    </div>
+
+    <div class="card">
+      <h3>Trajectoire développementale</h3>
+      <p><strong>Contexte biologique de départ.</strong> Naissance prématurée à 34 SA : le développement cérébral, notamment la maturation corticale et la myélinisation, n'est pas achevé à la naissance. La prématurité est un facteur de vulnérabilité biologique documenté pour les fonctions exécutives et l'attention. Cependant, Agathe présente un « bon développement global » durant les premières années → résilience initiale, probablement soutenue par le cadre familial des premières années.</p>
+      <p><strong>Facteurs de risque accumulés (modèle des effets cumulatifs, O'Connor).</strong> Séparation parentale récente → perte de stabilité, source de stress. Mère peu disponible (emploi polyvalent, grande distribution). Sœur aînée peu présente. Accès tablette prolongé → stimulation exogène excessive, sans médiation adulte → entrave au développement de l'attention endogène et exécutive. Isolation sociale précoce (gardée à la maison jusqu'à l'école).</p>
+      <p><strong>Signes développementaux.</strong> Le profil d'Agathe correspond à une déviation de la trajectoire attentionnelle et exécutive : difficultés d'inhibition (stimuli non pertinents, comportements interdits : balançoire), de flexibilité cognitive (passage d'une tâche à l'autre), de planification (organisation des tâches) et de métacognition (conscience de ses propres processus cognitifs). La recherche de sensations intenses (agrippement, comportements à risque) évoque une hypersensibilité ou hyposensibilité à traitement sensoriel.</p>
+    </div>
+
+    <div class="card">
+      <h3>Diagnostic principal et différentiel</h3>
+      <p><strong>Diagnostic principal : TDAH — Trouble Déficit de l'Attention avec Hyperactivité, présentation combinée (DSM-5).</strong></p>
+      <ul>
+        <li>Inattention : décroche rapidement, difficultés d'organisation, oubli des consignes, attention sur stimuli non pertinents.</li>
+        <li>Hyperactivité/impulsivité : toujours « prête à l'action », comportements impulsifs à risque, agressivité lors des frustrations, ne respecte pas les règles.</li>
+        <li>Présent dans plusieurs contextes : école ET maison.</li>
+        <li>Retentissement scolaire significatif (maintien en CP, difficultés de lecture).</li>
+        <li>Score BRIEF-P global à 71 (>2 SD) → profil exécutif déficitaire confirmé par bilan standardisé.</li>
+      </ul>
+      <p><strong>Facteurs contribuant à la trajectoire :</strong> prématurité (vulnérabilité biologique), contexte familial instable (facteurs environnementaux), accès tablette excessif sans médiation (entrave au développement attentionnel endogène selon le modèle MASEK / Roche-Labarbe).</p>
+
+      <div class="warn">⚠️ Diagnostic différentiel à considérer :
+        <ul style="margin-top:.4rem">
+          <li><strong>DI légère (Déficience Intellectuelle)</strong> : difficultés scolaires étendues, consignes mal retenues, comportements immatures (« jeux de bébé »). Cependant : sait lire, écrire, compter → contre la DI sévère.</li>
+          <li><strong>TSA (Trouble du Spectre de l'Autisme)</strong> : intérêts restreints, comportements répétitifs (doigts dans le nez), difficultés relationnelles, sensorialité atypique. Mais : bonnes relations avec les CP, souhait de socialisation, pas de stéréotypies signalées.</li>
+          <li><strong>Trouble de l'attachement réactionnel</strong> : contexte de carence relationnelle (mère peu disponible), agrippement excessif, instabilité émotionnelle → à explorer.</li>
+          <li><strong>Retentissement contextuel sans trouble constitué</strong> : la séparation parentale et le contexte de carence ont pu amplifier des difficultés attentionnelles préexistentes légères → à évaluer dans le temps.</li>
+        </ul>
+      </div>
+      <p><strong>Recommandation clinique :</strong> bilan neuropsychologique complet (QI, mémoire, fonctions exécutives complètes), évaluation sensorielle (profil sensoriel), soutien psychologique centré sur la régulation émotionnelle, guidance parentale pour la mère (sensibilisation aux besoins attentionnels d'Agathe), aménagements scolaires (PAP ou PPRE), rééducation si nécessaire (orthophonie pour la lecture).</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SUJET Déc. 2022 S2 Zabalia -->
+    <div class="annale-header">
+      <strong>📅 Décembre 2022 — Sujet 2 (Zabalia)</strong>
+      <em>« Aujourd'hui, on considère l'enfant comme un être bio-psycho-social qui évolue dans une écologie multidimensionnelle. Comment cela peut-il influencer la façon de comprendre les psychopathologies ? »</em>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-title">📋 Plan proposé</div>
+      <ol>
+        <li><strong>Introduction</strong> — Définir bio-psycho-social, écologie multidimensionnelle, psychopathologie</li>
+        <li><strong>I. L'enfant comme être bio-psycho-social : dépasser les modèles classiques</strong><br>
+          1.1 Limites des modèles classiques (médical, béhavioriste, psychodynamique)<br>
+          1.2 Le modèle intégratif : 5 contextes du développement<br>
+          1.3 Le modèle écosystémique de Bronfenbrenner / Sameroff</li>
+        <li><strong>II. Des trajectoires, pas des catégories</strong><br>
+          2.1 Multifinalité et équifinalité<br>
+          2.2 Facteurs de risque, de protection, de résilience<br>
+          2.3 La spirale transactionnelle</li>
+        <li><strong>III. Implications cliniques</strong><br>
+          3.1 Changer l'outil d'évaluation (trajectoires plutôt que symptômes isolés)<br>
+          3.2 Intervention multifocale<br>
+          3.3 Exemples (TD : handicap, douleur, sommeil)</li>
+        <li><strong>Conclusion</strong></li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Correction développée — Points clés</h3>
+      <p><strong>Introduction.</strong> Depuis les années 1980, la psychopathologie développementale (Sroufe, Rutter) a proposé une rupture avec les modèles classiques en affirmant que les troubles psychologiques ne peuvent être compris en dehors du développement et de son contexte. Considérer l'enfant comme un être bio-psycho-social évoluant dans une écologie multidimensionnelle transforme radicalement la façon dont on pense les psychopathologies : non plus comme des entités fixes localisées dans l'individu, mais comme des trajectoires façonnées par des interactions dynamiques entre l'individu et ses multiples contextes.</p>
+
+      <p><strong>I — Dépasser les modèles classiques.</strong> Le modèle médical cherche une cause organique. Le modèle béhavioriste réduit le trouble à un comportement inadapté. Le modèle psychodynamique centre tout sur la psyché et les conflits internes. Ces modèles ont le mérite d'exister, mais ils pèchent par leur réductionnisme. Le modèle bio-psycho-social impose de prendre en compte simultanément : la biologie (neurologie, génétique, prématurité), la psychologie (tempérament, régulation émotionnelle, attachement) et le social (famille, école, culture). Les 5 contextes du développement (biologique, individuel, famille, social élargi, culture) s'influencent mutuellement en permanence. Le modèle de Bronfenbrenner et Sameroff (microsystème → mésosystème → exosystème → macrosystème) illustre ces imbrications.</p>
+
+      <p><strong>II — Trajectoires plutôt que catégories.</strong> Deux principes fondamentaux : <em>multifinalité</em> (un même facteur de risque peut conduire à des issues différentes selon les contextes) et <em>équifinalité</em> (des trajectoires différentes peuvent aboutir au même tableau clinique). Exemple : deux enfants avec une prématurité — l'un développe un TDAH car contexte familial instable, l'autre se développe normalement grâce à une prise en charge précoce et un étayage parental adapté. Les facteurs de risque s'accumulent (O'Connor : modèle des effets cumulatifs) : c'est leur combinaison qui oriente la trajectoire, pas un seul facteur isolé. La résilience n'est pas une propriété de l'individu seul : elle émerge des transactions favorables avec l'environnement.</p>
+
+      <p><strong>III — Implications cliniques.</strong> Évaluer une psychopathologie, c'est reconstituer une trajectoire : quels facteurs de risque ? Quand sont-ils apparus ? Quelles transactions ont eu lieu ? Quels facteurs de protection ont joué ? L'intervention est donc multifocale : elle ne cible pas seulement l'enfant mais aussi ses contextes (famille, école). Exemples en TD : la naissance d'un enfant porteur de handicap (spirale transactionnelle parents-enfant), le sommeil (perturbations liées à des interactions dysfonctionnelles), la douleur (expérience subjective modulée par le contexte relationnel et cognitif).</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SUJET Avril 2022 Zabalia -->
+    <div class="annale-header">
+      <strong>📅 Avril 2022 — Sujet Zabalia (S2)</strong>
+      <em>« En vous appuyant sur le cours et les TD, expliquez en quoi l'approche de la psychopathologie développementale renouvelle la compréhension des trajectoires de développement atypiques ou psychopathologiques. »</em>
+    </div>
+
+    <div class="plan-box">
+      <div class="plan-title">📋 Plan proposé</div>
+      <ol>
+        <li><strong>Introduction</strong> — Définir psychopatho dév., annoncer la rupture par rapport aux modèles classiques</li>
+        <li><strong>I. Un regard développemental : les trajectoires remplacent les catégories</strong><br>
+          1.1 Multifinalité / équifinalité (Sroufe)<br>
+          1.2 Facteurs de risque, protection, résilience<br>
+          1.3 L'apport du modèle transactionnel (Sameroff)</li>
+        <li><strong>II. Un regard écosystémique : le sujet dans ses contextes</strong><br>
+          2.1 Approche bio-psycho-sociale<br>
+          2.2 Les 5 contextes du développement<br>
+          2.3 Exemples en TD (handicap, sommeil, douleur)</li>
+        <li><strong>III. Implications pour la clinique</strong><br>
+          3.1 Évaluation par trajectoire<br>
+          3.2 Intervention multifocale et préventive<br>
+          3.3 Importance de la guidance parentale</li>
+        <li><strong>Conclusion</strong></li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Note sur ce sujet</h3>
+      <p>Ce sujet est très proche du sujet Zabalia de Décembre 2022. Le plan et les arguments sont quasi identiques — s'appuyer sur la correction du sujet Déc. 2022 ci-dessus. La différence principale : ce sujet insiste davantage sur le mot <strong>« renouvelle »</strong> → mettre en avant le contraste avec les modèles classiques (modèle médical, béhavioriste, psychodynamique, systémique) en montrant ce que chaque modèle ne permettait pas de voir et ce que l'approche développementale apporte en plus.</p>
+      <div class="emphasis">💡 Ne pas se contenter de décrire l'approche développementale : montrer en quoi elle est un <em>renouvellement</em>, c'est-à-dire ce qu'elle permet de comprendre que les autres modèles ne permettaient pas.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SUJET Déc. 2022 S3 Marais - Carla -->
+    <div class="annale-header">
+      <strong>📅 Décembre 2022 — Sujet 3 (Marais) · Cas clinique Carla (10 ans)</strong>
+      <em>Décrire la trajectoire développementale de Carla avec le vocabulaire approprié. Proposer un diagnostic principal et différentiel.</em>
+    </div>
+
+    <div class="card">
+      <h3>Rappel du cas et analyse</h3>
+      <p><strong>Éléments clés :</strong> Carla, 10 ans, CM1 (redoublé). Hémorragie cérébrale à la naissance → crises convulsives jusqu'à 3 ans. Gardée à la maison jusqu'à l'école (socialisation tardive). Difficultés scolaires majeures (lecture, concentration, organisation), comportements immatures (doigts dans le nez, « jeux de bébé »), se déshabille en classe, renverse son verre. Agressivité impulsive. Se met sur la balançoire sachant que c'est interdit. Se dépense beaucoup, besoin de surveillance constante.</p>
+
+      <p><strong>Trajectoire développementale.</strong> Vulnérabilité biologique majeure dès la naissance (hémorragie cérébrale, crises convulsives) → probable impact sur la maturation corticale frontale et préfrontale. Isolation sociale des premières années (gardée à la maison) → privation d'expériences sociales développementalement importantes → socialisation insuffisante. Entrée à l'école : premier contact avec groupe de pairs → difficultés d'adaptation importantes (règles, rythmes, interactions). Trajectoire d'inadaptation progressive : échec scolaire répété → rejet par les pairs → comportements compensatoires (bouffonneries pour attirer l'attention).</p>
+
+      <p><strong>Diagnostic principal : DI légère avec comorbidités comportementales.</strong> Difficultés intellectuelles globales (retard de lecture, oubli des consignes, difficultés de raisonnement), comportements immatures pour l'âge, retentissement dans tous les domaines. L'hémorragie cérébrale néonatale constitue un substrat étiologique plausible.</p>
+
+      <div class="warn">⚠️ Diagnostic différentiel :
+        <ul style="margin-top:.4rem">
+          <li><strong>TDAH</strong> : impulsivité, recherche de stimulation, difficultés attentionnelles. Mais : le profil global (immaturité généralisée, retard scolaire étendu) dépasse un TDAH simple.</li>
+          <li><strong>TSA</strong> : comportements répétitifs (doigts dans le nez), difficultés sociales, comportements atypiques. Mais : cherche activement le contact, souhaite amuser ses camarades → contre un TSA pur.</li>
+          <li><strong>Séquelles neuropsychologiques de l'hémorragie cérébrale</strong> : profil hétérogène possible avec préservation de certaines fonctions (elle sait lire, écrire, compter) et déficit d'autres (fonctions exécutives, régulation émotionnelle).</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /subtab-annales-zabalia -->
+
+</div><!-- /panel-annales -->
+
+<script>
+  const btns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  document.querySelectorAll('.subtab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const parentPanel = btn.closest('.tab-panel');
+      parentPanel.querySelectorAll('.subtab-btn').forEach(b => b.classList.remove('active'));
+      parentPanel.querySelectorAll('.subtab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('subtab-' + btn.dataset.subtab).classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
