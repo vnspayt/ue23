@@ -240,6 +240,60 @@
     line-height: 1.7;
   }
 
+  /* ── ROADMAP (fil conducteur) ── */
+  .roadmap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: 1rem 0 1.6rem;
+    counter-reset: step;
+  }
+  .roadmap-step {
+    flex: 1 1 160px;
+    background: var(--blanc);
+    border: 2px solid var(--lavande2);
+    border-radius: 14px;
+    padding: .8rem .9rem;
+    font-size: .85rem;
+    position: relative;
+    counter-increment: step;
+  }
+  .roadmap-step::before {
+    content: counter(step);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--lavande2);
+    color: #fff;
+    font-weight: 700;
+    font-size: .85rem;
+    margin-bottom: .4rem;
+  }
+  .roadmap-step strong { display: block; margin-bottom: .15rem; }
+  .roadmap-step.current { background: var(--lavande); box-shadow: 0 3px 10px var(--ombre); }
+
+  .recap {
+    background: var(--blanc);
+    border: 2px dashed var(--lavande2);
+    border-radius: 14px;
+    padding: .8rem 1.1rem;
+    margin: 1.6rem 0 1rem;
+    font-size: .9rem;
+    color: var(--texte);
+  }
+  .recap .recap-tag {
+    display: inline-block;
+    font-weight: 700;
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #5c4099;
+    margin-bottom: .3rem;
+  }
+
   /* ZABALIA colors */
   #panel-zabalia .section-title { color: #5c4099; }
   #panel-zabalia .card { border-left-color: var(--lavande2); }
@@ -461,10 +515,18 @@
 
 
   <div class="tab-intro">
-    <strong>Fil conducteur :</strong> Pourquoi les modèles classiques de la psychologie ne suffisent plus ? Ce cours propose une <em>démarche intégrative</em> : le sujet est bio-psycho-social, inscrit dans un écosystème complexe. Les trajectoires de développement sont multiples, non prédictibles à l'avance, et toujours le résultat d'interactions entre l'individu et ses contextes.
+    <strong>🧭 De quoi parle vraiment ce cours ?</strong> Imagine que tu es face à un enfant qui va mal. La question n'est pas <em>« qu'est-ce qu'il a ? »</em> (comme on chercherait une maladie), mais <em>« comment en est-il arrivé là ? »</em> — comme une enquête qui retrace un chemin parcouru, pas un diagnostic figé. Tout ce cours sert à construire les outils de cette enquête. Il suit une seule progression logique, en 4 temps :
+    <div class="roadmap">
+      <div class="roadmap-step"><strong>Le constat</strong>Les grilles de lecture qu'on avait (médicale, comportementale, psychanalytique…) marchent chacune un peu, mais aucune ne suffit seule.</div>
+      <div class="roadmap-step"><strong>L'évolution des modèles</strong>On a appris, avec le temps, à penser le développement non plus comme figé (un trait acquis une fois pour toutes) mais comme une influence à double sens, continue, entre l'enfant et son environnement.</div>
+      <div class="roadmap-step"><strong>La méthode actuelle</strong>On reconstitue une <em>trajectoire</em> : le chemin pris par l'enfant, façonné par des allers-retours (« transactions ») avec son entourage, et par un équilibre risques/protections.</div>
+      <div class="roadmap-step"><strong>La mise en pratique (TD)</strong>On applique cette méthode à 3 situations concrètes : l'annonce d'un handicap, le sommeil, la douleur de l'enfant.</div>
+    </div>
+    Garde cette numérotation en tête : chaque partie qui suit reprend explicitement où elle se situe dans cette progression.
   </div>
 
   <!-- CM1 : Contexte historique & approche intégrative -->
+  <div class="recap"><span class="recap-tag">🧭 Étape 1 — Le constat</span>On commence par comprendre <em>pourquoi</em> on a besoin d'un regard neuf : la psychologie classique s'est construite dans un contexte historique précis, avec des angles morts. Puis (juste après) on passera en revue chaque modèle classique pour voir précisément ce qu'il explique… et ce qu'il rate.</div>
   <div class="section-title">CM1 · Contexte historique & approche intégrative</div>
 
   <div class="card">
@@ -503,11 +565,13 @@
   <div class="divider"></div>
 
   <!-- Les modèles classiques -->
+  <div class="recap"><span class="recap-tag">🧭 Toujours étape 1 — Le constat, en détail</span>Maintenant qu'on sait <em>pourquoi</em> chercher autre chose, on regarde <em>quoi</em> exactement on cherche à dépasser. 4 modèles classiques, 4 façons de répondre à « pourquoi cet enfant va mal » — chacune avec une vraie utilité, et chacune avec un angle mort. Retiens pour chacun une seule question : <em>qu'est-ce que ce modèle explique bien, et qu'est-ce qu'il laisse de côté ?</em></div>
   <div class="section-title">CM1 · Les modèles classiques de la psychopathologie</div>
 
   <div class="grid-2">
     <div class="card">
       <h3>⚕️ Modèle médical</h3>
+      <p style="color:#5c4099"><em>👉 Pourquoi on en parle : c'est le modèle qui dit « il y a forcément une cause biologique » — la 1ère brique du puzzle bio-psycho-social qu'on construira plus tard.</em></p>
       <p><span class="author-chip">Emil Kraepelin</span> – Première nosographie psychiatrique.</p>
       <p>Tous les troubles ont des origines <strong>organiques</strong>. Classification selon les symptômes (DSM). Démarche scientifique avec hypothèse diagnostique.</p>
       <p>Limite : réducteur (un seul facteur biologique n'explique pas un trouble). Le corps et la psyché sont aujourd'hui indissociables.</p>
@@ -516,6 +580,7 @@
 
     <div class="card">
       <h3>🔄 Modèle béhavioriste</h3>
+      <p style="color:#5c4099"><em>👉 Pourquoi on en parle : il déplace la question de « qu'est-ce qu'il a » à « qu'est-ce que son comportement nous dit, par rapport à son âge et son contexte » — première idée qu'une norme n'est pas universelle, qu'on retrouvera partout après.</em></p>
       <p>Le sujet apprend par 3 mécanismes :</p>
       <ul>
         <li><strong>Conditionnement classique</strong> (Pavlov) – associations stimulus/réponse (ex. : phobie par conditionnement)</li>
@@ -531,6 +596,7 @@
 
   <div class="card">
     <h3>🛋️ Modèles psychodynamiques – 3 grands groupes</h3>
+    <p style="color:#5c4099"><em>👉 Pourquoi on en parle : ils déplacent le regard de l'extérieur (comportement) vers l'intérieur (vie psychique) — et surtout, le 3ᵉ groupe (théories de l'attachement) introduit l'idée que <strong>c'est la relation, pas la satisfaction des besoins de base, qui fait grandir</strong>. C'est cette idée-là qui prépare directement toute la suite du cours.</em></p>
     <details>
       <summary>1. Psychanalyse classique (Freud)</summary>
       <div style="padding: .5rem 0">
@@ -603,6 +669,7 @@
 
   <div class="card">
     <h3>🔗 Modèle systémique (Salvador Minuchin)</h3>
+    <p style="color:#5c4099"><em>👉 Pourquoi on en parle : dernier modèle classique. Il introduit l'idée que la <strong>famille est un système</strong> et pas une somme d'individus séparés — première vraie passerelle vers la pensée « écosystémique » de tout le reste du cours.</em></p>
     <p>Théorie générale des systèmes : pour comprendre un phénomène, tenir compte des <em>interactions</em> entre ses éléments. La famille = un système organisé en <strong>sous-systèmes</strong> avec des frontières.</p>
     <p><strong>Idée générale :</strong> les systèmes tendent naturellement vers la stabilité et s'<strong>autoréguler</strong>. Ex. : les bancs de poissons se synchronisent spontanément. La tendance d'un système est de tendre vers un état stable, cohérent et pérenne. Pour ce faire, il y a des propriétés d'<strong>auto-organisation</strong>.</p>
     <div class="grid-2">
@@ -632,9 +699,15 @@
     <div class="emphasis">💡 Le trouble n'est pas <em>dans</em> l'enfant mais <em>dans</em> le système.</div>
   </div>
 
+  <div class="schema-box">
+    <div class="schema-title">📌 Bilan des 4 modèles classiques — ce que chacun apporte</div>
+    <p><strong>Médical</strong> → le corps compte. <strong>Béhavioriste</strong> → la norme dépend du contexte/âge, pas du comportement en soi. <strong>Psychodynamique</strong> (surtout l'attachement) → c'est la relation qui construit le sujet. <strong>Systémique</strong> → le trouble se loge dans le système, pas dans l'individu isolé. Mis ensemble : biologie + comportement + vie psychique + relation + famille = exactement les ingrédients du « sujet bio-psycho-social dans son écosystème » de l'introduction. Aucun de ces modèles n'est faux ; chacun n'éclaire qu'un seul morceau.</p>
+  </div>
+
   <div class="divider"></div>
 
   <!-- CM2 : Modèles du développement -->
+  <div class="recap"><span class="recap-tag">🧭 Étape 2 — On change de question</span>On vient de voir 4 modèles qui cherchent chacun <em>une cause</em> (biologique, comportementale, psychique, familiale). On va maintenant changer complètement d'angle : au lieu de chercher une cause, on va apprendre à penser le développement comme un <strong>processus dans le temps</strong>. Wallon ouvre la voie ; puis on verra 3 façons de modéliser comment enfant et environnement s'influencent — de la plus simpliste (le trait figé) à la plus aboutie (le modèle transactionnel de Sameroff, celui qu'on va utiliser tout le reste du cours).</div>
   <div class="section-title">CM2 · Les modèles du développement</div>
 
   <div class="card">
@@ -708,84 +781,102 @@
   <div class="divider"></div>
 
   <!-- CM2 suite : Démarche psychopatho développementale -->
+  <div class="recap"><span class="recap-tag">🧭 Étape 3 — La méthode d'aujourd'hui</span>On a maintenant le bon outil mental (le modèle transactionnel : tout s'influence en continu, dans les deux sens). Cette partie est <strong>le cœur du cours</strong> : c'est ici qu'on construit concrètement la méthode pour analyser n'importe quelle situation clinique. 5 briques à enchaîner dans l'ordre : 1) qu'est-ce qu'une trajectoire, 2) le mécanisme qui la fait bouger (la spirale transactionnelle), 3) ce qui pèse sur elle (risque/vulnérabilité/résilience), 4) comment ce poids se transmet réellement à l'enfant (par la relation, jamais directement), 5) la synthèse qui relie tout.</div>
+
+  <div class="schema-box" style="border-color:#5c4099">
+    <div class="schema-title">🧪 L'exemple qu'on va suivre du début à la fin de cette partie</div>
+    <p><strong>Léo</strong> naît prématuré (7 mois). Sa sœur jumelle <strong>Mia</strong> naît au même moment, dans la même famille — donc <em>même point de départ biologique et même environnement de base</em>. On va se servir d'eux comme d'un cas-test : à chaque nouveau concept, on regarde ce qu'il prédit ou explique pour Léo et Mia. C'est exactement comme faire tourner le même jeu de données à travers plusieurs fonctions pour voir ce que chacune calcule.</p>
+  </div>
+
   <div class="section-title">CM2 · La démarche en psychopathologie développementale</div>
 
   <div class="card">
     <h3>🛤️ Trajectoires de développement</h3>
-    <p>Plutôt que de chercher <em>la cause</em> d'un trouble, la psychopathologie développementale reconstitue l'<strong>histoire</strong> du sujet. La trajectoire est le chemin parcouru en réponse aux contraintes et opportunités de l'environnement.</p>
+    <p>Oublie le mot « trajectoire » un instant et pense plutôt : <strong>une trajectoire = une courbe dans le temps</strong>, dont la valeur à l'instant T dépend de la valeur à l'instant T-1 <em>et</em> des éléments reçus entre T-1 et T (un peu comme une suite récursive : <code>état(T) = f(état(T-1), événements(T-1→T))</code>). Rien n'est fixé à l'avance, donc on ne peut pas calculer la suite avant d'avoir les termes précédents — on ne peut que la reconstituer <em>a posteriori</em>, terme par terme.</p>
     <ul>
-      <li>Au départ, trajectoires typiques proches pour tous (tenir sa tête, marcher…)</li>
-      <li>Progressivement : divergences en trajectoires adaptées ou inadaptées</li>
-      <li>Impossible de prédire à l'avance → uniquement constatable <em>a posteriori</em></li>
-      <li>On peut mal partir et finalement avoir une trajectoire adaptée — et inversement.</li>
+      <li>À T=0 (la naissance), Léo et Mia ont presque le même point de départ.</li>
+      <li>Entre chaque instant, des « événements » s'ajoutent (soins, relations, hasard biologique) → la courbe de Léo peut diverger de celle de Mia, sans que ce soit écrit nulle part à l'avance.</li>
+      <li>Une trajectoire qui démarre mal peut se redresser ; une trajectoire qui démarre bien peut se dégrader. Aucune extrapolation simple n'est valide.</li>
     </ul>
     <div class="schema-box">
-      <div class="schema-title">La dynamique des trajectoires : contraintes et opportunités</div>
-      <p>Les trajectoires sont soumises à des forces : <strong>contraintes</strong> (qui freinent) et <strong>opportunités</strong> (qui favorisent le développement). Une même caractéristique peut être opportunité dans un contexte et contrainte dans un autre.</p>
-      <p><em>Exemple :</em> un enfant très sensible à l'art, né en Israël dans une famille qui nourrit sa créativité → opportunité, développement d'un talent. Le même enfant, né à Gaza en contexte de conflit armé → cette même sensibilité devient source de souffrance plus intense et durable.</p>
-      <p>→ On ne peut pas établir de liste universelle d'opportunités : tout dépend du contexte familial, culturel, sociopolitique.</p>
+      <div class="schema-title">Les « événements » ne sont pas bons ou mauvais en eux-mêmes</div>
+      <p>Une même caractéristique peut faire monter la courbe dans un contexte, et la faire descendre dans un autre — exactement comme un même paramètre peut avoir un coefficient positif ou négatif selon l'équation dans laquelle il est inséré.</p>
+      <p><em>Exemple :</em> imagine que Léo est un enfant très sensible aux stimulations. Dans une famille calme qui adapte son rythme à lui → cette sensibilité devient une force (il perçoit des détails que les autres ratent). Dans une famille bruyante et imprévisible → la même sensibilité devient une source de stress chronique. <strong>Le trait « sensibilité » n'a pas de signe fixe</strong> ; c'est le contexte qui lui donne son signe (+ ou −).</p>
     </div>
     <div class="grid-2">
       <div class="schema-box">
-        <div class="schema-title">Équifinalité</div>
-        <p>Deux trajectoires <em>différentes</em> aboutissent au même résultat développemental. (Trajectoires A et D arrivent au même endroit.)</p>
+        <div class="schema-title">Équifinalité (= deux chemins, une seule arrivée)</div>
+        <p>Léo (prématuré, soutenu activement) et un autre enfant (né à terme, mais avec des parents en grande difficulté psychologique) peuvent <strong>arriver au même point</strong> : tous les deux développent un bon fonctionnement scolaire à 6 ans. Deux entrées différentes → même sortie.</p>
       </div>
       <div class="schema-box">
-        <div class="schema-title">Multifinalité</div>
-        <p>Des trajectoires <em>similaires</em> (ex. : fratries) aboutissent à des issues développementales différentes.</p>
+        <div class="schema-title">Multifinalité (= même point de départ, deux arrivées)</div>
+        <p>Léo et Mia partent du <strong>même</strong> point (jumeaux, même famille) mais peuvent arriver à des résultats différents : si l'un des deux capte davantage l'attention parentale (plus fragile à la naissance, donc plus surveillé), l'autre reçoit moins d'étayage relationnel sans qu'on s'en rende compte. Même entrée → deux sorties.</p>
       </div>
     </div>
   </div>
 
   <div class="card">
-    <h3>🔁 La spirale transactionnelle</h3>
-    <p>Une <strong>transaction</strong> = une série d'interactions dynamiques et réciproques qui <em>transforment</em> les deux partenaires de la relation dans le temps.</p>
-    <p>Ex. : famille avec un prématuré → état de sidération → accueil difficile → spirale défavorable.</p>
-    <p>Les transactions s'entretiennent, se nourrissent des représentations fantasmatiques. On ne reproduit pas seulement ce qu'on a vécu, mais on peut aussi transformer les schémas (ex. : via la thérapie).</p>
-    <div class="emphasis">💡 Les <strong>modèles internes opérants</strong> (Bowlby) : schémas cognitifs construits à partir des expériences relationnelles. Risque de reproduire les mauvais schémas, mais possibilité de transformation.</div>
+    <h3>🔁 La spirale transactionnelle — la « boucle » qui fait avancer la trajectoire</h3>
+    <p>C'est le mécanisme concret qui produit la courbe vue au-dessus. Pense-le comme une <strong>boucle qui s'exécute en continu</strong>, avec une sortie qui redevient une entrée :</p>
+    <div class="schema-box">
+      <div class="schema-title">Une « transaction », pas à pas</div>
+      <p><strong>Tour 1 :</strong> Léo naît très petit, fragile → les parents sont sidérés, anxieux, n'osent pas le toucher beaucoup (peur de le « casser »).<br>
+      <strong>Tour 2 :</strong> Léo reçoit donc moins de stimulation tactile/visuelle que Mia → il réagit moins, pleure différemment.<br>
+      <strong>Tour 3 :</strong> les parents interprètent ce « moins de réaction » comme « il ne nous reconnaît pas / il va mal » → ils se rapprochent encore moins.<br>
+      <strong>Tour 4 :</strong> Léo reçoit encore moins de stimulation… → la boucle s'auto-entretient et s'aggrave (spirale <em>défavorable</em>).</p>
+      <p>👉 Chaque tour de boucle modifie <em>les deux partenaires</em> (l'enfant ET les parents), pas seulement l'enfant. C'est ça, une transaction.</p>
+    </div>
+    <div class="emphasis">💡 Bonne nouvelle pour ta logique : cette boucle n'est pas un programme figé une fois lancé. Une intervention extérieure (un soignant qui rassure les parents, leur montre comment toucher Léo sans risque) peut casser la boucle <strong>à n'importe quel tour</strong> et la faire repartir dans le sens favorable. C'est ce qu'on appelle transformer les <strong>modèles internes opérants</strong> (Bowlby) : les schémas relationnels appris peuvent être réécrits, pas seulement répétés.</div>
   </div>
 
   <div class="card">
-    <h3>🛡️ Facteurs de risque, vulnérabilité, résilience</h3>
+    <h3>🛡️ Facteurs de risque, vulnérabilité, résilience — une condition logique, pas une fatalité</h3>
+    <p>Le point le plus mal compris en général tient en une seule ligne, et elle se lit comme une condition <code>SI… ET… ALORS…</code> :</p>
+    <div class="schema-box">
+      <div class="schema-title">L'équation à retenir</div>
+      <p><code>Risque (présent dans l'environnement) <strong>ET</strong> Vulnérabilité (présente chez l'individu, à ce moment précis) → Effet négatif probable</code></p>
+      <p>Si l'un des deux termes est absent (risque présent mais individu pas vulnérable à ce risque-là ; ou vulnérabilité présente mais pas de risque rencontré), <strong>l'effet négatif ne se produit pas</strong>, ou pas de la même façon.</p>
+    </div>
+    <p><strong>Application à Léo :</strong> la prématurité est un <em>risque</em> (probabilité accrue de complications développementales). Mais Léo n'est <em>vulnérable</em> à ce risque que tant qu'il est tout petit et physiologiquement immature — la vulnérabilité elle-même change avec l'âge et le contexte, elle n'est pas une étiquette permanente.</p>
     <div class="grid-2">
-      <div>
-        <p><strong>Facteur de risque</strong> : probabilité accrue d'une trajectoire inadaptée. Jamais déterministe seul. Un risque élevé peut l'emporter sur plusieurs facteurs de protection.</p>
-        <p>Risque = risque <em>uniquement</em> s'il rencontre une vulnérabilité.</p>
+      <div class="schema-box">
+        <div class="schema-title">Vulnérabilité</div>
+        <p>= la probabilité que <em>ce</em> risque-là ait un effet sur <em>cet</em> individu-là, <em>à ce moment-là</em>. Variable (pas un trait fixe).</p>
       </div>
-      <div>
-        <p><strong>Vulnérabilité</strong> : propension à subir négativement un risque. Variable selon l'âge et le contexte (nouveau-né très vulnérable).</p>
-        <p><strong>Résilience</strong> : processus (pas un trait individuel !) permettant de faire face, construit en étayage avec des ressources propres ET extérieures.</p>
+      <div class="schema-box">
+        <div class="schema-title">Résilience</div>
+        <p>= le processus inverse : faire face malgré le risque, <strong>grâce à des ressources</strong> (internes : tempérament ; externes : un adulte stable = un <em>tuteur de résilience</em>). Ce n'est pas un trait de caractère qu'on a ou qu'on n'a pas — c'est un résultat d'étayage, donc ça se construit.</p>
       </div>
     </div>
-    <p><strong>Tuteur de résilience</strong> : personne de l'environnement qui aide à la résilience (facteur de protection).</p>
-    <div class="warn">⚠️ Un seul risque très élevé peut tout fragiliser. Et : les conséquences développementales ne sont jamais uniquement liées à l'individu NI uniquement à son contexte.</div>
+    <div class="warn">⚠️ Un seul risque très intense peut suffire à dépasser toutes les protections cumulées (l'addition n'est pas linéaire) — et inversement, beaucoup de petits risques accumulés peuvent peser autant qu'un gros risque isolé.</div>
   </div>
 
   <div class="card">
-    <h3>🤝 Le rôle central des expériences relationnelles</h3>
-    <p>Tous les facteurs de risque et de protection dont on a parlé <strong>ne s'expriment pas directement</strong> sur l'enfant — ils s'expriment <em>à travers ses relations</em>.</p>
+    <h3>🤝 Le rôle central des expériences relationnelles — le « canal » par lequel le risque agit</h3>
+    <p>Question logique à se poser : <strong>est-ce que le risque touche l'enfant directement, ou passe-t-il par un intermédiaire ?</strong> Réponse du cours : presque toujours par un intermédiaire, et cet intermédiaire est <strong>la relation</strong>.</p>
     <div class="schema-box">
-      <div class="schema-title">Exemple : la pauvreté</div>
-      <p>La pauvreté n'affecte pas directement l'enfant par magie. Elle réduit les ressources de la famille (nourriture, chauffage) → stress des parents → moins de disponibilité relationnelle → interactions moins nombreuses et de moins bonne qualité → impact sur le développement. C'est via la <em>relation</em> que le risque se traduit.</p>
+      <div class="schema-title">Trace du raisonnement, avec la pauvreté comme exemple</div>
+      <p>Pauvreté (le risque) <strong>→</strong> moins de ressources matérielles dans le foyer <strong>→</strong> stress chronique des parents <strong>→</strong> moins de disponibilité psychique pour interagir avec l'enfant <strong>→</strong> interactions moins fréquentes / moins ajustées <strong>→</strong> impact sur le développement de l'enfant.</p>
+      <p>La pauvreté n'a <strong>aucun effet direct, magique</strong> sur le cerveau de l'enfant. Elle agit en dégradant la chaîne relationnelle. Si on intervient n'importe où sur cette chaîne (aide matérielle, soutien psychologique aux parents, mode de garde qui compense), on peut casser l'effet du risque <strong>sans avoir supprimé la pauvreté elle-même</strong>.</p>
     </div>
-    <p>Les expériences relationnelles traduisent la pression des risques. L'écosystème de l'enfant se traduit à travers la <strong>complexité des relations entre la famille et l'enfant</strong> (spirale transactionnelle).</p>
-    <p><strong>Modèles internes opérants (Bowlby) :</strong> l'enfant construit des <em>schémas cognitifs relationnels</em> (scripts, scénarios) à partir de ses expériences. Ces schémas guident ses attentes et comportements dans les futures relations. Risque de reproduire les mauvais schémas — mais ces schémas peuvent aussi <strong>se transformer</strong> dans le cadre de nouvelles relations positives ou d'une thérapie.</p>
-    <div class="emphasis">💡 Conclusion : ce qui compte le plus, ce ne sont pas les risques en eux-mêmes, mais la façon dont ils impactent la qualité des transactions relationnelles entre l'enfant et son entourage.</div>
+    <p><strong>Pour Léo :</strong> ce n'est pas la prématurité en tant que telle qui abîme son développement — c'est la sidération parentale qu'elle déclenche, <em>si</em> cette sidération réduit durablement la qualité des échanges. Le facteur de risque biologique passe par le canal relationnel pour produire un effet.</p>
+    <div class="emphasis">💡 Conséquence pratique : en clinique, on n'intervient quasiment jamais directement sur le risque (on ne peut pas annuler une prématurité). On intervient sur le <strong>canal relationnel</strong>, parce que c'est lui qui transmet l'effet — et lui, on peut le travailler.</div>
   </div>
 
   <div class="card">
-    <h3>📌 Synthèse : les grands principes</h3>
+    <h3>📌 Synthèse : l'équation complète</h3>
     <div class="schema-box">
-      <p>Le développement est le résultat des <strong>transactions continuelles et réciproques</strong> entre l'organisme et son environnement (vu comme écosystème incluant les humains et leurs représentations).</p>
-      <p>L'adaptation = équilibre entre les potentiels et vulnérabilités de l'individu, ET les risques et opportunités offerts par l'environnement.</p>
-      <p>Le développement devient <em>compromis</em> quand les facteurs de risque excèdent les facteurs de protection, en fréquence, intensité ou chronicité, dans les différents niveaux systémiques.</p>
+      <div class="schema-title">Tout ce qu'on vient de voir, en une seule chaîne logique</div>
+      <p><code>Trajectoire(T) = Trajectoire(T-1) + effet( Risques(T-1) , Vulnérabilité(T-1) , Protections(T-1) ) — transmis via la qualité des transactions relationnelles</code></p>
+      <p>Et la boucle se répète à chaque instant T, en intégrant les nouveaux événements. C'est tout le cours, ramené à une seule formule :</p>
     </div>
     <ul>
-      <li>Les expériences interpersonnelles occupent une place centrale.</li>
-      <li>L'individu est le produit de <em>toutes</em> ses expériences, pas seulement des précoces.</li>
-      <li>Développement typique et troublé s'éclairent mutuellement.</li>
-      <li><strong>Réfutation de la tabula rasa</strong> : l'idée que l'être humain naît vierge de toute influence (concept d'origine judéo-chrétienne) est fausse. L'influence de l'environnement commence in utero et le génotype prédispose des directions développementales.</li>
+      <li>On ne regarde jamais le risque seul, ni l'individu seul : seulement leur rencontre, à un instant donné.</li>
+      <li>Le risque n'agit presque jamais en direct : il passe par la qualité des relations (le canal).</li>
+      <li>La trajectoire « tourne mal » uniquement quand les risques dépassent durablement les protections (pas un seul mauvais moment isolé).</li>
+      <li><strong>Réfutation de la tabula rasa</strong> : Léo n'arrive pas « vierge » à la naissance — son génotype et son vécu in utero orientent déjà certaines directions possibles, sans les figer.</li>
     </ul>
+    <div class="emphasis">🎯 Récap pour Léo et Mia : ils partagent la même génétique et la même famille à T=0. Ce qui décidera de leurs trajectoires respectives, ce n'est ni leur biologie seule ni leur environnement seul — c'est la qualité, instant après instant, des transactions qu'ils vivent chacun avec leur entourage.</div>
   </div>
 
 
@@ -794,6 +885,7 @@
   <!-- SUB-PANEL TD -->
   <div id="subtab-zabalia-td" class="subtab-panel">
 
+    <div class="recap"><span class="recap-tag">🧭 Étape 4 — On applique la grille</span>Chaque TD ci-dessous est une mise en situation de la méthode vue juste avant. Pour chacun, pose-toi les mêmes 3 questions : <em>quelle trajectoire ?</em> (le chemin parcouru) · <em>quelle spirale transactionnelle ?</em> (qui influence qui, et comment ça s'auto-entretient) · <em>quel équilibre risques/protections ?</em> C'est exactement la grille de la partie précédente, juste appliquée à un cas réel.</div>
     <div class="tab-intro" style="background: linear-gradient(135deg, var(--blanc) 0%, #ede8ff 100%);">
       <strong>3 TD abordés :</strong>
       <span class="badge">TD3 – Handicap &amp; spirale transactionnelle</span>
@@ -1382,34 +1474,55 @@
 
 
   <div class="tab-intro" style="background: linear-gradient(135deg, var(--blanc) 0%, #fdf0f4 100%);">
-    <strong>Fil conducteur :</strong> L'alimentation est bien plus qu'un acte vital. C'est un acte bio-psycho-social complexe, inscrit dans des relations, influencé par la sensorialité, la mémoire, les émotions et la culture. Les perturbations alimentaires naissent d'une constellation de facteurs en interaction — jamais d'un seul. La prévention par la <em>guidance parentale</em> est la stratégie d'intervention principale.
+    <strong>🧭 De quoi parle vraiment ce cours ?</strong> Manger n'est jamais juste "mettre du carburant dans le corps". C'est une fonction qui prend en entrée plusieurs signaux différents (faim, sens, mémoire, relation, culture) et qui produit en sortie un comportement (manger, refuser, grignoter…). Ce cours décrit, dans l'ordre, les différents "modules" qui alimentent cette fonction.
+    <div class="roadmap">
+      <div class="roadmap-step"><strong>1 · Le cadre général</strong>Qu'est-ce que "manger", concrètement ? On découpe l'acte alimentaire en pôles et en niveaux, pour avoir un langage commun avant d'aller plus loin.</div>
+      <div class="roadmap-step"><strong>2 · Les entrées sensorielles</strong>Comment le bébé perçoit la nourriture (goût, odeur, texture) et comment ces perceptions laissent une trace en mémoire qui orientera ses préférences plus tard.</div>
+      <div class="roadmap-step"><strong>3 · La régulation interne</strong>Comment le corps sait s'arrêter de manger (faim/satiété), et comment les compétences motrices (succion, mastication) évoluent.</div>
+      <div class="roadmap-step"><strong>4 · L'influence parentale</strong>Comment les préférences, les dégoûts et les styles éducatifs des parents viennent moduler tout ce qui précède.</div>
+    </div>
+  </div>
+
+  <div class="schema-box" style="border-color:#7c3048">
+    <div class="schema-title">🧪 L'exemple qu'on va suivre dans cette partie</div>
+    <p><strong>Nina</strong>, un bébé, de la naissance à 6 ans. À chaque nouvelle notion, on regarde comment elle s'applique concrètement à Nina — exactement comme on ferait tourner les mêmes données dans plusieurs modules d'un programme pour voir ce que chacun calcule.</p>
   </div>
 
   <!-- CM1 : Complexité de l'alimentation -->
+  <div class="recap"><span class="recap-tag">🧭 Étape 1 — Le cadre général</span>Avant de comprendre pourquoi Nina mange bien ou mal à un moment donné, il faut d'abord se mettre d'accord sur ce qu'on appelle "manger". Ce n'est pas un acte simple : c'est un objet qui a plusieurs faces (sociale, sensorielle, physiologique…) — un peu comme un objet qui aurait plusieurs attributs indépendants. On va lister ces attributs.</div>
   <div class="section-title">CM1 · Complexité de l'alimentation</div>
 
   <div class="card">
     <h3>🍽️ Définitions : l'acte alimentaire selon Poulain (2012)</h3>
-    <p>JP Poulain (sociologue) : l'alimentation fonctionne en <strong>3 pôles interdépendants</strong> :</p>
+    <p>JP Poulain (sociologue) : l'alimentation fonctionne en <strong>3 pôles interdépendants</strong> — pense-les comme 3 jauges qui doivent toutes être au-dessus d'un certain seuil pour que "manger" se passe bien :</p>
     <div class="pill-grid">
       <span class="pill" style="background:var(--rose)">🤝 Pôle social – partage, culture, médias</span>
       <span class="pill" style="background:var(--pêche)">😋 Pôle hédonique – plaisir, dimension émotionnelle</span>
       <span class="pill" style="background:var(--mint)">💊 Pôle santé – aspect vital, nutrition</span>
     </div>
-    <p>En Occident, les cliniciens travaillent souvent uniquement sur le pôle santé. Or le refus de s'alimenter peut être culturel, et une sur-nutrition peut être socialement valorisée (ex. Maghreb : femme mince = diable).</p>
-    <div class="warn">⚠️ Quand un enfant manque régulièrement de plaisir à manger, il risque de se sous-alimenter. Le pôle hédonique est crucial.</div>
+    <p>En Occident, les cliniciens travaillent souvent <strong>uniquement</strong> sur la jauge "santé" (calories, nutriments). Or si la jauge "hédonique" de Nina tombe à zéro (elle n'a plus aucun plaisir à manger), le pôle santé ne suffira pas à la faire manger — exactement comme un système qui dépend de 3 variables ne peut pas fonctionner correctement si on n'en surveille qu'une seule. Et le pôle social peut même <em>inverser</em> le signal attendu : dans certaines cultures (ex. Maghreb), la minceur est dévalorisée → "bien manger" veut dire prendre du poids, pas l'inverse.</p>
+    <div class="warn">⚠️ Quand un enfant manque régulièrement de plaisir à manger, il risque de se sous-alimenter — même si, sur le papier, on lui propose une nutrition parfaite. Le pôle hédonique n'est pas un bonus, c'est une condition nécessaire.</div>
   </div>
 
   <div class="card">
     <h3>🧠 Wallon : l'acte devient activité</h3>
-    <p><strong>Acte alimentaire :</strong> ensemble de mouvements dirigés vers un but (cri de faim, tension corporelle). Ces comportements sont détectés plus ou moins vite par l'entourage.</p>
-    <p><strong>Activité alimentaire :</strong> une fois que l'acte a pris du sens grâce à l'entourage, il devient une activité avec intentions et attente d'une réponse. Activité complexe dotée d'une signification, apprise tôt.</p>
-    <p>Opposition biologique/social qui fonctionne intrinsèquement. Le fœtus entretient des échanges qui modifient progressivement ses fonctions physiologiques.</p>
-    <div class="emphasis">💡 L'alimentation implique un partage émotionnel dès le départ. Une mère très sensible souffre avec son enfant → tensions → pression.</div>
+    <p>Deux mots à ne pas confondre, parce qu'ils décrivent deux <strong>étapes</strong> successives, pas deux synonymes :</p>
+    <div class="grid-2">
+      <div class="schema-box">
+        <div class="schema-title">1. Acte alimentaire (brut)</div>
+        <p>Mouvement réflexe, sans intention consciente : Nina a faim → elle crie, se tend. À ce stade, c'est un signal physiologique pur, sans destinataire.</p>
+      </div>
+      <div class="schema-box">
+        <div class="schema-title">2. Activité alimentaire (avec sens)</div>
+        <p>Une fois que l'entourage a répondu plusieurs fois à ce signal, Nina <strong>apprend</strong> que son cri produit un effet (on vient la nourrir) → le même comportement devient une <em>communication intentionnelle</em>, avec une attente de réponse.</p>
+      </div>
+    </div>
+    <div class="emphasis">💡 Autrement dit : ce n'est pas la nourriture en elle-même qui transforme l'acte en activité, c'est la <strong>réponse répétée de l'adulte</strong>. L'alimentation est donc, dès le départ, un acte autant relationnel que biologique.</div>
   </div>
 
   <div class="card">
     <h3>🔢 Niveaux de fonctionnement de l'alimentation</h3>
+    <p>On peut découper "manger" en 8 niveaux indépendants, comme 8 capteurs différents qui envoient chacun une information :</p>
     <div class="pill-grid">
       <span class="pill" style="background:var(--rose)">Physiologique (satiété, alliesthésie, nausée)</span>
       <span class="pill" style="background:var(--pêche)">Sensoriel (goût, odeur, texture, couleur)</span>
@@ -1420,7 +1533,7 @@
       <span class="pill" style="background:var(--rose2)">Social (partage, transmissions verticales et horizontales)</span>
       <span class="pill" style="background:var(--jaune)">Culturel (rituels, normes)</span>
     </div>
-    <div class="warn">⚠️ Il n'y a pas UN déterminant des troubles alimentaires. C'est une constellation de facteurs qui interagissent. Les facteurs ne sont pas seulement inhérents à l'enfant ni seulement à son contexte — c'est bien l'<em>interaction</em> qu'il faut prendre en compte.</div>
+    <div class="warn">⚠️ Un trouble alimentaire n'a (presque) jamais une seule cause sur un seul niveau. Il faut imaginer les 8 niveaux comme 8 capteurs qu'on doit tous vérifier avant de conclure — se focaliser sur un seul (souvent le physiologique) fait rater les 7 autres.</div>
   </div>
 
   <div class="card">
@@ -1469,6 +1582,7 @@
   <div class="divider"></div>
 
   <!-- CM1 suite : Modèle écosystémique -->
+  <div class="recap"><span class="recap-tag">🧭 Toujours étape 1 — Zoomer sur le contexte</span>On vient de voir que "manger" a 3 pôles et 8 niveaux. Cette partie zoome sur un niveau en particulier : le niveau social/familial, avec un modèle qui dit explicitement <em>qui</em> influence Nina (elle-même, ses parents, son environnement) et que ces 3 sources bougent ensemble dans le temps.</div>
   <div class="section-title">CM1 · Facteurs multiples & modèle écosystémique</div>
 
   <div class="card">
@@ -1606,6 +1720,7 @@
   <div class="divider"></div>
 
   <!-- Sensorialité et alimentation -->
+  <div class="recap"><span class="recap-tag">🧭 Étape 2 — Les entrées sensorielles</span>On change de niveau d'analyse : on quitte le contexte familial/social pour redescendre dans le corps de Nina elle-même. Question posée ici : <em>par quels canaux Nina perçoit-elle la nourriture, avant même de savoir si elle l'aime ?</em></div>
   <div class="section-title">CM1 · Sensorialité et alimentation</div>
 
   <div class="card">
@@ -1653,6 +1768,7 @@
   <div class="divider"></div>
 
   <!-- CM2-CM3 : Mémoire sensorielle et préférences -->
+  <div class="recap"><span class="recap-tag">🧭 Toujours étape 2 — De la perception au souvenir</span>Percevoir un goût (vu juste avant) ne suffit pas à expliquer une préférence : il faut que ce goût soit <strong>mémorisé</strong>, et associé à une émotion (agréable ou pas), pour influencer le comportement futur de Nina. C'est ce maillon "perception → mémoire → préférence" qu'on regarde maintenant.</div>
   <div class="section-title">CM2-CM3 · Mémoire des expériences sensorielles & préférences</div>
 
   <div class="card">
@@ -1690,6 +1806,7 @@
   <div class="divider"></div>
 
   <!-- Satiété -->
+  <div class="recap"><span class="recap-tag">🧭 Étape 3 — La régulation interne</span>Nina perçoit et mémorise (étape 2). Maintenant : comment son corps décide-t-il <em>quand</em> manger et <em>quand</em> s'arrêter ? C'est un mécanisme de régulation au sens propre — comme un thermostat qui compare un état actuel à une consigne.</div>
   <div class="section-title">CM3 · Complexité de l'alimentation – Faim et satiété</div>
 
   <div class="card">
@@ -1742,6 +1859,7 @@
   <div class="divider"></div>
 
   <!-- CM2 : Motricité et alimentation précoce -->
+  <div class="recap"><span class="recap-tag">🧭 Toujours étape 3 — Le "matériel" qui exécute</span>Savoir qu'on a faim (faim/satiété) ne suffit pas : il faut aussi que le corps de Nina sache <em>physiquement</em> exécuter l'action de manger (téter, puis mastiquer). C'est la partie "motrice" de la régulation.</div>
   <div class="section-title">CM2 · Motricité et alimentation précoce</div>
 
   <div class="card">
@@ -1785,6 +1903,7 @@
   <div class="divider"></div>
 
   <!-- CM3 : Régulation faim/satiété - Birch, Satter -->
+  <div class="recap"><span class="recap-tag">🧭 Clôture étape 3</span>Dernier maillon de la régulation interne : comment l'organisme ajuste la <em>quantité</em> mangée dans le temps (pas juste un repas isolé), et qui — entre Nina et ses parents — est responsable de quoi dans cet ajustement.</div>
   <div class="section-title">CM3 · Régulation des apports énergétiques</div>
 
   <div class="card">
@@ -1839,6 +1958,7 @@
   <div class="divider"></div>
 
   <!-- CM3 : Préférences et dégoûts -->
+  <div class="recap"><span class="recap-tag">🧭 Étape 4 — L'influence parentale</span>Tout ce qu'on a vu (perception, mémoire, régulation) se passe <em>dans</em> Nina. Cette dernière partie regarde comment les parents, de l'extérieur, viennent moduler ce système : ce qu'ils transmettent (ou pas) en termes de préférences/dégoûts, et leur style éducatif au moment du repas.</div>
   <div class="section-title">CM3 · Préférences, dégoûts & transmissions familiales</div>
 
   <div class="card">
@@ -1874,6 +1994,7 @@
   <div class="divider"></div>
 
   <!-- CM3 : Styles éducatifs et stratégies parentales -->
+  <div class="recap"><span class="recap-tag">🧭 Clôture étape 4</span>Dernier maillon : concrètement, <em>qu'est-ce que les parents font ou disent</em> au moment du repas (style éducatif, stratégies, pression vs autonomie) qui vient renforcer ou casser tout ce qu'on a vu avant. C'est le point où on rejoint directement la <em>guidance parentale</em> annoncée en intro comme stratégie d'intervention principale.</div>
   <div class="section-title">CM3 · Conduites parentales & socialisation alimentaire</div>
 
   <div class="card">
